@@ -19,15 +19,5 @@ cv_check <- function(data, group){
     # calculate CV for given data and groups
     cv_df <- aggregate(data, list(group = group), CV)
     names(cv_df)[2] <- "CV"
-
-    # try and get plots working: *not currently working*
-    plt <- plot(cv_df[,1],
-                cv_df[,2],
-                type = "b",
-                ylim = c(0, max(cv_df[,2])),
-                xlab = "Group",
-                ylab = "CV",
-                main = "CV Plot")
-    print(plt)
     return(cv_df)
 }
