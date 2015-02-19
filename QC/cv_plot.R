@@ -1,15 +1,22 @@
-#################################################
+###############################################################
 # cv_plot()
 #----------------------------------------
 # makes a plot of coefficient variation plot
 # from the values obtained from cv_check()
-#################################################
+#
+# fancy argument produces plot in ggplot,
+# if categorical data given to group CV values, then ggplot option
+# *should* produce coloured output
+#################################################################
 
-cv_plot <- function(data, group){
+cv_plot <- function(data, group,
+                    fancy = FALSE,
+                    trend = FALSE,
+                    rotate = FALSE){
     
     # to calculate CV
     CV <- function(data){
-        (sd(data, na.rm = TRUE)/mean(data, na.RM = TRUE))*100
+        (sd(data, na.rm = TRUE)/mean(data, na.rm = TRUE)) * 100
     }
     
     # calculate CV for given data and groups
@@ -24,6 +31,57 @@ cv_plot <- function(data, group){
         ylab = "CV",
         xlab = "Group",
         main = "CV Plot")
+    
+    if(fancy == TRUE){
+        require(ggplot2)
+        plt <- ggplot(data = cv_df,
+                      aes(x = group,
+                          y = CV)) +
+                          geom_point() + 
+                          ylim(c(0, max(cv_df$CV))) + 
+                          ylab("CV") + 
+                          xlab("Group") + 
+                          ggtitle("CV Plot")
+    }
+    
+    if(fancy == TRUE & rotate == TRUE){
+        plt <- ggplot(data = cv_df,
+                      aes(x = group,
+                          y = CV)) +
+            geom_point() + 
+            ylim(c(0, max(cv_df$CV))) + 
+            ylab("CV") + 
+            xlab("Group") + 
+            ggtitle("CV Plot")
+            theme(axis.text.x = element_text(angle = 90, hjust = 1))
+    }
+    
+    if(fancy == TRUE & trend == TRUE) {
+        plt <- ggplot(data = cv_df,
+                      aes(x = group,
+                          y = CV)) +
+            geom_point() + 
+            geom_line(alpha = 0.6,
+                      aes(group = "none")) + 
+            ylim(c(0, max(cv_df$CV))) + 
+            ylab("CV") + 
+            xlab("Group") + 
+            ggtitle("CV Plot")
+    }
+    
+    if(fancy == TRUE & trend == TRUE & rotate == TRUE){
+        plt <- ggplot(data = cv_df,
+                      aes(x = group,
+                          y = CV)) +
+            geom_point() + 
+            geom_line(alpha = 0.6,
+                      aes(group = "none")) + 
+            ylim(c(0, max(cv_df$CV))) + 
+            ylab("CV") + 
+            xlab("Group") + 
+            ggtitle("CV Plot") +
+            theme(axis.text.x = element_text(angle = 90, hjust = 1))
+    }
     
     return(plt)
 }
