@@ -37,7 +37,7 @@ cv_plot <- function(data, group,
         xlab = x_lab,
         main = title)
     
-    if(rotate == TRUE){
+    if(fancy == FALSE & rotate == TRUE){
         plt <- plot(
             cv_df[,1],
             cv_df[,2],
