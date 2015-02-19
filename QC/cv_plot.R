@@ -23,14 +23,31 @@ cv_plot <- function(data, group,
     cv_df <- aggregate(data, list(group = group), CV)
     names(cv_df)[2] <- "CV"
     
+    #labels and headings
+    x_lab <- "Group"
+    y_lab <- "CV"
+    title <- "CV Plot"
+    
     plt <- plot(
         cv_df[,1],
         cv_df[,2],
         type = "b",
         ylim = c(0, max(cv_df[,2])),
-        ylab = "CV",
-        xlab = "Group",
-        main = "CV Plot")
+        ylab = y_lab,
+        xlab = x_lab,
+        main = title)
+    
+    if(rotate == TRUE){
+        plt <- plot(
+            cv_df[,1],
+            cv_df[,2],
+            type = "b",
+            ylim = c(0, max(cv_df[,2])),
+            xlab = x_lab,
+            ylab = y_lab,
+            main = title,
+            las = 2)
+    }
     
     if(fancy == TRUE){
         require(ggplot2)
@@ -39,9 +56,9 @@ cv_plot <- function(data, group,
                           y = CV)) +
                           geom_point() + 
                           ylim(c(0, max(cv_df$CV))) + 
-                          ylab("CV") + 
-                          xlab("Group") + 
-                          ggtitle("CV Plot")
+                          ylab(y_lab) + 
+                          xlab(x_lab) + 
+                          ggtitle(title)
     }
     
     if(fancy == TRUE & rotate == TRUE){
@@ -50,9 +67,9 @@ cv_plot <- function(data, group,
                           y = CV)) +
             geom_point() + 
             ylim(c(0, max(cv_df$CV))) + 
-            ylab("CV") + 
-            xlab("Group") + 
-            ggtitle("CV Plot")
+            ylab(y_lab) + 
+            xlab(x_lab) + 
+            ggtitle(title)
             theme(axis.text.x = element_text(angle = 90, hjust = 1))
     }
     
@@ -64,9 +81,9 @@ cv_plot <- function(data, group,
             geom_line(alpha = 0.6,
                       aes(group = "none")) + 
             ylim(c(0, max(cv_df$CV))) + 
-            ylab("CV") + 
-            xlab("Group") + 
-            ggtitle("CV Plot")
+            ylab(y_lab) + 
+            xlab(x_lab) + 
+            ggtitle(title)
     }
     
     if(fancy == TRUE & trend == TRUE & rotate == TRUE){
@@ -77,9 +94,9 @@ cv_plot <- function(data, group,
             geom_line(alpha = 0.6,
                       aes(group = "none")) + 
             ylim(c(0, max(cv_df$CV))) + 
-            ylab("CV") + 
-            xlab("Group") + 
-            ggtitle("CV Plot") +
+            ylab(y_lab) + 
+            xlab(x_lab) + 
+            ggtitle(title) +
             theme(axis.text.x = element_text(angle = 90, hjust = 1))
     }
     
