@@ -5,8 +5,8 @@
 # from the values obtained from cv_check()
 #
 # fancy argument produces plot in ggplot,
-# if categorical data given to group CV values, then ggplot option
-# *should* produce coloured output
+# trend argument adds connecting lines between points
+# rotate argument rotates the y-axis labels 90 degrees
 #################################################################
 
 cv_plot <- function(data, group,
