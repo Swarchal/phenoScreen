@@ -6,7 +6,7 @@
 #
 # fancy argument produces plot in ggplot,
 # trend argument adds connecting lines between points
-# rotate argument rotates the y-axis labels 90 degrees
+# rotate argument rotates the x-axis labels 90 degrees
 #################################################################
 
 cv_plot <- function(data, group,
