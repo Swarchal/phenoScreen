@@ -2,29 +2,33 @@
 # read_map will annotate dataframes with existing well ID
 # with either concentration or compound from a layout-style csv
 # for either a 96 or 384-well plate
-#
-# will require an existing plate map in csv format;
-# missing wells have to be filled with placeholder to preserve row and column
-# spacings
-#
 #------------------------------------------------------------------------------
-# 'df' is the dataframe to which the annotations will be added
+# will require an existing plate map in csv format; missing wells have to be 
+# filled with placeholder to preserve row and column spacings
+#------------------------------------------------------------------------------
 # 'wells' is the column containing the well labels. format: 'A01'
-# 'map' is the csv file of the plate map
-# 'header' is an optional argument naming the column values produced from map
+# 'map' is the matrix of the plate map
 ###############################################################################
 
-read_map <- function(df, wells, map, header = "new_column"){
-
-	map <- as.matrix(read.csv(file, header = FALSE))
-
-	#initialise new column
-	df$header <- NA
-
-	# need some sort of co-ordinate system to relate rows and columns
-	# dont want to have to grep for every single combination of row and column
-	# create column for 'row' and column for 'column' identified with grep
-	# then paste them together
-	# can create intermediate dataframe if necessary and use merge()
-
+read_map <- function(wells, map){
+    
+    require(dplyr)
+    
+    # error handling for map if entered as file-path rather than matrix or df
+    if(is.character(map) == TRUE){map <- as.matrix(read.csv(map, header = FALSE))}
+    map <- as.matrix(map)
+    
+    # produces column and row numbers for given well ID
+    platemap <- mutate(
+        wells,
+        row = as.numeric(match(toupper(substr(well,1,1)),LETTERS)),
+        column = as.numeric(substr(well,2,5))
+    )
+    
+    platemap$header <- NULL # dummy column for mapped values
+    for(i in 1:nrow(wells)){
+        platemap$header[i] <- as.vector(with(platemap, map[[row[i], column[i]]]))
+    }
+    return(platemap)
 }
+
