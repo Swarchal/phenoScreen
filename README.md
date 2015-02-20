@@ -14,6 +14,8 @@ All functions to be used in phenotypic screens.
 
 	- `npi.R`: 'Normalised Percentage inhibition', for use in antagonism assays. Calculates the percentage inhibition normalised against the positive and negative controls.
 
+	- `ssmd.R`: 'Strictly standardised mean difference', calculates the difference between two groups.
+
 	- `mad.R`: 'Median Absolute Deviation': *incomplete*
 
 	- `b_score.R` *incomplete*
