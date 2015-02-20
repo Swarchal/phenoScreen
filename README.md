@@ -2,7 +2,7 @@
 
 All functions to be used in phenotypic screens.
 
-	- `read_map`: annotates dataframes with well identifiers from a separate plate map as a csv. e.g adding compounds or concentrations to correct wells
+- `read_map`: annotates dataframes with well identifiers from a separate plate map as a csv. e.g adding compounds or concentrations to correct wells
 
 * QC : Quality control measures
 
