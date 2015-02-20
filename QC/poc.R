@@ -7,9 +7,22 @@
 #----------------------------------------------------------
 # `compound` should be values of selected compound
 # `pos_cntrl` values from positive control
+#----------------------------------------------------------
+# to use with multiple compounds, use poc() within apply()
+# or with aggregate()
 ############################################################
 
 poc <- function(compound, pos_cntrl){
-    x <- (mean(compound, na.rm = TRUE)/ mean(pos_cntrl, na.rm = TRUE)) * 100
-    return(x)
+    
+    if(is.numeric(compound) == FALSE){
+        return("Error: Enter numerical values for a single compound. For use with multiple compounds, use poc() within *apply() or aggregate()")
+    }
+    
+    # if values for a single compound are given:
+    if(is.numeric(compound) == TRUE){
+        b_cmpd <- mean(compound, na.rm = TRUE)
+        b_pos_cntrl <- mean(pos_cntrl, na.rm = TRUE)
+        x <- (mean(b_cmpd) / mean(b_pos_cntrl)) * 100
+        return(x)
+    }
 }
