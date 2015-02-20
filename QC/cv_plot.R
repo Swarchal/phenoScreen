@@ -69,7 +69,7 @@ cv_plot <- function(data, group,
             ylim(c(0, max(cv_df$CV))) + 
             ylab(y_lab) + 
             xlab(x_lab) + 
-            ggtitle(title)
+            ggtitle(title) + 
             theme(axis.text.x = element_text(angle = 90, hjust = 1))
     }
     
