@@ -14,6 +14,8 @@ All functions to be used in phenotypic screens.
 
 	- `cv_plot`: similar to cv_check, but produces a graph of coefficient of variation (y) against group (x) instead of a data frame.
 
+	- `z_map`: plots normalised values (z-score) as colour heatmap in a plate format.
+
 	- `z_factor`: calculates a z-factor or z` factor to assess how robust the difference is between groups.
 
 	- `poc`: 'Percentage Of Control', measures compound activity as a percentage of a positive control.
