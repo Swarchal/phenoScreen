@@ -6,9 +6,6 @@
 # 
 # Need to:
 # Ceed to consider if given a data frame, and appending a column of well IDs
-#
-# Also, need to add options if well numbers follow a non-conventional approach
-# such as snaking
 # 
 # Option for 384 well plates
 ###############################################################################

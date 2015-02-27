@@ -16,5 +16,6 @@ ssmd <- function(a, b){
 	mu_2 <- mean(b, na.rm = TRUE)
 
 	beta = (mu_1 - mu_2)/sqrt(sd(a) + sd(b) - 2*cov(a, b))
+	
 	return(beta)
 }
