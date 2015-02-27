@@ -6,7 +6,7 @@ All functions to be used in phenotypic screens.
 
 - `num_to_well`: converts well numbers into well ID's. e.g 1 -> "A01", 96 -> "H12".
 
-- `well_to_num`: converts well ID's into well numbers. *incomplete*
+- `well_to_num`: converts well ID's into well numbers.
 
 * QC : Quality control measures
 
