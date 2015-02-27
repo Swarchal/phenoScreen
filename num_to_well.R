@@ -66,13 +66,8 @@ num_to_well <- function(numbers, style = normal){
     value <- function(x){return(well_list[x,])}
     value_snake <- function(x){return(well_list_snake[x,])}
     
-    if(style == normal){
-        well_id <- as.vector(sapply(numbers_vector, value))
-    }
-    
-    if(style == snake){
-        well_id <- as.vector(sapply(numbers_vector, value_snake))
-    }
+    if(style == normal){well_id <- as.vector(sapply(numbers_vector, value))}
+    if(style == snake){well_id <- as.vector(sapply(numbers_vector, value_snake))}
     
     return(well_id)
     
