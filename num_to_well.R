@@ -1,7 +1,22 @@
+###############################################################################
+# num_to_well()
+#------------------------------------------------------------------------------
+# Converts well number to well ID, e.g well 1 -> A01, well 96 -> H12
+# Currently returns a vector of well IDs matching the input numbers
+# 
+# Need to:
+# Ceed to consider if given a data frame, and appending a column of well IDs
+#
+# Also, need to add options if well numbers follow a non-conventional approach
+# such as snaking
+# 
+# Option for 384 well plates
+###############################################################################
+
 num_to_well <- function(numbers, style = normal){
 
-    # numbers as column from data frame of as a vector of numbers?
-    # can we have input as either and convert to most appropriate?
+    # numbers as column from data frame of as a vector?
+    # can we have input as either form and convert to most appropriate?
     
     # dataframe containing all wells in order (normal)
     well_list <- structure(list(
@@ -20,20 +35,9 @@ num_to_well <- function(numbers, style = normal){
             "H09", "H10", "H11", "H12"),class = "factor")),
         .Names = "well", class = "data.frame", row.names = c(NA, -96L))
     
-    well_list <- as.vector(well_list$well)
+    numbers_vector <- as.vector(numbers)
+    value <- function(x){return(well_list[x,])}
+    well_id <- as.vector(sapply(numbers_vector, value))
+    return(well_id)
     
-    new_df <- as.data.frame(numbers)
-    new_df$well <- NA
-    
-    for(i in numbers){
-        new_df$well[i] <- well_list[i]
-    }
-    return(new_df)
-    
-    #--------------------------------------------------------------------------
-    
-#     platemap <- mutate(platemap,
-#                        Row=as.numeric(match(toupper(substr(well, 1, 1)), LETTERS)),
-#                        Column=as.numeric(substr(well, 2, 5)))
-#     
 }
