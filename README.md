@@ -24,6 +24,4 @@ All functions to be used in phenotypic screens.
 
 	- `ssmd`: 'Strictly standardised mean difference', calculates the difference between two groups.
 
-	- `mad`: 'Median Absolute Deviation': *incomplete*
-
 	- `b_score` *incomplete*
