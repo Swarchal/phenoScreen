@@ -24,4 +24,6 @@ All functions to be used in phenotypic screens.
 
 	- `ssmd`: 'Strictly standardised mean difference', calculates the difference between two groups.
 
-	- `b_score` *incomplete*
+	- `b_score` A correction of plate and spatial effects by a two-way median polish to account for row and column variability. The residual $r_{ijp}$ of the measurement for the row $i$ and column $j$ on the $p$-th plate:
+
+	$$ r_{ijp} = y_{ijp} - \hat{y}_{ijp} = y_{ijp} - (\hat{\mu}_p + \hat{R}_{ip} + \hat{C}_{jp} $$ 
