@@ -12,7 +12,8 @@
 cv_plot <- function(data, group,
                     fancy = FALSE,
                     trend = FALSE,
-                    rotate = FALSE){
+                    rotate = FALSE,
+                    title = "CV Plot"){
     
     # to calculate CV
     CV <- function(data){
@@ -26,7 +27,7 @@ cv_plot <- function(data, group,
     #labels and headings
     x_lab <- "Group"
     y_lab <- "CV"
-    title <- "CV Plot"
+    title <- title
     
     plt <- plot(
         cv_df[,1],
