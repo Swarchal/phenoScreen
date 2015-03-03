@@ -9,9 +9,19 @@
 # (mu_p) + estimated systematic measurement column offset for
 # column j` on plate p.
 #------------------------------------------------------------------------------
+# Argument 'data' should be entered as a dataframe with the well identifiers
+# under a column labelled as 'well'.
+#
+# 'val_col' argument is the column within 'data' that contains the numerical
+# values of interest. Default it the second column.
+#------------------------------------------------------------------------------
 # N.B: well identifiers are required to format the data into correct plate
 # layout with the column name as 'well'
 # val_col is the column number containing the values of interest
+# 
+# Currently only works with a full 96-well plate, will screw up row/columns
+# when not all wells are used. need to check if NA/NaN will work in a numerical
+# matrix as placeholders to preserve well spacings.
 ###############################################################################
 
 b_score <- function(data, val_col = 2, plot = FALSE){
@@ -27,6 +37,7 @@ b_score <- function(data, val_col = 2, plot = FALSE){
     # ensure data is ordered properly before passing to matrix()
     platemap <- platemap[order(platemap$row, platemap$column), ]
     
+    # transform into 12*8 matrix (96-well plate)
     mat_plate_map <- matrix(platemap[,val_col],
                             nrow = 8,
                             ncol = 12,
