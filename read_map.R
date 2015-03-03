@@ -27,7 +27,7 @@ read_map <- function(data, map){
     )
     
     platemap$header <- NULL # dummy column for mapped values
-    for(i in 1:nrow(wells)){
+    for(i in 1:nrow(data)){
         platemap$header[i] <- as.vector(with(platemap, map[[row[i], column[i]]]))
     }
     return(platemap)
