@@ -6,11 +6,12 @@
 # will require an existing plate map in csv format; missing wells have to be 
 # filled with placeholder to preserve row and column spacings
 #------------------------------------------------------------------------------
-# 'wells' is the column containing the well labels. format: 'A01'
+# argument 'data' has to be a dataframe, with the well identifier column
+# named as 'well'
 # 'map' is the matrix of the plate map
 ###############################################################################
 
-read_map <- function(wells, map){
+read_map <- function(data, map){
     
     require(dplyr)
     
@@ -20,7 +21,7 @@ read_map <- function(wells, map){
     
     # produces column and row numbers for given well ID
     platemap <- mutate(
-        wells,
+        data,
         row = as.numeric(match(toupper(substr(well,1,1)),LETTERS)),
         column = as.numeric(substr(well,2,5))
     )
