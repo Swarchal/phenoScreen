@@ -1,6 +1,8 @@
 ###############################################################################
 # b_score()
 #------------------------------------------------------------------------------
+# Transforms row and column medians to zero
+#
 # The residual (r_ijp) of the measurement for row `i` and column `j` on the
 # `p`th plate is obtained by fitting a two-way median polish.
 #
@@ -10,21 +12,24 @@
 # column j` on plate p.
 #------------------------------------------------------------------------------
 # Argument 'data' should be entered as a dataframe with the well identifiers
-# under a column labelled as 'well'.
+# under a column labelled as 'well'
 #
 # 'val_col' argument is the column within 'data' that contains the numerical
-# values of interest. Default it the second column.
+# values of interest. Default is the second column
+#
+# The 'normalise' argument, is defaulted at FALSE, if TRUE (or anything other
+# than FALSE), it will return a matrix containing the raw values minus the 
+# residuals
 #------------------------------------------------------------------------------
 # N.B: well identifiers are required to format the data into correct plate
 # layout with the column name as 'well'
-# val_col is the column number containing the values of interest
 # 
 # Currently only works with a full 96-well plate, will screw up row/columns
 # when not all wells are used. need to check if NA/NaN will work in a numerical
 # matrix as placeholders to preserve well spacings.
 ###############################################################################
 
-b_score <- function(data, val_col = 2, plot = FALSE){
+b_score <- function(data, val_col = 2, normalise = FALSE){
 	
     # need to transform columns of wellID and data into
     # matrix corresponding to well positions:
@@ -38,6 +43,7 @@ b_score <- function(data, val_col = 2, plot = FALSE){
     platemap <- platemap[order(platemap$row, platemap$column), ]
     
     # transform into 12*8 matrix (96-well plate)
+    # fills matrix by in a row-wise fashion, A01, A02 ...
     mat_plate_map <- matrix(platemap[,val_col],
                             nrow = 8,
                             ncol = 12,
@@ -46,8 +52,13 @@ b_score <- function(data, val_col = 2, plot = FALSE){
 	# median polish of the data
 	data_pol <- medpolish(mat_plate_map)
     
-	return(data_pol$residuals)
-
 	# how  best to normalise? actual - residuals?
-	# return diagnostic plot? plot(data_pol)
+	if (normalise == TRUE){
+		return(mat_plate_map - data_pol$residuals) # values minus residuals
+	} else if (normalise == FALSE){
+		return(data_pol$residuals) # returns the raw residuals
+	} else{
+		return("Error: the argument 'normalise' needs to be either TRUE or FALSE")
+	}
+
 }
