@@ -8,7 +8,9 @@ All functions to be used in phenotypic screens.
 
 - `well_to_num`: converts well ID's into well numbers.
 
-- `load_csv`: loads all csv files within a folder
+- `load_csv`: loads all csv files within a folder into the working environment
+
+- `rbind_all`: reads all csv files in a folder and binds them together with identifying column
 
 * QC : Quality control measures
 
