@@ -6,6 +6,10 @@
 # in a row-wise fashion
 #
 # data frames have to have the same columns and column headers
+#
+# Warning: will produce new column named 'origin' containing string from which
+# file data came from, may need to rename columns of existing column is already
+# named 'origin'
 ###############################################################################
 
 rbind_all <- function(path, skip = 0){
