@@ -29,7 +29,7 @@
 # matrix as placeholders to preserve well spacings.
 ###############################################################################
 
-b_score <- function(data, val_col = 2, normalise = FALSE){
+b_score <- function(data, val_col = 2L, normalise = FALSE){
 	
     # need to transform columns of wellID and data into
     # matrix corresponding to well positions:
@@ -57,8 +57,8 @@ b_score <- function(data, val_col = 2, normalise = FALSE){
 		return(mat_plate_map - data_pol$residuals) # values minus residuals
 	} else if (normalise == FALSE){
 		return(data_pol$residuals) # returns the raw residuals
-	} else{
-		return("Error: the argument 'normalise' needs to be either TRUE or FALSE")
+	} else {
+		return("Error: 'normalise' needs to be either TRUE or FALSE")
 	}
 
 }
