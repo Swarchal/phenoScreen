@@ -9,7 +9,6 @@
 # data_list <- list(df1, df2, df3)
 # lapply(data_list, rm_col_na)
 
-
 rm_col_na <- function(df){
     df[,colSums(is.na(df)) != nrow(df)]
 }
