@@ -12,6 +12,8 @@ All functions to be used in phenotypic screens.
 
 - `rbind_all`: reads all csv files in a directory and binds them together with identifying column.
 
+- `rm_col_na`: removes columns from a dataframe consisting entirely of NA's.
+
 * QC : Quality control measures
 
 	- `cv_check`: calculates the coefficient of variation if given a column of measurements, and a column with which to group the elements by. Produces a dataframe containing the CV for each element of the group. 
