@@ -24,6 +24,8 @@ All functions to be used in phenotypic screens.
 
 	- `z_factor`: calculates a z-factor or z` factor to assess how robust the difference is between groups.
 
+	- `z_factors_scan`: calculates z-factor between two treatments groups across multiple variables, returns those above a specified cut-off.
+
 	- `poc`: 'Percentage Of Control', measures compound activity as a percentage of a positive control.
 
 	- `npi`: 'Normalised Percentage inhibition', for use in antagonism assays. Calculates the percentage inhibition normalised against the positive and negative controls.
