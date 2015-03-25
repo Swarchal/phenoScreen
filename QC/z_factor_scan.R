@@ -19,7 +19,12 @@
 # e.g 2:
 # cntrols <- c("DMSO", "STS")
 # z_factor_scan(tidy_dataset, cntrols, 0.3)
+#--------------------------------------------------------------------------------------------------
+# TODO: option for selecting column containing treatment lablels,
+# at the moment column *has* to be named 'header'
 ###################################################################################################
+
+
 
 z_factor_scan <- function(data, treatments, cutoff = 0.5){
 
