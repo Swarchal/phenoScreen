@@ -21,9 +21,7 @@
 # z_factor_scan(tidy_dataset, cntrols, 0.3)
 ###################################################################################################
 
-
 z_factor_scan <- function(data, treatments, cutoff = 0.5){
-
 
 		# function to calculate z-factor when given two tidy vectors
 		#------------------------------------------------------------------------------------------
@@ -53,21 +51,15 @@ z_factor_scan <- function(data, treatments, cutoff = 0.5){
 		}
 		#------------------------------------------------------------------------------------------
 
-	data
-
-	# TODO to calculate num, for all columns except that containing treatments 'data$header'
-
-	nums <- 1:84 
+	header_in <- which(colnames(data) == "header") # index of column named 'header'
+	nums <- (1:dim(data)[2])[ - header_in] # indices of all columns except header
 	z_values <- c()
 	z_names <- c()
 
-	# TODO subset by elements in the argument treatment
-	# possibly subset(...[,number], data$header == treatment[1]) ?
-	
 	for (number in nums){
-	z_values[number] <- (as.vector(z_factor(subset(agn_want_dat[,number], agn_want_dat$header == "STS"),
-	                            subset(agn_want_dat[,number], agn_want_dat$header == "DMSO"))))
-	z_names[number] <- names(agn_want_dat)[number]
+	z_values[number] <- (as.vector(z_factor(subset(data[,number], data$header == treatments[1]),
+	                            subset(data[,number], data$header == treatments[2]))))
+	z_names[number] <- names(data)[number]
 	}
 
 	z_factors <- data.frame(z_names, z_values)
