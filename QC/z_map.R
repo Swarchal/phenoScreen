@@ -11,7 +11,7 @@
 #   - platemap; vector of well identifiers, eg. "A01", "B12" etc.
 ###############################################################################
 
-z_map <- function(values, platemap, title = ""){
+z_map <- function(values, platemap, title = "", palette = "Spectral"){
     
     require(ggplot2)
     require(dplyr)
@@ -30,7 +30,7 @@ z_map <- function(values, platemap, title = ""){
     names(platemap)[4] <- "scaled_data"
     
     # RColorBrewerPallette
-    my_cols <- brewer.pal(3, "Spectral")
+    my_cols <- brewer.pal(3, palette)
     
     # produce a plate map in ggplot
     plt <- ggplot(data = platemap, aes(x = Column, y = Row)) +
