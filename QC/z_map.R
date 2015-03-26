@@ -15,6 +15,7 @@ z_map <- function(values, platemap, title = ""){
     
     require(ggplot2)
     require(dplyr)
+    require(RColorBrewer)
     
     # transform well labels into row-column values for a 96-well plate
     platemap <- as.data.frame(platemap)
@@ -28,6 +29,9 @@ z_map <- function(values, platemap, title = ""){
     platemap <- cbind(platemap, scaled_data[,1])
     names(platemap)[4] <- "scaled_data"
     
+    # RColorBrewerPallette
+    my_cols <- brewer.pal(3, "Spectral")
+    
     # produce a plate map in ggplot
     plt <- ggplot(data = platemap, aes(x = Column, y = Row)) +
         geom_point(data = expand.grid(seq(1, 12), seq(1, 8)), aes(x = Var1, y = Var2),
@@ -37,9 +41,9 @@ z_map <- function(values, platemap, title = ""){
         scale_y_reverse(breaks = seq(1, 8), labels = LETTERS[1:8]) +
         scale_x_continuous(breaks = seq(1, 12)) +
         scale_colour_gradient2("z-score",
-                               low = "blue",
-                               high = "red",
-                               mid = "gray60") +
+                               low = my_cols[3],
+                               high = my_cols[1],
+                               mid = my_cols[2]) +
         ggtitle(title)+
         theme_bw()
     return(plt)
