@@ -41,9 +41,9 @@ z_map <- function(values, platemap, title = "", palette = "Spectral"){
         scale_y_reverse(breaks = seq(1, 8), labels = LETTERS[1:8]) +
         scale_x_continuous(breaks = seq(1, 12)) +
         scale_fill_gradient2("z-score",
-                               low = my_cols[3],
-                               high = my_cols[1],
-                               mid = my_cols[2]) +
+                             low = my_cols[3],
+                             high = my_cols[1],
+                             mid = my_cols[2]) +
         ggtitle(title)+
         theme_bw()
     return(plt)
