@@ -36,11 +36,11 @@ z_map <- function(values, platemap, title = "", palette = "Spectral"){
     plt <- ggplot(data = platemap, aes(x = Column, y = Row)) +
         geom_point(data = expand.grid(seq(1, 12), seq(1, 8)), aes(x = Var1, y = Var2),
                    color = "grey90", fill = "white", shape = 21, size = 6) +
-        geom_point(size = 10, aes(colour = scaled_data)) +
+        geom_point(aes(fill = scaled_data), colour = "gray20", shape = 21, size = 10) +
         coord_fixed(ratio = (13 / 12) / (9 / 8), xlim = c(0.5, 12.5), ylim = c(0.5, 8.5)) +
         scale_y_reverse(breaks = seq(1, 8), labels = LETTERS[1:8]) +
         scale_x_continuous(breaks = seq(1, 12)) +
-        scale_colour_gradient2("z-score",
+        scale_fill_gradient2("z-score",
                                low = my_cols[3],
                                high = my_cols[1],
                                mid = my_cols[2]) +
