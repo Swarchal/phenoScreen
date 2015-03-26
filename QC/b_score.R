@@ -106,9 +106,12 @@ b_score <- function(data, val_col = 2L, normalise = FALSE, matrix = TRUE){
             df$residual[num] <- t_out[num]
             df$well[num] <- num_to_well(num)
         }
-        return(as.data.frame(
+        df <- as.data.frame(
             cbind("well" = df$well,
-                  "residual" = as.numeric(df$residual)))
-        )
+                  "residual" = df$residual))
+        # change residuals from factor to numeric
+        df$residual <- as.numeric(as.character(df$residual))
+        return(df)
+        
     }
 }
