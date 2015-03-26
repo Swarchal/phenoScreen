@@ -32,4 +32,6 @@ All functions to be used in phenotypic screens.
 
 	- `ssmd`: 'Strictly standardised mean difference', calculates the difference between two groups.
 
-	- `b_score` A correction of plate and spatial effects by a two-way median polish to account for row and column variability.
+	- `b_score`: A correction of plate and spatial effects by a two-way median polish to account for row and column variability.
+
+	- `hit_map`: plots a platemap, colours indicate 'hits' if they exceed a specified threshold of standard deviation from the plate mean.
