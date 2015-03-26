@@ -32,8 +32,8 @@ hit_map <- function(values, platemap, threshold = 2, title = "", palette = "Spec
     platemap$hit <- NA
     
     for(row in 1:nrow(platemap)){
-        if(scaled_data[row] > threshold){platemap$hit[row] <- 1}
-        if(scaled_data[row] < (-1 * threshold)){platemap$hit[row] <- -1
+        if(scaled_data[row] > threshold){platemap$hit[row] <- 1
+        } else  if(scaled_data[row] < (-1 * threshold)){platemap$hit[row] <- -1
         } else{platemap$hit[row] <- 0}
     }
     
