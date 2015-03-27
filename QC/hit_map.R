@@ -6,16 +6,11 @@
 #
 # arguments:
 #   - 'values':     column of numerical values with which to calculate z-score
-#   - 'platemap':   column of well ID's 4
+#   - 'platemap':   column of well ID's
 #   - 'threshold':  value of z-score to determine hit/not-hit
 #   - 'title':      self-explanatory
 #   - 'palette':    RColorBrewer palette for heatmap colours
 #
-# TODO:
-#   - make colours consistent, at the moment it changes dependent on the types
-#    of hit present on the plate
-#       - maybe through adding factor levels, so constant even if some levels
-#        are not present in the data
 ###############################################################################
 
 hit_map <- function(values, platemap, threshold = 2, title = "", palette = "Spectral"){
@@ -30,23 +25,24 @@ hit_map <- function(values, platemap, threshold = 2, title = "", palette = "Spec
     platemap <- mutate(platemap,
                        Row = as.numeric(match(toupper(substr(well, 1, 1)), LETTERS)),
                        Column = as.numeric(substr(well, 2, 5)))
-    
     values <- as.data.frame(values)
     scaled_data <- scale(values)
     platemap <- cbind(platemap, scaled_data[,1])
     names(platemap)[4] <- "scaled_data"
     platemap$hit <- NA
     
+    # calculate whether values are beyond the threshold; defined as hit or null
     for (row in 1:nrow(platemap)){
-        if (scaled_data[row] > threshold){platemap$hit[row] <- "+ hit"
-        } else  if (scaled_data[row] < (-1 * threshold)){platemap$hit[row] <- "- hit"
+        if (scaled_data[row] > threshold){platemap$hit[row] <- "hit"
+        } else  if (scaled_data[row] < (-1 * threshold)){platemap$hit[row] <- "neg_hit"
         } else {platemap$hit[row] <- "null"}
     }
-
+    
     # RColorBrewerPallette
     my_cols <- brewer.pal(3, palette)
+    my_colours <- c(hit = my_cols[1], neg_hit = my_cols[3], null = my_cols[2])
     
-    # produce a plate map in ggplot
+    # produce a plate map layout in ggplot
     plt <- ggplot(data = platemap, aes(x = Column, y = Row)) +
         geom_point(data = expand.grid(seq(1, 12), seq(1, 8)), aes(x = Var1, y = Var2),
                    color = "grey90", fill = "white", shape = 21, size = 6) +
@@ -55,7 +51,7 @@ hit_map <- function(values, platemap, threshold = 2, title = "", palette = "Spec
         scale_y_reverse(breaks = seq(1, 8), labels = LETTERS[1:8]) +
         scale_x_continuous(breaks = seq(1, 12)) +
         ggtitle(title) + 
-        scale_fill_manual("hit", values = my_cols[c(1,3,2)]) + 
+        scale_fill_manual("hit", values = my_colours) + 
         theme_bw()
     return(plt)
 }
