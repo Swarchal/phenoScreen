@@ -35,6 +35,8 @@
 
 b_score <- function(data, val_col = 2L, normalise = FALSE, matrix = TRUE){
 	
+    require(dplyr)
+    
     # need to transform columns of wellID and data into
     # matrix corresponding to well positions:
     platemap <- mutate(
