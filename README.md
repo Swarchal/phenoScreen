@@ -37,3 +37,5 @@ All functions to be used in phenotypic screens.
 	- `b_score_scan`: correction of plate and spatial effects by a two-way median polish, applied to each feature in a dataset.
 
 	- `hit_map`: plots a platemap, colours indicate 'hits' if they exceed a specified threshold of standard deviation from the plate mean.
+
+	- `pc_map`: plots plate heatmap of first principcal component.
