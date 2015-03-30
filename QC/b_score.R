@@ -33,14 +33,17 @@
 # matrix as placeholders to preserve well spacings.
 ###############################################################################
 
-b_score <- function(data, val_col = 2L, normalise = FALSE, matrix = FALSE){
+b_score <- function(values, platemap, normalise = FALSE, matrix = FALSE){
 	
     require(dplyr)
     
     # need to transform columns of wellID and data into
     # matrix corresponding to well positions:
+    platemap <- as.data.frame(platemap)
+    names(platemap)[1] <- "well"
+    
     platemap <- mutate(
-        data,
+        platemap,
         row = as.numeric(match(toupper(substr(well,1,1)),LETTERS)),
         column = as.numeric(substr(well,2,5))
     )
@@ -50,7 +53,7 @@ b_score <- function(data, val_col = 2L, normalise = FALSE, matrix = FALSE){
     
     # transform into 12*8 matrix (96-well plate)
     # fills matrix by in a row-wise fashion i.e, A01, A02 ...
-    mat_plate_map <- matrix(platemap[,val_col],
+    mat_plate_map <- matrix(values,
                             nrow = 8,
                             ncol = 12,
                             byrow = TRUE)
