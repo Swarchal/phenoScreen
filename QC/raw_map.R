@@ -36,8 +36,8 @@ raw_map <- function(values, platemap, title = "", palette = "YlOrRd"){
         scale_x_continuous(breaks = seq(1, 12)) +
         scale_fill_gradient2("values",
                              low = my_cols[1],
-                             high = my_cols[5],
-                             mid = my_cols[9]) +
+                             mid = my_cols[4],
+                             high = my_cols[9]) +
         ggtitle(title)+
         theme_bw()
     return(plt)
