@@ -39,5 +39,8 @@ All functions to be used in phenotypic screens.
 	- `hit_map`: plots a platemap, colours indicate 'hits' if they exceed a specified threshold of standard deviation from the plate mean.
 
 	- `pc_map`: plots plate heatmap of first principcal component.
+
+	- `ld_map`: plots a plate heatmap of the first dimension of a linear discriminant analysis separated by a given groups.
 	
 	- `raw_map`: plots plate heatmap of raw untransformed values.
+
