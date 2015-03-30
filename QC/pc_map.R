@@ -8,7 +8,7 @@
 #           - 'well': column of well identifying labels
 ###############################################################################
 
-pc_map <- function(data, well){
+pc_map <- function(data, well, title = "", palette = "Spectral"){
     
     pca_data <- princomp(data) # pca of data
     pc1 <- pca_data$score[,1] # take first principal component
@@ -51,7 +51,7 @@ pc_map <- function(data, well){
         return(plt)
     }
     
-    plot_pc_map <- z_map(pc1, well)
+    plot_pc_map <- z_map(pc1, well, title, palette)
     return(plot_pc_map)
     
 }
