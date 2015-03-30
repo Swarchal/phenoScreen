@@ -63,10 +63,8 @@ b_score <- function(data, val_col = 2L, normalise = FALSE, matrix = FALSE){
             return(mat_plate_map - data_pol$residuals) # values minus residuals
         } else if (normalise == FALSE){
             return(data_pol$residuals) # returns the raw residuals
-        } else {
-            return("Error: 'normalise' needs to be either TRUE or FALSE")
-        }
-        
+        } else stop("normalise has to be either TRUE or FALSE")
+       
     }
     if (matrix == FALSE){ # return results in dataframe with well labels
         
@@ -113,7 +111,5 @@ b_score <- function(data, val_col = 2L, normalise = FALSE, matrix = FALSE){
         # change residuals from factor to numeric
         df$residual <- as.numeric(as.character(df$residual))
         return(df) 
-    } else {
-        return("Error: matrix has to be either TRUE or FALSE")
-    }
+    } else stop("Matrix has to be either TRUE or FALSE")
 }
