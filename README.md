@@ -39,3 +39,5 @@ All functions to be used in phenotypic screens.
 	- `hit_map`: plots a platemap, colours indicate 'hits' if they exceed a specified threshold of standard deviation from the plate mean.
 
 	- `pc_map`: plots plate heatmap of first principcal component.
+	
+	- `raw_map`: plots plate heatmap of raw untransformed values.
