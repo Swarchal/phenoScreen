@@ -33,7 +33,7 @@
 # matrix as placeholders to preserve well spacings.
 ###############################################################################
 
-b_score <- function(data, val_col = 2L, normalise = FALSE, matrix = TRUE){
+b_score <- function(data, val_col = 2L, normalise = FALSE, matrix = FALSE){
 	
     require(dplyr)
     
@@ -59,8 +59,6 @@ b_score <- function(data, val_col = 2L, normalise = FALSE, matrix = TRUE){
 	data_pol <- medpolish(mat_plate_map,
                           na.rm = TRUE)
     if (matrix == TRUE){ # returns results in matrix form
-        
-        # how  best to normalise? actual - residuals?
         if (normalise == TRUE){
             return(mat_plate_map - data_pol$residuals) # values minus residuals
         } else if (normalise == FALSE){
@@ -69,7 +67,8 @@ b_score <- function(data, val_col = 2L, normalise = FALSE, matrix = TRUE){
             return("Error: 'normalise' needs to be either TRUE or FALSE")
         }
         
-    } else{ # return results in dataframe with well labels
+    }
+    if (matrix == FALSE){ # return results in dataframe with well labels
         
         # transpose of residual matrix (as counts in column-wise fashion)
         # now well numbers correspond i.e t_out[12] = A12, t_out[13] = B01
@@ -95,7 +94,6 @@ b_score <- function(data, val_col = 2L, normalise = FALSE, matrix = TRUE){
             
             numbers_vector <- as.vector(numbers)
             value <- function(x){return(well_list[x,])}
-            value_snake <- function(x){return(well_list_snake[x,])}
             well_id <- as.vector(sapply(numbers_vector, value))
             return(well_id)
         }
@@ -108,12 +106,14 @@ b_score <- function(data, val_col = 2L, normalise = FALSE, matrix = TRUE){
             df$residual[num] <- t_out[num]
             df$well[num] <- num_to_well(num)
         }
+        
         df <- as.data.frame(
             cbind("well" = df$well,
                   "residual" = df$residual))
         # change residuals from factor to numeric
         df$residual <- as.numeric(as.character(df$residual))
-        return(df)
-        
+        return(df) 
+    } else {
+        return("Error: matrix has to be either TRUE or FALSE")
     }
 }
