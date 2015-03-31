@@ -15,7 +15,7 @@
 poc <- function(compound, pos_cntrl){
     
     if(is.numeric(compound) == FALSE){
-        return("Error: Enter numerical values for a single compound. For use with multiple compounds, use poc() within *apply() or aggregate()")
+        stop("Enter numerical values for a single compound. For use with multiple compounds, use poc() within *apply() or aggregate()")
     }
     
     # if values for a single compound are given:
