@@ -9,7 +9,7 @@
 ssmd <- function(a, b){
 
 	if(is.numeric(c(a, b) == FALSE)){
-		print("Error: requires numerical values")
+		stop("Requires numerical values")
 	}
 	
 	mu_1 <- mean(a, na.rm = TRUE)
