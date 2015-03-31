@@ -11,11 +11,10 @@
 # (mu_p) + estimated systematic measurement column offset for
 # column j` on plate p.
 #------------------------------------------------------------------------------
-# Argument 'data' should be entered as a dataframe with the well identifiers
-# under a column labelled as 'well'
+# Argument 'platemap' should be entered as a column with the well labels
 #
-# 'val_col' argument is the column within 'data' that contains the numerical
-# values of interest. Default is the second column
+# 'values' argument is the column that contains the numerical  values of
+# interest
 #
 # The 'normalise' argument, is defaulted at FALSE, if TRUE (or anything other
 # than FALSE), it will return a matrix containing the raw values minus the 
@@ -25,9 +24,6 @@
 # representing the layout of 96-well plate
 # if FALSE, returns a dataframe of wellID and corresponding residual
 #------------------------------------------------------------------------------
-# N.B: well identifiers are required to format the data into correct plate
-# layout with the column name as 'well'
-# 
 # Currently only works with a full 96-well plate, will screw up row/columns
 # when not all wells are used. need to check if NA/NaN will work in a numerical
 # matrix as placeholders to preserve well spacings.
