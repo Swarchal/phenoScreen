@@ -44,3 +44,5 @@ All functions to be used in phenotypic screens.
 	
 	- `raw_map`: plots plate heatmap of raw untransformed values.
 
+	- `dist_map`: plots platemap of probability distributions of a selected feature. Useful for looking at heterogeneity.
+
