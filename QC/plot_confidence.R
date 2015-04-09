@@ -19,7 +19,7 @@ plot_confidence <- function(x, y, confidence = 0.95, title = "", xlab = "x", yla
     kerneld <- kde2d(x, y) # kde2d estimate for x and y
     
     pp <- array() # initialise an array
-    for (i in 1:1000){ # loop for every element in x or y
+    for (i in 1:length(x)){ # loop for every element in x or y
         z.x <- max(which(kerneld$x < x[i])) 
         z.y <- max(which(kerneld$y < y[i]))
         pp[i] <- kerneld$z[z.x, z.y]
@@ -31,7 +31,6 @@ plot_confidence <- function(x, y, confidence = 0.95, title = "", xlab = "x", yla
     
     return(
         plot(x, y,
-             pch = 20,
              cex = 0.5,
              main = title,
              xlab = xlab,
