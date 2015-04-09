@@ -46,3 +46,5 @@ All functions to be used in phenotypic screens.
 
 	- `dist_map`: plots platemap of probability distributions of a selected feature. Useful for looking at heterogeneity.
 
+	- `plot_confidence`: calculates bivariate confidence interval via 2D kde and plots as contour on scatter plot.
+
