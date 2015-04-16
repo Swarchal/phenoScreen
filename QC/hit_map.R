@@ -72,6 +72,7 @@ hit_map <- function(values, platemap, plate = 96, threshold = 2, title = "", pal
         theme_bw()
 
     if (plate == 96) {return(plt_96)}
-    if (plate == 384) {return(plt_384)}
+    if (plate == 384) {return(plt_384)
+    } else stop("Not a valid plate format. Either 96 or 384.", call. = FALSE)
 
 }
