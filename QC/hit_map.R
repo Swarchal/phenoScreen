@@ -1,19 +1,24 @@
 ###############################################################################
 # hit_map
 #------------------------------------------------------------------------------
-# calculates z-score values for a 96-well microtitre plate and plots
+# calculates z-score values for a 96 or 384-well microtitre plate and plots
 # the results as three colours dependent on z-score threshold to visualise hits
 #
 # arguments:
 #   - 'values':     column of numerical values with which to calculate z-score
 #   - 'platemap':   column of well ID's
+#   - 'plate':      number of wells in plate (96[default] or 364)
 #   - 'threshold':  value of z-score to determine hit/not-hit
 #   - 'title':      self-explanatory
 #   - 'palette':    RColorBrewer palette for heatmap colours
 #
+# e.g:
+# hit_map(values = df$vals,
+#         platemap = df$well,
+#         plate = 384)
 ###############################################################################
 
-hit_map <- function(values, platemap, threshold = 2, title = "", palette = "Spectral"){
+hit_map <- function(values, platemap, plate = 96, threshold = 2, title = "", palette = "Spectral"){
     
     require(ggplot2)
     require(dplyr)
@@ -42,8 +47,8 @@ hit_map <- function(values, platemap, threshold = 2, title = "", palette = "Spec
     my_cols <- brewer.pal(3, palette)
     my_colours <- c(hit = my_cols[1], neg_hit = my_cols[3], null = my_cols[2])
     
-    # produce a plate map layout in ggplot
-    plt <- ggplot(data = platemap, aes(x = Column, y = Row)) +
+    # produce a 96-well plate map layout in ggplot
+    plt_96 <- ggplot(data = platemap, aes(x = Column, y = Row)) +
         geom_point(data = expand.grid(seq(1, 12), seq(1, 8)), aes(x = Var1, y = Var2),
                    color = "grey90", fill = "white", shape = 21, size = 6) +
         geom_point(aes(fill = hit), colour = "gray20", shape = 21, size = 10) +
@@ -53,5 +58,20 @@ hit_map <- function(values, platemap, threshold = 2, title = "", palette = "Spec
         ggtitle(title) + 
         scale_fill_manual("hit", values = my_colours) + 
         theme_bw()
-    return(plt)
+
+    # produce a 384-well plate map layout in ggplot
+    plt_384 <- ggplot(data = platemap, aes(x = Column, y = Row)) +
+        geom_point(data = expand.grid(seq(1, 24), seq(1, 16)), aes(x = Var1, y = Var2),
+                   color = "grey90", fill = "white", shape = 22, size = 3) +
+        geom_point(aes(fill = hit), colour = "gray20", shape = 22, size = 5) +
+        coord_fixed(ratio = (24.5 / 24) / (16.5 / 16), xlim = c(0.5, 24.5), ylim = c(0.5, 16.5)) +
+        scale_y_reverse(breaks = seq(1, 16), labels = LETTERS[1:16]) +
+        scale_x_continuous(breaks = seq(1, 24)) +
+        ggtitle(title) +
+        scale_fill_manual("hit", values = my_colours) + 
+        theme_bw()
+
+    if (plate == 96) {return(plt_96)}
+    if (plate == 384) {return(plt_384)}
+
 }
