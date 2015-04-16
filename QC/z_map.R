@@ -59,7 +59,7 @@ z_map <- function(values, platemap, plate = 96, title = "", palette = "Spectral"
                              low = my_cols[3],
                              high = my_cols[1],
                              mid = my_cols[2]) +
-        ggtitle(title)+
+        ggtitle(title) +
         theme_bw()
     
     if (plate == 96)  {return(plt_96)}
