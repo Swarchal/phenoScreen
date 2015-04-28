@@ -1,0 +1,35 @@
+raw_map <-
+function(values, platemap, title = "", palette = "YlOrRd"){
+    
+    require(ggplot2)
+    require(dplyr)
+    require(RColorBrewer)
+    
+    # transform well labels into row-column values for a 96-well plate
+    platemap <- as.data.frame(platemap)
+    names(platemap)[1] <- "well"
+    platemap <- mutate(platemap,
+                       Row = as.numeric(match(toupper(substr(well, 1, 1)), LETTERS)),
+                       Column = as.numeric(substr(well, 2, 5)))
+    
+    platemap <- cbind(platemap, values)
+    names(platemap)[4] <- "raw_data"
+    
+    my_cols <- brewer.pal(9, palette) # RColorBrewer palette settings
+    
+    # produce a plate map in ggplot
+    plt <- ggplot(data = platemap, aes(x = Column, y = Row)) +
+        geom_point(data = expand.grid(seq(1, 12), seq(1, 8)), aes(x = Var1, y = Var2),
+                   color = "grey90", fill = "white", shape = 21, size = 6) +
+        geom_point(aes(fill = raw_data), colour = "gray20", shape = 21, size = 10) +
+        coord_fixed(ratio = (13 / 12) / (9 / 8), xlim = c(0.5, 12.5), ylim = c(0.5, 8.5)) +
+        scale_y_reverse(breaks = seq(1, 8), labels = LETTERS[1:8]) +
+        scale_x_continuous(breaks = seq(1, 12)) +
+        scale_fill_gradient2("values",
+                             low = my_cols[1],
+                             mid = my_cols[4],
+                             high = my_cols[9]) +
+        ggtitle(title)+
+        theme_bw()
+    return(plt)
+}
