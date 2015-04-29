@@ -1,5 +1,20 @@
-num_to_well <-
-function(numbers, plate = 96L){
+###############################################################################
+# num_to_well()
+#------------------------------------------------------------------------------
+# Converts well number to well ID, e.g well 1 -> A01, well 96 -> H12
+# Counting across plate left-to-right row-wise
+# Currently returns a vector of well IDs matching the input numbers
+#
+# Arguments:
+#  - 'numbers': vector of numbers to be converted into well ID's
+#  - 'plate': integer indicating plate format, either 96 or 384, default is 96
+# 
+# Need to:
+# Ceed to consider if given a data frame, and appending a column of well IDs
+# Different counting methods, i.e snaking rather than left to right row-wise
+###############################################################################
+
+num_to_well <- function(numbers, plate = 96L){
     
     # numbers as column from data frame of as a vector?
     # can we have input as either form and convert to most appropriate?
