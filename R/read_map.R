@@ -1,5 +1,17 @@
-read_map <-
-function(data, map){
+###############################################################################
+# read_map will annotate dataframes with existing well ID
+# with either concentration or compound from a layout-style csv
+# for either a 96 or 384-well plate
+#------------------------------------------------------------------------------
+# will require an existing plate map in csv format; missing wells have to be 
+# filled with placeholder to preserve row and column spacings
+#------------------------------------------------------------------------------
+# argument 'data' has to be a dataframe, with the well identifier column
+# named as 'well'
+# 'map' is the matrix of the plate map
+###############################################################################
+
+read_map <- function(data, map){
     
     require(dplyr)
     
@@ -20,3 +32,4 @@ function(data, map){
     }
     return(platemap)
 }
+

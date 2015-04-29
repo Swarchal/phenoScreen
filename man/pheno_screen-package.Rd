@@ -1,26 +1,26 @@
-\name{pheno_scReen-package}
-\alias{pheno_scReen-package}
-\alias{pheno_scReen}
+\name{pheno_screen-package}
+\alias{pheno_screen-package}
+\alias{pheno_screen}
 \docType{package}
 \title{
-\packageTitle{pheno_scReen}
+\packageTitle{pheno_screen}
 }
 \description{
-\packageDescription{pheno_scReen}
+\packageDescription{pheno_screen}
 }
 \details{
 
 The DESCRIPTION file:
-\packageDESCRIPTION{pheno_scReen}
-\packageIndices{pheno_scReen}
+\packageDESCRIPTION{pheno_screen}
+\packageIndices{pheno_screen}
 ~~ An overview of how to use the ~~
 ~~ package, including the most ~~
 ~~ important functions ~~
 }
 \author{
-\packageAuthor{pheno_scReen}
+\packageAuthor{pheno_screen}
 
-Maintainer: \packageMaintainer{pheno_scReen}
+Maintainer: \packageMaintainer{pheno_screen}
 }
 \references{
 ~~ Literature or other references for background information ~~
