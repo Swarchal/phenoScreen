@@ -1,10 +1,10 @@
 Package: pheno_screen
 Type: Package
 Title: Useful functions for multivariate chemical screening assays.
-Version: 1.0
+Version: 0.1
 Date: 2015-04-23
-Author: Scott Warchal
-Maintainer: Scott Warchal <S.Warchal at sms.ed.ac.uk>
+Author: Scott Warchal [aut, cre]
+Maintainer: Scott Warchal <S.Warchal@sms.ed.ac.uk>
 Description: Collection of functions found useful in analysing phenotypic screening data, especially multivariate data from multi-well (96 and 384) plates.
 License: CCO
 Imports:
