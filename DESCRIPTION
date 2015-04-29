@@ -1,4 +1,4 @@
-Package: pheno_screen
+Package: phenoScreen
 Type: Package
 Title: Useful functions for multivariate chemical screening assays.
 Version: 0.1
