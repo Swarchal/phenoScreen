@@ -2,10 +2,10 @@
 \alias{cv_plot}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-%%  ~~function to do ... ~~
+Plots coefficient of variation values for a given dataframe.
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+For a given data frame containing numerical values split into different factors, cv_plot() will calculate and plot coefficient of variation values.
 }
 \usage{
 cv_plot(data, group, fancy = FALSE, trend = FALSE, rotate = FALSE, title = "CV Plot")
