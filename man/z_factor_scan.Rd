@@ -2,7 +2,7 @@
 \alias{z_factor_scan}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-%%  ~~function to do ... ~~
+Multiple z-factor calculations.
 }
 \description{
 Calculates z-factors between two compounds for multiple variables and returns the z-factors and associated variables above a specified cut off: default = 0.5.
