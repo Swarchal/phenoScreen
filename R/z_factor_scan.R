@@ -26,7 +26,7 @@
 
 
 
-z_factor_scan <- function(data, treatments, cutoff = 0.5){
+z_factor_scan <- function(data, treatments, cutoff = 0.5, plot = FALSE, title = ""){
 
 		# function to calculate z-factor when given two tidy vectors
 		#------------------------------------------------------------------------------------------
@@ -70,6 +70,23 @@ z_factor_scan <- function(data, treatments, cutoff = 0.5){
 	z_factors <- data.frame(z_names, z_values)
 	z_factors_good <- subset(z_factors, z_factors$z_values > cutoff)
 	names(z_factors_good)[c(1,2)] <- c("Feature", "Z_factor")
-	return(z_factors_good[with(z_factors_good, order(-Z_factor)), ])
+	z_out <- z_factors_good[with(z_factors_good, order(-Z_factor)), ]
+	
+	if (plot == TRUE){
+	    library(ggplot2)
+	    
+	    z_out2=z_out[order(z_out$Z_factor),]
+	    z_out2$Feature=factor(z_out2$Feature,levels=z_out2$Feature)
+	    
+	    plt <- ggplot(data = z_out2, aes(x = Z_factor, y = Feature)) +
+	        geom_point(pch = 19) +
+	        geom_vline(xintercept = 0.5, col = "gray50", linetype = 2) +
+	        theme_bw() +
+	        theme(legend.position = "none") + 
+	        ggtitle(title) +
+	        xlab("Z factor")
+	    return(plt)
+	}
+	return(z_out)
 
 }
