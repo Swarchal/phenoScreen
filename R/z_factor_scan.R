@@ -50,7 +50,8 @@ z_factor_scan <- function(data, treatments, cutoff = 0.5, plot = FALSE, title = 
 
 		sigma_p <- sd(positive)
 		sigma_n <- sd(negative)
-
+        
+        # calculate z-factor
 		z_prime <- 1 - ((3*(sigma_p + sigma_n)) / (mu_p - mu_n))
 		return(z_prime)
 		}
@@ -58,28 +59,36 @@ z_factor_scan <- function(data, treatments, cutoff = 0.5, plot = FALSE, title = 
 
 	header_in <- which(colnames(data) == "header") # index of column named 'header'
 	nums <- (1:dim(data)[2])[ - header_in] # indices of all columns except header
-	z_values <- c()
-	z_names <- c()
+	z_values <- c() # initialise for the loop
+	z_names <- c() # initialise for the loop
 
-	for (number in nums){
-	z_values[number] <- (as.vector(z_factor(subset(data[,number], data$header == treatments[1]),
-	                            subset(data[,number], data$header == treatments[2]))))
+	for (number in nums){ # for each feature (except header)
+	z_values[number] <- (as.vector(
+        z_factor(subset(data[,number], data$header == treatments[1]),
+                 subset(data[,number], data$header == treatments[2])))
+        )
 	z_names[number] <- names(data)[number]
 	}
 
-	z_factors <- data.frame(z_names, z_values)
+	z_factors <- data.frame(z_names, z_values) # create dataframe
+    # subset of z_factors above cutoff
 	z_factors_good <- subset(z_factors, z_factors$z_values > cutoff)
+    # names for dataframe columns
 	names(z_factors_good)[c(1,2)] <- c("Feature", "Z_factor")
+    # order dataframe from highest z-factor to the lowest
 	z_out <- z_factors_good[with(z_factors_good, order(-Z_factor)), ]
 	
 	if (plot == TRUE){
-	    library(ggplot2)
+	    require(ggplot2)
 	    
+        # order factors dependent on Z-factor score makes it so features in
+        # plot go from highest to lowest rather than in alphabetical order
 	    z_out2=z_out[order(z_out$Z_factor),]
 	    z_out2$Feature=factor(z_out2$Feature,levels=z_out2$Feature)
 	    
+        # ggplot dotchart
 	    plt <- ggplot(data = z_out2, aes(x = Z_factor, y = Feature)) +
-	        geom_point(pch = 19) +
+	        geom_point(colour = "gray50", pch = 19) +
 	        geom_vline(xintercept = 0.5, col = "gray50", linetype = 2) +
 	        theme_bw() +
 	        theme(legend.position = "none") + 
@@ -88,5 +97,4 @@ z_factor_scan <- function(data, treatments, cutoff = 0.5, plot = FALSE, title = 
 	    return(plt)
 	}
 	return(z_out)
-
 }
