@@ -19,6 +19,15 @@ Dataframe. Dataset to be used, containing only numerical columns of variables, a
   \item{treatments}{
 Vector of factors containing treatment groups. Recommended to be positive and negative controls.
 }
+  \item{cutoff}{
+ Numeric. The threshold value for returning results. Will not show parameters with Z-factors below this value. Default is 0.5.
+ }
+  \item{plot}{
+Boolean. If TRUE, will produce a dot plot of features and Z-factor. Default is FALSE.
+}
+  \item{title}{
+String. Title of the plot.
+ }
 }
 
 \details{
@@ -52,7 +61,12 @@ z_factor_scan(data = tidy_dataset,
 			 cutoff = 0.3)
 
 cntrols <- c("DMSO", "STS")
-z_factor_scan(tidy_dataset, cntrols, 0.3)             
+z_factor_scan(tidy_dataset, cntrols, 0.3)
+
+z_factor_scan(data = df,
+			  treatments = c('positive', 'negative'),
+			  plot = TRUE,
+			  title = "Super amazing plot")           
 }
 
 \keyword{ ~kwd1 }
