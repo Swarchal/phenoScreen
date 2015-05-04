@@ -27,7 +27,13 @@ Boolean. If TRUE, will produce a dot plot of features and Z-factor. Default is F
 }
   \item{title}{
 String. Title of the plot.
- }
+}
+  \item{plotline}{
+Numeric. Value at which to place vertical line on the plot. If you want no line, simply type `NaN' or `NA'.
+}
+  \item{ylabel}{
+String. Text for the y-axis label.
+  }
 }
 
 \details{
