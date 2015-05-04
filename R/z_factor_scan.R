@@ -26,7 +26,7 @@
 
 
 
-z_factor_scan <- function(data, treatments, cutoff = 0.5, plot = FALSE, title = ""){
+z_factor_scan <- function(data, treatments, cutoff = 0.5, plot = FALSE, title = "", plotline = 0.5, ylabel = "Feature"){
 
 		# function to calculate z-factor when given two tidy vectors
 		#------------------------------------------------------------------------------------------
@@ -88,12 +88,13 @@ z_factor_scan <- function(data, treatments, cutoff = 0.5, plot = FALSE, title = 
 	    
         # ggplot dotchart
 	    plt <- ggplot(data = z_out2, aes(x = Z_factor, y = Feature)) +
-	        geom_point(colour = "gray50", pch = 19) +
-	        geom_vline(xintercept = 0.5, col = "gray50", linetype = 2) +
+	        geom_point(colour = "gray30", pch = 19) +
+	        geom_vline(xintercept = plotline, col = "gray50", linetype = 2) +
 	        theme_bw() +
 	        theme(legend.position = "none") + 
 	        ggtitle(title) +
-	        xlab("Z factor")
+	        xlab("Z factor") +
+            ylab(ylabel)
 	    return(plt)
 	}
 	return(z_out)
