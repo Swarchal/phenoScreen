@@ -26,7 +26,7 @@
 
 
 
-z_factor_scan <- function(data, treatments, cutoff = 0.5, plot = FALSE, title = "", plotline = 0.5, ylabel = "Feature"){
+z_factor_scan <- function(data, treatments, cutoff = 0.5, plot = FALSE, title = "", plotline = 0.5, ylabel = "Feature", n = FALSE){
 
 		# function to calculate z-factor when given two tidy vectors
 		#------------------------------------------------------------------------------------------
@@ -69,15 +69,30 @@ z_factor_scan <- function(data, treatments, cutoff = 0.5, plot = FALSE, title = 
         )
 	z_names[number] <- names(data)[number]
 	}
-
-	z_factors <- data.frame(z_names, z_values) # create dataframe
-    # subset of z_factors above cutoff
-	z_factors_good <- subset(z_factors, z_factors$z_values > cutoff)
-    # names for dataframe columns
-	names(z_factors_good)[c(1,2)] <- c("Feature", "Z_factor")
-    # order dataframe from highest z-factor to the lowest
-	z_out <- z_factors_good[with(z_factors_good, order(-Z_factor)), ]
+    
+    # default behaviour, returns features and values above specified cutoff
+	if (n == FALSE){
+	    z_factors <- data.frame(z_names, z_values) # create dataframe
+	    # subset of z_factors above cutoff
+	    z_factors_good <- subset(z_factors, z_factors$z_values > cutoff)
+	    # names for dataframe columns
+	    names(z_factors_good)[c(1,2)] <- c("Feature", "Z_factor")
+	    # order dataframe from highest z-factor to the lowest
+	    z_out <- z_factors_good[with(z_factors_good, order(-Z_factor)), ]
+	}
+    
+    # The 'n' argument is return the highest 'n' values for Z-factor
+    # Default behavious is n = FALSE, so instead calls the cutoff value.
+    if (is.logical(n) == FALSE){
+        if (n == TRUE) stop("n has to be either FALSE or an integer", call. = FALSE)
+        n <- as.integer(n) # forces n into an integer
+        z_factors <- data.frame(z_names, z_values) # create dataframe
+        names(z_factors)[c(1,2)] <- c("Feature", "Z_factor") # assign colnames
+        z_factors_order <- z_factors[order(- z_factors$Z_factor), ] # re-order
+        z_out <- z_factors_order[1:n, ] # subset first n values
+    }
 	
+    # plot:
 	if (plot == TRUE){
 	    require(ggplot2)
 	    
