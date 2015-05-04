@@ -22,6 +22,9 @@ Vector of factors containing treatment groups. Recommended to be positive and ne
   \item{cutoff}{
  Numeric. The threshold value for returning results. Will not show parameters with Z-factors below this value. Default is 0.5.
  }
+  \item{n}{
+Numeric. If entered, will return `n' top features as determined by their Z-factor.
+}
   \item{plot}{
 Boolean. If TRUE, will produce a dot plot of features and Z-factor. Default is FALSE.
 }
@@ -72,7 +75,12 @@ z_factor_scan(tidy_dataset, cntrols, 0.3)
 z_factor_scan(data = df,
 			  treatments = c('positive', 'negative'),
 			  plot = TRUE,
-			  title = "Super amazing plot")           
+			  title = "Super amazing plot")   
+
+z_factor_scan(data = df,
+			  treatments = c('positive', 'negative'),
+			  plot = TRUE,
+			  n = 10 # will return the 10 features with the highest z-factor)        
 }
 
 \keyword{ ~kwd1 }
