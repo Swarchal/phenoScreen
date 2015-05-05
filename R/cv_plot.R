@@ -1,5 +1,4 @@
-cv_plot <-
-function(data, group,
+cv_plot <- function(data, group,
                     fancy = FALSE,
                     trend = FALSE,
                     rotate = FALSE,
