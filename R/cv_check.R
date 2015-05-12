@@ -3,7 +3,7 @@ function(data, group){
     
     # to calculate CV
     CV <- function(data){
-        (sd(data, na.rm = TRUE)/mean(data, na.RM = TRUE))*100
+        (sd(data, na.rm = TRUE)/mean(data, na.rm = TRUE))*100
     }
     
     # calculate CV for given data and groups
