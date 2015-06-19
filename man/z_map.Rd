@@ -8,14 +8,14 @@ Plots a heatmap of values in a plate layout.
 Converts numerical values and well labels into a heatmap in the form of a microtitre plate. Scales values via a z-score. Works for either 96 or 384-well plates.
 }
 \usage{
-z_map(values, platemap, plate = 96, title = "", palette = "Spectral")
+z_map(data, well, plate = 96, title = "", palette = "Spectral")
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{values}{
+  \item{data}{
 Numerical values to be scaled and turned into a colour value
 }
-  \item{platemap}{
+  \item{well}{
 Vector of well identifiers, i.e "A01"
 }
   \item{plate}{
@@ -54,8 +54,8 @@ Scott Warchal
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-z_map(values = df$vals,
-      platemap = df$well,
+z_map(data = df$vals,
+      well = df$well,
       plate = 96,
       title = "Plot Title")
 }
