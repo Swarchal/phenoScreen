@@ -11,7 +11,8 @@
 # 'map' is the matrix of the plate map
 ###############################################################################
 
-read_map <- function(data, map){
+read_map <- function(data, map,
+    verbose = TRUE){
     
     require(dplyr)
     
@@ -30,6 +31,13 @@ read_map <- function(data, map){
     for(i in 1:nrow(data)){
         platemap$header[i] <- as.vector(with(platemap, map[[row[i], column[i]]]))
     }
-    return(platemap)
+    if (verbose == FALSE){
+        platemap$row <- NULL
+        platemap$column <- NULL
+        return(platemap)
+    } else  if (verbose == TRUE) {
+        return(platemap)
+    } else stop("Argument 'verbose' requires a boolean.",
+        call. = FALSE)
 }
 
