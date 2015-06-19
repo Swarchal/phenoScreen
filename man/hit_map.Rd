@@ -8,14 +8,14 @@ Platemap to identify 'hits' in compound screens.
 Produces a plot in the form of a micro-titre layout, with colours indicating wells abova or below a nominated threshold.
 }
 \usage{
-hit_map(values, platemap, plate = 96, threshold = 2, title = "", palette = "Spectral")
+hit_map(data, welll, plate = 96, threshold = 2, title = "", palette = "Spectral")
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{values}{
+  \item{data}{
 Vector of numerical values to be scores.
 }
-  \item{platemap}{
+  \item{well}{
 Vector of well identifiers (i.e A01)
 }
   \item{plate}{
@@ -57,8 +57,8 @@ Scott Warchal
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-hitmap(values = df$vals,
-       platemap = df$well,
+hitmap(data = df$vals,
+       well = df$well,
        plate = 384,
        threshold = 3,
        title = "Awesome plot")
