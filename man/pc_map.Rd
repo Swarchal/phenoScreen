@@ -44,9 +44,7 @@ RColorBrewer palette. Default is recommended.
 \author{
 Scott Warchal
 }
-\note{
-Currently only works with 96-well plates. 394-well plate functionality to come later.
-}
+\note{}
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
