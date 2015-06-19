@@ -5,10 +5,10 @@
 Platemap to identify 'hits' in compound screens.
 }
 \description{
-Produces a plot in the form of a micro-titre layout, with colours indicating wells abova or below a nominated threshold.
+Produces a plot in the form of a micro-titre layout, with colours indicating wells above or below a nominated threshold.
 }
 \usage{
-hit_map(data, welll, plate = 96, threshold = 2, title = "", palette = "Spectral")
+hit_map(data, well, plate = 96, threshold = 2, title = "", palette = "Spectral")
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
