@@ -1,17 +1,20 @@
-hit_map <-
-function(values, platemap, plate = 96, threshold = 2, title = "", palette = "Spectral"){
+hit_map <- function(data, well,
+    plate = 96,
+    threshold = 2,
+    title = "",
+    palette = "Spectral"){
     
     require(ggplot2)
     require(dplyr)
     require(RColorBrewer)
     
     # transform well labels into row-column values for a 96-well plate
-    platemap <- as.data.frame(platemap)
+    platemap <- as.data.frame(well)
     names(platemap)[1] <- "well"
     platemap <- mutate(platemap,
                        Row = as.numeric(match(toupper(substr(well, 1, 1)), LETTERS)),
                        Column = as.numeric(substr(well, 2, 5)))
-    values <- as.data.frame(values)
+    values <- as.data.frame(data)
     scaled_data <- scale(values)
     platemap <- cbind(platemap, scaled_data[,1])
     names(platemap)[4] <- "scaled_data"
@@ -52,6 +55,9 @@ function(values, platemap, plate = 96, threshold = 2, title = "", palette = "Spe
         scale_fill_manual("hit", values = my_colours) + 
         theme_bw()
 
+    if (length(well) > plate) {
+        stop("Invalid plate selection. The data given has more rows than the number of wells. \nAre you sure argument 'plate' is correct for the number of wells in your data? \nnote: Default is set to a 96-well plate.")
+    }
     if (plate == 96) {return(plt_96)}
     if (plate == 384) {return(plt_384)
     } else stop("Not a valid plate format. Either 96 or 384.", call. = FALSE)
