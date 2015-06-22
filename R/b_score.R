@@ -1,8 +1,8 @@
 b_score <- function(data, well,
-    plate = 96,
-    normalise = FALSE,
-    matrix = FALSE){
-	
+                    plate = 96,
+                    normalise = FALSE,
+                    matrix = FALSE){
+    
     require(dplyr)
     
     # need to transform columns of wellID and data into
@@ -19,32 +19,36 @@ b_score <- function(data, well,
     # ensure data is ordered properly before passing to matrix()
     platemap <- platemap[order(platemap$row, platemap$column), ]
     
-
+    
     if (length(well) > plate){
         warning("Invalid plate selection. The data given has more rows then number of wells. \nAre you sure argument 'plate' is correct for the number of wells in your data? \nnote: Default is a 96-well plate.",
-            call. = FALSE)
+                call. = FALSE)
+    }
+    if (plate > 2 * length(well)){
+        warning("Invalid plate selection. The data given has more rows then number of wells. \nAre you sure argument 'plate' is correct for the number of wells in your data? \nnote: Default is a 96-well plate.",
+                call. = FALSE)
     }
     if (plate == 96){
-    # transform into 12*8 matrix (96-well plate)
-    # fills matrix in a row-wise fashion i.e, A01, A02 ...
-    mat_plate_map <- matrix(data,
-                            nrow = 8,
-                            ncol = 12,
-                            byrow = TRUE)
+        # transform into 12*8 matrix (96-well plate)
+        # fills matrix in a row-wise fashion i.e, A01, A02 ...
+        mat_plate_map <- matrix(data,
+                                nrow = 8,
+                                ncol = 12,
+                                byrow = TRUE)
     } else if (plate == 384){
         # transform into 24*16 matrix (384-well plate)
         # fills matrix in a row-wise fashion, i.e A01, A02 ...
         mat_plate_map <- matrix(data,
-            nrow = 16,
-            ncol = 24,
-            byrow = TRUE)
+                                nrow = 16,
+                                ncol = 24,
+                                byrow = TRUE)
     } else{
         stop("Not a plate format. \nArgument 'plate', should be 96 or 384.",
-            call. = FALSE)
+             call. = FALSE)
     }
     
-	# median polish of the data
-	data_pol <- medpolish(mat_plate_map,
+    # median polish of the data
+    data_pol <- medpolish(mat_plate_map,
                           na.rm = TRUE)
     if (matrix == TRUE){ # returns results in matrix form
         if (normalise == TRUE){
@@ -52,7 +56,7 @@ b_score <- function(data, well,
         } else if (normalise == FALSE){
             return(data_pol$residuals) # returns the raw residuals
         } else stop("normalise has to be either TRUE or FALSE")
-       
+        
     }
     if (matrix == FALSE){ # return results in dataframe with well labels
         
