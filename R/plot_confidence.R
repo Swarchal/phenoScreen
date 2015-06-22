@@ -1,5 +1,9 @@
-plot_confidence <-
-function(x, y, confidence = 0.95, title = "", xlab = "x", ylab = "y"){
+plot_confidence <- function(x, y,
+                            confidence = 0.95,
+                            title = "",
+                            xlab = "x",
+                            ylab = "y"){
+    require(MASS)
     
     kerneld <- kde2d(x, y) # kde2d estimate for x and y
     
