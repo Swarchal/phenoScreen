@@ -25,7 +25,7 @@ Confidence interval between 0 and 1, default is at 0.95, i.e 95\% confidence int
 Title for the plot
 }
   \item{xlab}{
-Axis label for the x-axies
+Axis label for the x-axis
 }
   \item{ylab}{
 Axis label for the y-axis
