@@ -31,7 +31,7 @@ b_map <- function(data, well,
         warning("Invalid plate selection. The data given has more rows then number of wells. \nAre you sure argument 'plate' is correct for the number of wells in your data? \nnote: Default is a 96-well plate.",
                 call. = FALSE)
     }
-    if(plate > 2*length(well)){
+    if (plate > 2 * length(well)){
         warning("Plate has greater than twice the number of wells than data points. \nAre you sure this is the correct plate? \nDefault argument is 96.",
                 call. = FALSE)
     }
