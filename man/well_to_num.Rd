@@ -17,9 +17,9 @@ String containing well identifier. Numbers have to be double digits, i.e "A01"
   \item{plate}{
 Plate format: either 96 or 384.
 }
-}
     \item{style}{
 Method of counting. 'normal' starts each new row at the left hand side, i.e (...A11, A12, B01..). Whereas 'snake' counts in a continuous manner i.e (...A11, A12, B12, B11..)
+}
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~
@@ -56,7 +56,3 @@ well_to_num("P12", plate = 384, style = "snake")
 wells <- c("A01", "A02", "A03")
 well_to_num(wells)
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
