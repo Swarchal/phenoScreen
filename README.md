@@ -10,6 +10,6 @@ install_github('Swarchal/phenoScreen')
 library(phenoScreen)
 ```
 
-Currently a work in progress, version no. `0.1.3`.
+Currently a work in progress, version no. `0.1.4`.
 
 
