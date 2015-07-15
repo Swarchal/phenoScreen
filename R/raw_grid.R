@@ -10,6 +10,7 @@ raw_grid <- function(data, well,
   require(dplyr)
   require(ggplot2)
   require(RColorBrewer)
+  require(grid)
   
   # transform well labels into row-column values for a 96-well plate
   # need to include plate_id labels into this dataframe
