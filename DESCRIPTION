@@ -12,5 +12,5 @@ Imports:
     ggplot2,
     RColorBrewer,
     MASS,
-    magrittr
+    magrittr,
     grid
