@@ -4,6 +4,11 @@ pc_grid <- function(data, well,
                     plate = 96,
                     title = "",
                     palette = "Spectral"){
+                    
+  require(ggplot2)
+  require(dplyr)
+  require(RColorBrewer)
+  require(grid)
   
   pca_data <- prcomp(data) # pca of data
   pc1 <- pca_data$x[, 1] # take first principal component
