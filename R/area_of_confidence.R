@@ -21,11 +21,11 @@ area_of_confidence <- function(x, y, confidence = 0.9){
     OL_x <- out_line[[1]]$x
     OL_y <- out_line[[1]]$y
     
-    # calculate area of within confidence boundary
+    # calculate area of within confidence
     area = 0.5* abs(
         sum(
-            OL_x[1:(length(OL_x)-1)]*OL_y[2:length(OL_x)] -
-                OL_y[1:(length(OL_x)-1)]*OL_x[2:length(OL_x)]
+            OL_x[1:(length(OL_x)-1)] * OL_y[2:length(OL_x)] -
+                OL_y[1:(length(OL_x)-1)] * OL_x[2:length(OL_x)]
         )
     )
     return(area)
