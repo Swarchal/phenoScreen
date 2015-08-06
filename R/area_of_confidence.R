@@ -1,4 +1,5 @@
-area_of_confidence <- function(x, y, confidence = 0.9){
+area_of_confidence <- function(x, y,
+                               confidence = 0.9){
     
     require(MASS)
     
