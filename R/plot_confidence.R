@@ -1,5 +1,5 @@
 plot_confidence <- function(x, y,
-                            confidence = 0.95,
+                            confidence = 0.9,
                             title = "",
                             xlab = "x",
                             ylab = "y"){

@@ -8,7 +8,7 @@ Function to 2 dimensional plot scatter plot with confidence interval.
 Plots a scatter plot with a bi-variate confidence band calculated via a two-dimensional kernal density estimation.
 }
 \usage{
-plot_confidence(x, y, confidence = 0.95, title = "", xlab = "x", ylab = "y")
+plot_confidence(x, y, confidence = 0.9, title = "", xlab = "x", ylab = "y")
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -19,7 +19,7 @@ Values to be used on the x-axis
 Values to be used on the y-axis
 }
   \item{confidence}{
-Confidence interval between 0 and 1, default is at 0.95, i.e 95\% confidence interval
+Confidence interval between 0 and 1, default is at 0.9, i.e 90\% confidence interval
 }
   \item{title}{
 Title for the plot
