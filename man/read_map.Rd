@@ -8,7 +8,7 @@ Function to annotate existing dataframes from an external matrix containing well
 Annotates data frame with well identifiers, corresponding to a separate dataframe in a plate-layout containing values/labels. 
 }
 \usage{
-read_map(data, map, verbose = TRUE)
+read_map(data, map, well_col = well, new_col_name = "header" verbose = TRUE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -20,6 +20,12 @@ Matrix in plate-layout format containing information to be added to dataframe
 }
   \item{verbose}{
 Boolean, is true will add details indicating the column and row for each well. If FALSE, will only return the annotations.
+}
+  \item{well_col}{
+Name of column containing well_identifiers.
+}
+  \item{new_col_name}{
+Name to give new column containing annotations.
 }
 }
 \details{
@@ -49,10 +55,12 @@ Any missing wells (not a full plate) have to be filled with a placeholder to pre
 }
 \examples{
 read_map(df_existing, concentrations)
+# where `concentrations` is a matix in the dimensions of a multiwell plate
 
-read_map(df_existing,
-         concentrations,
-         verbose = FALSE)
+read_map(data = df_existing,
+         well_col = concentrations,
+         verbose = FALSE,
+         new_col_name = "concentrations")
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
