@@ -18,11 +18,7 @@ theta0 <- function(a){
         return(theta)
     }
     
-    if (a[1] < 0 & a[2] < 0){
-        return(theta + 180)
-    }
-    
-    if (a[1] >= 0 & a[2] < 0){
+    if (a[2] <0){
         return(360 - theta)
     }
 
