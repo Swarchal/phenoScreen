@@ -10,6 +10,6 @@ norm_vector <- function(x){
 	}
 
 	# calculate the length (norm) of a vector
-	norm_vec_out <- sqrt(x %*% x)
+	norm_vec_out <- as.vector(sqrt(x %*% x))
 	return(norm_vec_out)
 }
