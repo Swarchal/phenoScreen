@@ -2,7 +2,7 @@
 \alias{ssmd}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Stictly standardised mean differnce.
+Stictly standardised mean difference.
 }
 \description{
 strictly standardized mean difference (SSMD) is a measure of effect size. SSMD is the mean divided by the standard deviation of a difference between two random values each from one of two groups.
