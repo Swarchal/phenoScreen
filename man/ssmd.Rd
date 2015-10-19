@@ -18,6 +18,7 @@ Numerical vector of group a.
   \item{b}{
 Numerical vector of group b.
 }
+}
 \details{
 As a statistical parameter SSMD, denoted as $\Beta$ is defined as the ratio of mean to standard deviation of two groups. Assume that one group has mean $\mu_a$ and variance $\sigma_{a}^2$, and the other group as the mean $\mu_b$ and variance $\sigma_{b}^2. The covariance between the two groups is $\sigma_{ab}$
 
