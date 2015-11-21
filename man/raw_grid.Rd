@@ -8,7 +8,7 @@ Plots multiple platemaps with heatmap of the raw numerical values.
 Converts univariate numerical data and well labels into a heatmap in the form of multiple microtitre plates.
 }
 \usage{
-raw_grid(data, well, plate_id, ncols = 2, plate = 96, title = "", palette = "Spectral")
+raw_grid(data, well, plate_id, ncols = 2, plate = 96, title = "", palette = "YlGnBu")
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
