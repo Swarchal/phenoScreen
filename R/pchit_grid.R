@@ -40,7 +40,7 @@ pchit_map <- function(data, well,
   
   if (plate == 96){
     # produce a 96-well plate map layout in ggplot
-    plt_96 <- ggplot(data = platemap, aes(x = Column, y = Row)) +
+    plt <- ggplot(data = platemap, aes(x = Column, y = Row)) +
       geom_point(data = expand.grid(seq(1, 12), seq(1, 8)), aes(x = Var1, y = Var2),
                  color = "grey90", fill = "white", shape = 21, size = 6) +
       geom_point(aes(fill = hit), colour = "gray20", shape = 21, size = 10) +
@@ -54,13 +54,9 @@ pchit_map <- function(data, well,
             panel.margin.y = unit(1, "lines")) + # increase spacing between facets
       facet_wrap(~plate_label,
                  ncol = ncols)
-    
-    return(plt_96)
-  }
-  
-  if (plate == 384){
+  } else if (plate == 384){
     # produce a 384-well plate map layout in ggplot
-    plt_384 <- ggplot(data = platemap, aes(x = Column, y = Row)) +
+    plt <- ggplot(data = platemap, aes(x = Column, y = Row)) +
       geom_point(data = expand.grid(seq(1, 24), seq(1, 16)), aes(x = Var1, y = Var2),
                  color = "grey90", fill = "white", shape = 22, size = 3) +
       geom_point(aes(fill = hit), colour = "gray20", shape = 22, size = 5) +
@@ -74,11 +70,8 @@ pchit_map <- function(data, well,
             panel.margin.y = unit(1, "lines")) + # increase spacing between facets
       facet_wrap(~plate_label,
                  ncol = ncols)
-    
-    return(plt_384)
-  }
-  
-  else stop("Not a valid plate format. Either 96 or 384.", call. = FALSE)
-  
+  } else stop("Not a valid plate format. Either 96 or 384.", call. = FALSE)
+
+  return(plt)
   
 }
