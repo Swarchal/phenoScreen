@@ -23,9 +23,6 @@ z_grid <- function(data, well,
   names(platemap)[4] <- "scaled_data"
   names(platemap)[5] <- "plate_label"
   
-  # RColorBrewerPallette
-  my_cols <- brewer.pal(3, palette)
-  
   if (plate == 96){
     plt <- ggplot(data = platemap, aes(x = Column, y = Row)) +
       geom_point(data = expand.grid(seq(1, 12), seq(1, 8)), aes(x = Var1, y = Var2),
@@ -34,10 +31,7 @@ z_grid <- function(data, well,
       coord_fixed(ratio = (13 / 12) / (9 / 8), xlim = c(0.5, 12.5), ylim = c(0.5, 8.5)) +
       scale_y_reverse(breaks = seq(1, 8), labels = LETTERS[1:8]) +
       scale_x_continuous(breaks = seq(1, 12)) +
-      scale_fill_gradient2("z-score",
-                           low  = my_cols[3],
-                           mid  = my_cols[2],
-                           high = my_cols[1]) +
+      scale_fill_distiller("z-score", palette = palette) +
       ggtitle(title) +
       theme_bw() +
       theme(panel.margin.x = unit(1, "lines"), 
@@ -52,10 +46,7 @@ z_grid <- function(data, well,
       coord_fixed(ratio = (24.5 / 24) / (16.5 / 16), xlim = c(0.25, 24.75), ylim = c(0.3, 16.7)) +
       scale_y_reverse(breaks = seq(1, 16), labels = LETTERS[1:16]) +
       scale_x_continuous(breaks = seq(1, 24)) +
-      scale_fill_gradient2("z-score",
-                           low  = my_cols[3],
-                           mid  = my_cols[2],
-                           high = my_cols[1]) +
+      scale_fill_gradient2("z-score", palette = palette) +
       ggtitle(title) +
       theme_bw() +
       theme(panel.margin.x = unit(1, "lines"), 

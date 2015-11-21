@@ -19,9 +19,6 @@ z_map <- function(data, well,
     platemap <- cbind(platemap, scaled_data[,1])
     names(platemap)[4] <- "scaled_data"
     
-    # RColorBrewerPallette
-    my_cols <- brewer.pal(3, palette)
-    
     if (plate == 96){
         # produce a plate map in ggplot (96-well format)
         plt <- ggplot(data = platemap, aes(x = Column, y = Row)) +
@@ -31,10 +28,7 @@ z_map <- function(data, well,
             coord_fixed(ratio = (13 / 12) / (9 / 8), xlim = c(0.5, 12.5), ylim = c(0.5, 8.5)) +
             scale_y_reverse(breaks = seq(1, 8), labels = LETTERS[1:8]) +
             scale_x_continuous(breaks = seq(1, 12)) +
-            scale_fill_gradient2("z-score",
-                                 low = my_cols[3],
-                                 high = my_cols[1],
-                                 mid = my_cols[2]) +
+            scale_fill_distiller("z-score", palette = palette) +
             ggtitle(title) +
             theme_bw()
             
@@ -47,10 +41,7 @@ z_map <- function(data, well,
             coord_fixed(ratio = (24.5 / 24) / (16.5 / 16), xlim = c(0.5, 24.5), ylim = c(0.5, 16.5)) +
             scale_y_reverse(breaks = seq(1, 16), labels = LETTERS[1:16]) +
             scale_x_continuous(breaks = seq(1, 24)) +
-            scale_fill_gradient2("z-score",
-                                 low = my_cols[3],
-                                 high = my_cols[1],
-                                 mid = my_cols[2]) +
+            scale_fill_distiller("z-score", palette = palette) +
             ggtitle(title) +
             theme_bw()
 
