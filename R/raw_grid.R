@@ -3,7 +3,7 @@ raw_grid <- function(data, well,
                      ncols = 2,
                      plate = 96,
                      title = "",
-                     palette = "YlOrRd"){
+                     palette = "YlGnBu"){
   
   ## multiple platemap plots in a single figure using facet_wrap
   

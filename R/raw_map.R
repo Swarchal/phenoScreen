@@ -1,7 +1,7 @@
 raw_map <- function(data, well,
                     plate = 96,
                     title = "",
-                    palette = "YlOrRd"){
+                    palette = "YlGnBu"){
   
   require(ggplot2)
   require(dplyr)
