@@ -15,6 +15,10 @@
 ###############################################################################
 
 num_to_well <- function(numbers, plate = 96L){
+
+    if (max(numbers) > plate){
+        stop("More wells than in current plate selection.", call. = FALSE)
+    }
     
     # numbers as column from data frame of as a vector?
     # can we have input as either form and convert to most appropriate?
