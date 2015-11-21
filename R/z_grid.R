@@ -27,7 +27,7 @@ z_grid <- function(data, well,
   my_cols <- brewer.pal(3, palette)
   
   if (plate == 96){
-    plt96 <- ggplot(data = platemap, aes(x = Column, y = Row)) +
+    plt <- ggplot(data = platemap, aes(x = Column, y = Row)) +
       geom_point(data = expand.grid(seq(1, 12), seq(1, 8)), aes(x = Var1, y = Var2),
                  color = "grey90", fill = "white", shape = 21, size = 6) +
       geom_point(aes(fill = scaled_data), colour = "gray20", shape = 21, size = 10) +
@@ -44,12 +44,8 @@ z_grid <- function(data, well,
             panel.margin.y = unit(0.5, "lines")) + # increase spacing between facets
       facet_wrap(~plate_label,
                  ncol = ncols)
-    
-    return(plt96)
-  }
-  
-  if (plate == 384){
-    plt384 <- ggplot(data = platemap, aes(x = Column, y = Row)) +
+  } else if (plate == 384){
+    plt <- ggplot(data = platemap, aes(x = Column, y = Row)) +
       geom_point(data = expand.grid(seq(1, 24), seq(1, 16)), aes(x = Var1, y = Var2),
                  color = "grey90", fill = "white", shape = 22, size = 3) +
       geom_point(aes(fill = scaled_data), colour = "gray20", shape = 22, size = 5) +
@@ -66,10 +62,8 @@ z_grid <- function(data, well,
             panel.margin.y = unit(1, "lines")) + # increase spacing between facets
       facet_wrap(~plate_label,
                  ncol = ncols)
-    
-    return(plt384)
-  }
-  
-  else stop("Invalid argument for 'plate'. \nOptions: 96 or 384.",
+  } else stop("Invalid argument for 'plate'. \nOptions: 96 or 384.",
             call. = FALSE)
+
+  return(plt)
 }
