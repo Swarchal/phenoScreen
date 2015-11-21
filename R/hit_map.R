@@ -43,7 +43,7 @@ hit_map <- function(data, well,
             ggtitle(title) + 
             scale_fill_manual("hit", values = my_colours) + 
             theme_bw()
-    } else if (plate = 384){
+    } else if (plate == 384){
         # produce a 384-well plate map layout in ggplot
         plt <- ggplot(data = platemap, aes(x = Column, y = Row)) +
             geom_point(data = expand.grid(seq(1, 24), seq(1, 16)), aes(x = Var1, y = Var2),
