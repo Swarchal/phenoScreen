@@ -25,10 +25,6 @@ raw_grid <- function(data, well,
   names(platemap)[4] <- "raw_data"
   names(platemap)[5] <- "plate_label"
   
-  
-  # RColorBrewerPallette settings
-  my_cols <- brewer.pal(9, palette)
-  
   if (plate == 96) {
       # produce a plate map in ggplot (96-well format)
       plt_96 <- ggplot(data = platemap, aes(x = Column, y = Row)) +
@@ -38,10 +34,7 @@ raw_grid <- function(data, well,
         coord_fixed(ratio = (13 / 12) / (9 / 8), xlim = c(0.5, 12.5), ylim = c(0.5, 8.5)) +
         scale_y_reverse(breaks = seq(1, 8), labels = LETTERS[1:8]) +
         scale_x_continuous(breaks = seq(1, 12)) +
-        scale_fill_gradient2("values",
-                             low  = my_cols[1],
-                             mid  = my_cols[4],
-                             high = my_cols[9]) +
+        scale_fill_distiller("values", palette = palette) +
         ggtitle(title) +
         theme_bw() + 
         theme(panel.margin.x = unit(1, "lines"), 
@@ -61,10 +54,7 @@ raw_grid <- function(data, well,
         coord_fixed(ratio = (24.5 / 24) / (16.5 / 16), xlim = c(0.5, 24.5), ylim = c(0.5, 16.5)) +
         scale_y_reverse(breaks = seq(1, 16), labels = LETTERS[1:16]) +
         scale_x_continuous(breaks = seq(1, 24)) +
-        scale_fill_gradient2("values",
-                             low  = my_cols[1],
-                             mid  = my_cols[4],
-                             high = my_cols[9]) +
+        scale_fill_distiller("values", palette = palette) +
         ggtitle(title) +
         theme_bw() +
         theme(panel.margin.x = unit(1, "lines"), 
