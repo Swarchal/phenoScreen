@@ -27,7 +27,7 @@ raw_grid <- function(data, well,
   
   if (plate == 96) {
       # produce a plate map in ggplot (96-well format)
-      plt_96 <- ggplot(data = platemap, aes(x = Column, y = Row)) +
+      plt<- ggplot(data = platemap, aes(x = Column, y = Row)) +
         geom_point(data = expand.grid(seq(1, 12), seq(1, 8)), aes(x = Var1, y = Var2),
                    color = "grey90", fill = "white", shape = 21, size = 6) +
         geom_point(aes(fill = raw_data), colour = "gray20", shape = 21, size = 10) +
@@ -41,13 +41,9 @@ raw_grid <- function(data, well,
         panel.margin.y = unit(0.5, "lines")) + # increase spacing between facets
         facet_wrap(~plate_label,
                    ncol = ncols)
-                   
-        return(plt_96)
-    }
-  
-  if (plate == 384){
+    }else if (plate == 384){
       # produce a plate map in ggplot (384-well format)
-      plt_384 <- ggplot(data = platemap, aes(x = Column, y = Row)) +
+      plt <- ggplot(data = platemap, aes(x = Column, y = Row)) +
         geom_point(data = expand.grid(seq(1, 24), seq(1, 16)), aes(x = Var1, y = Var2),
                    color = "grey90", fill = "white", shape = 22, size = 3) +
         geom_point(aes(fill = raw_data), colour = "gray20", shape = 22, size = 5) +
@@ -61,10 +57,9 @@ raw_grid <- function(data, well,
         panel.margin.y = unit(0.5, "lines")) + # increase spacing between facets
         facet_wrap(~plate_label,
                    ncol = ncols)
-        return(plt_384)
-  }
-  
-  else stop("Invalid argument for 'plate'. \nOption: 96 or 384.",
+  } else stop("Invalid argument for 'plate'. \nOption: 96 or 384.",
             call. = FALSE)
+
+  return(plt)
   
 }
