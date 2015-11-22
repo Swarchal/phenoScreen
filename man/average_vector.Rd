@@ -37,7 +37,7 @@ Scott Warchal
 \examples{
 x <- matrix(c(1,5,2,10,3,10), ncol = 2)
 average_vector(x)
-
+}
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
 \keyword{ ~kwd1 }
