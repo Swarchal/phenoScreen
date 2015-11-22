@@ -53,15 +53,7 @@ Any missing wells (not a full plate) have to be filled with a placeholder to pre
 \seealso{
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
-\examples{
-read_map(df_existing, concentrations)
-# where `concentrations` is a matix in the dimensions of a multiwell plate
-
-read_map(data = df_existing,
-         well_col = concentrations,
-         verbose = FALSE,
-         new_col_name = "concentrations")
-}
+\examples{}
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
 \keyword{ ~kwd1 }

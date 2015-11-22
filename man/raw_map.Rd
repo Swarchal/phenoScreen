@@ -53,6 +53,10 @@ Scott Warchal
 \code{hit_map()}, \code{z_map()}, \code{pc_map()}
 }
 \examples{
+
+df <- data.frame(vals = rnorm(1:384),
+  well = num_to_well(1:384, plate = 384))
+
 raw_map(values = df$vals,
         plat = df$well,
         title = "Title of plot")

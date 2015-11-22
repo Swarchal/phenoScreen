@@ -67,24 +67,7 @@ Scott Warchal
 \seealso{
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
-\examples{
-z_factor_scan(data = tidy_dataset, 
-			 treatments = c("DMSO", "STS"),
-			 cutoff = 0.3)
-
-cntrols <- c("DMSO", "STS")
-z_factor_scan(tidy_dataset, cntrols, 0.3)
-
-z_factor_scan(data = df,
-			  treatments = c('positive', 'negative'),
-			  plot = TRUE,
-			  title = "Super amazing plot")   
-
-z_factor_scan(data = df,
-			  treatments = c('positive', 'negative'),
-			  plot = TRUE,
-			  n = 10 # will return the 10 features with the highest z-factor)        
-}
+\examples{}
 
 \keyword{ ~kwd1 }
 \keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

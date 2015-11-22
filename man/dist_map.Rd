@@ -52,9 +52,7 @@ Scott Warchal
 
 \seealso{
 \code{num_to_well()}}
-\examples{
-dist_map(data = df, feature = 5, title = "Example Plot")
-}
+\examples{}
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
 \keyword{ ~kwd1 }

@@ -54,6 +54,10 @@ Scott Warchal
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
+
+df <- data.frame(vals = rnorm(1:384),
+  well = num_to_well(1:384, plate = 384))
+
 z_map(data = df$vals,
       well = df$well,
       plate = 96,
