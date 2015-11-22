@@ -66,7 +66,8 @@ b_map(data = df$vals,
       plate = 96,
       title = "Plot Title")
 
-df_384 <- data.frame(num_to_well(1:384, plate = 384),
+df_384 <- data.frame(
+  well = num_to_well(1:384, plate = 384),
   vals = rnorm(384))
       
 b_map(data = df_384$vals,
