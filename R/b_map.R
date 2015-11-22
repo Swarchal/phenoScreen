@@ -16,14 +16,14 @@ b_map <- function(data, well,
     # matrix corresponding to well positions:
     platemap <- data.frame(well = well)
     
-    platemap <- mutate_(
+    platemap <- mutate(
         platemap,
         Row = as.numeric(match(toupper(substr(well,1,1)),LETTERS)),
         Column = as.numeric(substr(well,2,5))
     )
     
     # ensure data is ordered properly before passing to matrix()
-    platemap <- platemap[order(platemap$row, platemap$column), ]
+    platemap <- platemap[order(platemap$Row, platemap$Column), ]
     
     
     if (length(well) > plate){
