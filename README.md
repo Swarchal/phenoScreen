@@ -1,3 +1,5 @@
+![build_status](https://travis-ci.org/Swarchal/phenoScreen.svg?branch=master)
+
 # phenoScreen
 
 ![phenoScreen](/graphics/phenoScreen_banner.png)
