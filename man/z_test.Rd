@@ -18,7 +18,7 @@ Matrix or dataframe containing only numerical values.
   \item{df_b}{
 Matrix or dataframe containing only numerical values
 }
-  \item(plot){
+  \item{plot}{
 Boolean, whether to produce a plot.
 }
 }
