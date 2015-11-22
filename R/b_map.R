@@ -16,10 +16,10 @@ b_map <- function(data, well,
     # matrix corresponding to well positions:
     platemap <- data.frame(well = well)
     
-    platemap <- mutate(
+    platemap <- mutate_(
         platemap,
-        row = as.numeric(match(toupper(substr(well,1,1)),LETTERS)),
-        column = as.numeric(substr(well,2,5))
+        Row = as.numeric(match(toupper(substr(well,1,1)),LETTERS)),
+        Column = as.numeric(substr(well,2,5))
     )
     
     # ensure data is ordered properly before passing to matrix()
@@ -79,13 +79,6 @@ b_map <- function(data, well,
     #--------------------------------------------------------------------------
     # map values stored in df
     #--------------------------------------------------------------------------
-    
-    # transform well labels into row-column values for a 96-well plate
-    platemap <- as.data.frame(df$well)
-    names(platemap)[1] <- "well"
-    platemap <- mutate(platemap,
-                       Row = as.numeric(match(toupper(substr(well, 1, 1)), LETTERS)),
-                       Column = as.numeric(substr(well, 2, 5)))
     
     values <- as.data.frame(df$residual)
     scaled_data <- scale(values)
