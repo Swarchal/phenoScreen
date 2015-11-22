@@ -8,7 +8,7 @@ Stictly standardised mean difference.
 strictly standardized mean difference (SSMD) is a measure of effect size. SSMD is the mean divided by the standard deviation of a difference between two random values each from one of two groups.
 }
 \usage{
-ssmd(a, b)
+ssmd(a, b, verbose = TRUE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -17,6 +17,9 @@ Numerical vector of group a.
 }
   \item{b}{
 Numerical vector of group b.
+}
+  \item(verbose){
+Boolean, whether to return a comment on the effect size.
 }
 }
 \details{
