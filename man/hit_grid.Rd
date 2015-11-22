@@ -18,18 +18,16 @@ Numerical values to be scaled and turned into a colour value
   \item{well}{
 Vector of well identifiers, i.e "A01"
 }
-    \item{threshold}{
+  \item{threshold}{
 Numerical value of standard deviations away from the mean at which to define a hit.
 }
   \item{ncols}{
 Number of columns when plotting multiple plates.
 }
-    \item{plate_id}{
-Vector of plate identifiers.
-  }
+  \item{plate_id}{
 Vector of plate label/identifiers, i.e "Plate_1"
 }
-    \item{scale}{
+  \item{scale}{
 Not yet added.
 }
   \item{plate}{
