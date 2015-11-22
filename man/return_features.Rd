@@ -8,7 +8,7 @@ Return heavily weighted features for a pca vector.
 For a given principal component analysis, when given a vector this function will return the features (variables) that best describe the vector. This is calculated through the weighting the rotation values by the ratio of the vector.
 }
 \usage{
-return_features(pca_data, pca_vector)
+return_features(pca_data, pca_vector, n = 2)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
