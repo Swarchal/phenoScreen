@@ -8,7 +8,7 @@ Multiple z-factor calculations.
 Calculates z-factors between two compounds for multiple variables and returns the z-factors and associated variables above a specified cut off: default = 0.5.
 }
 \usage{
-z_factor_scan(data, treatments, cutoff, n, plot, title, plotline, ylabel)
+z_factor_scan(data, treatments, cutoff = 0.5, n, plot = FALSE, title = "", plotline = 0.5, ylabel = "Feature", n = FALSE)
 }
 %- maybe also 'usage' for other objects documented here.
 
@@ -36,7 +36,10 @@ Numeric. Value at which to place vertical line on the plot. If you want no line,
 }
   \item{ylabel}{
 String. Text for the y-axis label.
-  }
+}
+  \item{n}{
+Numeric, returns the top 'n' features.
+}
 }
 
 \details{
