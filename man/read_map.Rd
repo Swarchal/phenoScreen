@@ -8,7 +8,7 @@ Function to annotate existing dataframes from an external matrix containing well
 Annotates data frame with well identifiers, corresponding to a separate dataframe in a plate-layout containing values/labels. 
 }
 \usage{
-read_map(data, map, well_col = well, new_col_name = "header" verbose = TRUE)
+read_map(data, map, well_col = well, new_col_name = "header", verbose = TRUE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
