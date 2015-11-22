@@ -60,7 +60,7 @@ df <- data.frame(vals = rnorm(1:384),
 
 z_map(data = df$vals,
       well = df$well,
-      plate = 96,
+      plate = 384,
       title = "Plot Title")
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
