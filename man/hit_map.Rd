@@ -61,7 +61,7 @@ Scott Warchal
 df <- data.frame(vals = rnorm(1:384),
   well = num_to_well(1:384, plate = 384))
 
-hitmap(data = df$vals,
+hit_map(data = df$vals,
        well = df$well,
        plate = 384,
        threshold = 3,
