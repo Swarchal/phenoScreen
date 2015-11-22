@@ -51,7 +51,13 @@ Scott Warchal
 \seealso{
 \code{z_map()} and \code{hit_map()}}
 \examples{
-pc_map(data = df[, 2:50],
+
+df <- data.frame(
+  well = num_to_well(1:96),
+  vals1 = rnorm(1:96),
+  vals2 = rnorm(1:96))
+
+pc_map(data = df[, 2:3],
        well = df$well,
        title = "PC plate heatmap",
        plate = 384)
