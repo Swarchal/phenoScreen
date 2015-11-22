@@ -43,10 +43,10 @@ Scott Warchal
 }
 \examples{
 x <- c(3, 8)
-norm_vec(x)
+norm_vector(x)
 
 x <- c(3, 4, 5, 2)
-norm_vec(x)
+norm_vector(x)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
