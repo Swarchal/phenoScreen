@@ -57,8 +57,8 @@ Scott Warchal
 df <- data.frame(vals = rnorm(1:384),
   well = num_to_well(1:384, plate = 384))
 
-raw_map(values = df$vals,
-        plat = df$well,
+raw_map(data = df$vals,
+        well = df$well,
         title = "Title of plot")
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
