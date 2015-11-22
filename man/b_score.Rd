@@ -54,12 +54,13 @@ Need all wells of the plate to be entered, use NA if missing certain wells, othe
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
+
+df <- data.frame(well = num_to_well(1:96),
+	val = rnorm(96))
+
 b_score(data = wells_example$val,
         well = wells_example$well)
 
-b_score(data = df$values,
-        well = df$well,
-        plate = 384)
 }
 \keyword{ ~kwd1 }
 \keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
