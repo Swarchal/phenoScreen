@@ -18,7 +18,7 @@ Numerical vector of group a.
   \item{b}{
 Numerical vector of group b.
 }
-  \item(verbose){
+  \item{verbose}{
 Boolean, whether to return a comment on the effect size.
 }
 }
