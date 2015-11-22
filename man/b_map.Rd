@@ -8,7 +8,7 @@ Plots a heatmap of b-score normalised values in a plate layout.
 Transforms numerical values using the b-score normalisation process to account for row and column effects values and uses well labels to plot a normalised heatmap in the form of a microtitre plate. Works for either 96 or 384-well plates.
 }
 \usage{
-b_map(data, well, plate = 96, title = "", palette = "Spectral")
+b_map(data, well, normalise = FALSE, plate = 96, title = "", palette = "Spectral")
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -20,6 +20,9 @@ Vector of well identifiers, i.e "A01"
 }
   \item{plate}{
 Plate format; either 96 or 384
+}
+  \item{Normalise}{
+Not currently used
 }
   \item{title}{
 Title for plot
