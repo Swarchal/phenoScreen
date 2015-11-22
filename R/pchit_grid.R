@@ -15,13 +15,14 @@ pchit_grid <- function(data, well,
   
   pc_hit_grid <- hit_grid(
     pc1,
-    well,
-    plate_id,
-    ncols,
-    plate,
-    threshold,
-    title,
-    palette)
+    well = well,
+    plate_id = plate_id,
+    ncols = ncols,
+    plate = plate,
+    scale = "all",
+    threshold = threshold,
+    title = title,
+    palette = palette)
 
   return(pc_hit_grid)
   
