@@ -8,7 +8,7 @@ Calculates a B-score smooth for individual microtitre plates.
 A two-way median smooth utilising medpolish() to normalise for row and column effects in microtitre plates. Normalises each row and column to have a median of zero.
 }
 \usage{
-b_score(data, well, normalise = FALSE, matrix = FALSE)
+b_score(data, well, plate, normalise = FALSE, matrix = FALSE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
