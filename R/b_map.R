@@ -14,8 +14,7 @@ b_map <- function(data, well,
     
     # need to transform columns of wellID and data into
     # matrix corresponding to well positions:
-    platemap <- as.data.frame(well)
-    names(platemap)[1] <- "well"
+    platemap <- data.frame(well = well)
     
     platemap <- mutate(
         platemap,

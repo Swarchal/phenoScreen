@@ -57,10 +57,17 @@ Scott Warchal
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
+
+df <- data.frame(well = num_to_well(1:96),
+  vals = rnorm(96))
+
 b_map(data = df$vals,
       well = df$well,
       plate = 96,
       title = "Plot Title")
+
+df_384 <- data.frame(num_to_well(1:384, plate = 384),
+  vals = rnorm(384))
       
 b_map(data = df_384$vals,
       well = df_384$well,
