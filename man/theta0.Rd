@@ -8,7 +8,7 @@ Angle between a vector and the origin
 Caculates and angle between a given vector and the origin.
 }
 \usage{
-theta(a)
+theta0(a)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
