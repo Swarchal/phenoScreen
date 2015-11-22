@@ -8,7 +8,7 @@ Multiple z-factor calculations.
 Calculates z-factors between two compounds for multiple variables and returns the z-factors and associated variables above a specified cut off: default = 0.5.
 }
 \usage{
-z_factor_scan(x)
+z_factor_scan(data, treatments, cutoff, n, plot, title, plotline, ylabel)
 }
 %- maybe also 'usage' for other objects documented here.
 
