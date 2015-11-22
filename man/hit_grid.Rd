@@ -8,7 +8,7 @@ Plots multiple platemaps with identified hits.
 Converts numerical values and well labels into identified hits in the form of multiple microtitre plates. Hits are calculated as wells above and below a specified number of standard deviations.
 }
 \usage{
-hit_grid(data, well, plate_id, threshold = 2, ncols = 2, plate = 96, title = "", scale = "all" palette = "Spectral")
+hit_grid(data, well, plate_id, threshold = 2, ncols = 2, plate = 96, title = "", scale = "all", palette = "Spectral")
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
