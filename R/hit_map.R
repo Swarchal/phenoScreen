@@ -27,7 +27,7 @@ hit_map <- function(data, well,
         } else {platemap$hit[row] <- "null"}
     }
     
-    # RColorBrewerPallette
+    # RColorBrewerPalette
     my_cols <- brewer.pal(3, palette)
     my_colours <- c(hit = my_cols[1], neg_hit = my_cols[3], null = my_cols[2])
     
