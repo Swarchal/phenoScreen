@@ -8,15 +8,18 @@ Multivariate Z test
 Calculates differences in multivariate distributions with the kolmogorov smirnov test.
 }
 \usage{
-z_test(a, b)
+z_test(df_a, df_b, plot = FALSE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{a}{
+  \item{df_a}{
 Matrix or dataframe containing only numerical values.
 }
-    \item{b}{
+  \item{df_b}{
 Matrix or dataframe containing only numerical values
+}
+  \item(plot){
+Boolean, whether to produce a plot.
 }
 }
 \details{
