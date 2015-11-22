@@ -54,7 +54,7 @@ Scott Warchal
 }
 \examples{
 raw_map(values = df$vals,
-        platemap = df$well,
+        plat = df$well,
         title = "Title of plot")
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

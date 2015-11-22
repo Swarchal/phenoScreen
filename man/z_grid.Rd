@@ -21,8 +21,8 @@ Vector of well identifiers, i.e "A01"
     \item{plate_id}{
 Vector of plate label/identifiers, i.e "Plate_1"
 }
-    \item{scale}{
-Not yet added.
+  \item{ncols}{
+Number of columns of plates in plot.
 }
   \item{plate}{
 Plate format; either 96 or 384
