@@ -7,7 +7,7 @@ Plots values as heatmap in plate layout.
 \description{
 Produces a heatmap in the layout of a 96-well plate. Much like \code{z_map()}, but with no scaling of the numerical values.}
 \usage{
-raw_map(data, well, plate, platemap, title = "", palette = "YlGnBu")
+raw_map(data, well, plate, title = "", palette = "YlGnBu")
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
