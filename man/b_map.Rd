@@ -21,7 +21,7 @@ Vector of well identifiers, i.e "A01"
   \item{plate}{
 Plate format; either 96 or 384
 }
-  \item{Normalise}{
+  \item{normalise}{
 Not currently used
 }
   \item{title}{
