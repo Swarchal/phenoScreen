@@ -58,8 +58,8 @@ Need all wells of the plate to be entered, use NA if missing certain wells, othe
 df <- data.frame(well = num_to_well(1:96),
 	val = rnorm(96))
 
-b_score(data = wells_example$val,
-        well = wells_example$well)
+b_score(data = df$val,
+        well = df$well)
 
 }
 \keyword{ ~kwd1 }
