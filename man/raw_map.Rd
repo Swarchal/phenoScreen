@@ -7,21 +7,24 @@ Plots values as heatmap in plate layout.
 \description{
 Produces a heatmap in the layout of a 96-well plate. Much like \code{z_map()}, but with no scaling of the numerical values.}
 \usage{
-raw_map(values, platemap, title = "", palette = "YlGnBu")
+raw_map(data, well, plate, platemap, title = "", palette = "YlGnBu")
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{values}{
+  \item{data}{
 Vector of numerical values to use for plotting.
 }
-  \item{platemap}{
-Vector of well identifiers i.e "A01"
+  \item{well}{
+Vector of characters to denote well identifiers. e.g ``A01''
+}
+  \item{plate}{
+Number of wells in the full plate, either 96 or 384.
 }
   \item{title}{
-String, title of the plot
+String, title of the plot.
 }
   \item{palette}{
-RColorBrewer palette
+RColorBrewer palette.
 }
 }
 \details{
