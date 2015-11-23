@@ -1,10 +1,10 @@
-![build_status](https://travis-ci.org/Swarchal/phenoScreen.svg?branch=master)
+[![build_status](https://travis-ci.org/Swarchal/phenoScreen.svg?branch=master)](https://travis-ci.org/Swarchal/phenoScreen/)
 
 # phenoScreen
 
 ![phenoScreen](/graphics/phenoScreen_banner.png)
 
-An R package for analysing and plotting multivariate screening data in 96 and 384-well plate formats, heavily reliant on ggplot2 for plotting purposes.
+An R package for analysing and plotting multivariate screening data in 96 and 384-well plates.
 
 [Examples](http://rstudio-pubs-static.s3.amazonaws.com/90077_45edf515f1b14fab9c2542b6807c6848.html)
 
