@@ -9,6 +9,10 @@ z_grid <- function(data, well,
   require(dplyr)
   require(RColorBrewer)
   require(grid)
+
+  if (!is.vector(data)){
+        stop("'data' has to be a single column or a vector")
+    }
   
   # transform well labels into row-column values
   platemap <- as.data.frame(well)

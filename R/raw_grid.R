@@ -11,6 +11,10 @@ raw_grid <- function(data, well,
   require(ggplot2)
   require(RColorBrewer)
   require(grid)
+
+  if (!is.vector(data)){
+        stop("'data' has to be a single column or a vector")
+    }
   
   # transform well labels into row-column values for a 96-well plate
   # need to include plate_id labels into this dataframe

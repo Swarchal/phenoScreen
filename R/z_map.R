@@ -6,6 +6,10 @@ z_map <- function(data, well,
     require(ggplot2)
     require(dplyr)
     require(RColorBrewer)
+
+    if (!is.vector(data)){
+        stop("'data' has to be a single column or a vector")
+    }
     
     # transform well labels into row-column values for a 96-well plate
     platemap <- as.data.frame(well)

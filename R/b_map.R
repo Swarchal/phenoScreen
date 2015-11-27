@@ -11,6 +11,10 @@ b_map <- function(data, well,
     require(ggplot2)
     require(dplyr)
     require(RColorBrewer)
+
+    if (!is.vector(data)){
+        stop("'data' has to be a single column or a vector")
+    }
     
     # need to transform columns of wellID and data into
     # matrix corresponding to well positions:
