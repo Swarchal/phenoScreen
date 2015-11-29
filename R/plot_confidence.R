@@ -5,7 +5,7 @@
 #' 
 #' @param x Numerical vector
 #' @param y Numerical vector
-#' @param confidence Confidence interval between 0 and 1, default is 0.9 i.e 90% CI
+#' @param confidence Confidence interval between 0 and 1, default is 0.9 i.e 90\% CI
 #' @param title Title of plot
 #' @param xlab x-axis label
 #' @param ylab y-axis label

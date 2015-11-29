@@ -11,8 +11,8 @@ area_of_confidence(x, y, confidence = 0.9)
 
 \item{y}{Values to be used on the y-axis}
 
-\item{confidence}{Confidence interval between 0 and 1.
-     Default is 0.9, i.e 90% confidence inverval}
+\item{confidence}{Confidence interval between 0 and 1
+     Default is 0.9, i.e 90\% confidence inverval}
 }
 \value{
 The area within the calculated confidence boundary

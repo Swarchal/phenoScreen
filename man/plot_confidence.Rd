@@ -12,7 +12,7 @@ plot_confidence(x, y, confidence = 0.9, title = "", xlab = "x",
 
 \item{y}{Numerical vector}
 
-\item{confidence}{Confidence interval between 0 and 1, default is 0.9 i.e 90% CI}
+\item{confidence}{Confidence interval between 0 and 1, default is 0.9 i.e 90\% CI}
 
 \item{title}{Title of plot}
 

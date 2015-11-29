@@ -5,8 +5,8 @@
 #'
 #' @param x Values to be used on the x-axis
 #' @param y Values to be used on the y-axis
-#' @param confidence Confidence interval between 0 and 1.
-#'      Default is 0.9, i.e 90% confidence inverval
+#' @param confidence Confidence interval between 0 and 1
+#'      Default is 0.9, i.e 90\% confidence inverval
 #'
 #' @return The area within the calculated confidence boundary
 #'
