@@ -1,3 +1,17 @@
+#' Display a merged image from RGB image URLs
+#' 
+#' Produces an RGB merge of images from image URLs
+#' 
+#' @param df dataframe containing columns of interest
+#' @param row_number row number containing image URLs of interest
+#' @param display display options, either a merged image or separate images
+#'  for each channel
+#' @param green_url URL for green channel
+#' @param blue_url URL for blue channel
+#' @param red_url URL for red channel 
+#' @return a raster image to the display window
+
+
 get_image <- function(df, row_number,
                       display = "merge",
                       green_url = "URL_Actin",

@@ -1,3 +1,24 @@
+#' Return features describing an eigenvector
+#' 
+#' For a PCA, if given a vector, this function will return the features most
+#' heavily weighted for that eigenvector. N.B Experimental, not tested.
+#' 
+#' @param pca_data a prcomp object
+#' @param pca_vector A two element vector of a PCA i.e c(PC1, PC2)
+#' @param n How many features returned to describe each element of
+#'     `pca_vector`
+#' 
+#' @return vector
+#' 
+#' @examples
+#' data(iris)
+#' pca_iris <- prcomp(iris[,1:4])
+#' 
+#' # features for a vector pointing straight up, essentially just
+#' # those for PC2 in a positive direction.
+#' return_features(pca_iris, c(0,1))
+
+
 return_features <- function(pca_data, pca_vector, n = 2){
   
   # check inputs

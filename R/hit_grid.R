@@ -1,3 +1,40 @@
+#' Plots multiple platemaps with and identifies hits
+#' 
+#' Converts numerical values and well labels into 'hits' in the form of
+#' multiple plate maps. Hits are calculated as wells above or below a 
+#' specified number of standard deviations from the overall average
+#' 
+#' @param data Numerical values to be scaled and plotted
+#' @param well Vector of well identifiers. e.g "A01"
+#' @param plate_id Vector of plate identifiers e.g "Plate_1"
+#' @param threshold Numerical value of standard deviations from the mean
+#'  for a well to be classified as a 'hit'. Default it +/- 2 SD
+#' @param ncols Number of columns in the grid of plates
+#' @param plate Number of wells in the complete plates (96 or 384)
+#' @param title Title of the plot
+#' @param scale Not currently used
+#' @param palette RColorBrewer palette
+#' 
+#' @return ggplot plot
+#' 
+#' @examples
+#' df01 <- data.frame(well = num_to_well(1:96),
+#'   vals = rnorm(96),
+#'   plate = 1)
+#' 
+#' df02 <- data.frame(well = num_to_well(1:96),
+#'   vals = rnorm(96),
+#'   plate = 2)
+#' 
+#' df <- rbind(df01, df02)
+#' 
+#' hit_grid(data = df$vals,
+#'     well = df$well,
+#'     plate_id = df$plate,
+#'     plate = 96,
+#'     title = "Plot Title")
+
+
 hit_grid <- function(data, well,
                    plate_id,
                    threshold = 2,

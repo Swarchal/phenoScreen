@@ -1,3 +1,21 @@
+#' Calculates a b-score smooth for individual microtitre plates
+#'
+#' Performs a two-way median smooth to normalise for row and column effects in
+#' microtitre plates. Normalises each to and column to have a median of zero.
+#'
+#' @param data Vector containing numerical values to normalise
+#' @param well Vector of well labels, i.e "A01"
+#' @param plate Integer indicating number of wells in the complete plate (96 or 384)
+#' @param normalise If true, will return a matrix of residuals subtracted from raw input values
+#' @param matrix If true, will return the values in the form of a matrix.
+#'        If false, will return a dataframe of wellID and values
+#' @return Normalised values
+#' @note Need all the wells of the plate to be entered, empty wells should be listed as NA
+#' @examples
+#' df <- data.frame(well = num_to_well(1:96),
+#'      val = rnorm(96))
+#' b_score(data = df$val, well = df$well)
+
 b_score <- function(data, well,
                     plate = 96,
                     normalise = FALSE,

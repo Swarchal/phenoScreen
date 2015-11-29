@@ -1,4 +1,36 @@
-b_map <- function(data, well,
+#' Plots a heatmap of b-score normalised values in a plate layout
+#'
+#' Transforms numerical values using the b-score normalisation process to account
+#' for row and column effects. Uses well labels to plot the normalised values in
+#' the form of a microtitre plate. Works for either 96 or 384 well plates
+#'
+#' @param data Numerical values in the form of a vector to be normalised
+#' @param well Vector of well identifiers, e.g "A01"
+#' @param plate Plate format, either 96 or 384
+#' @param normalise Not currently used
+#' @param title Title of the plot
+#' @param palette RColorBrewer palette
+#' @return ggplot plot
+#'
+#' @examples
+#' df <- data.frame(well = num_to_well(1:96),
+#' vals = rnorm(96))
+#'
+#' b_map(data = df$vals,
+#'      well = df$well,
+#'      plate = 96,
+#'      title = "Plot Title")
+#'
+#' df_384 <- data.frame(
+#'   well = num_to_well(1:384, plate = 384),
+#'   vals = rnorm(384))
+#'       
+#' b_map(data = df_384$vals,
+#'      well = df_384$well,
+#'      plate = 384)
+
+
+ b_map <- function(data, well,
                   normalise = FALSE,
                   plate = 96,
                   title = "",

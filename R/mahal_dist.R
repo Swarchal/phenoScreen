@@ -1,3 +1,24 @@
+#' Mahalanobis Distance
+#' 
+#' Calculates a Mahalanobis distance of a dataframe or a matrix.
+#' Option for robust centroid location.The Mahalanobis distance is a
+#' measure of distance between a point and a distribution. In this
+#' simplified case it's the difference between each point and centroid
+#' of the distribution produced by the points.
+#' 
+#' @param x Dataframe or matrix of numerical values
+#' @param center Method to calculate distribution center, either mean or median
+#' @param na.rm Whether to remove missing values for centroid calculation
+#' 
+#' @return vector of distances
+#' 
+#' @examples
+#' data(iris)
+#' 
+#' iris_values <- iris[,1:4]
+#' mahal_dist(iris_values)
+#' mahal_dist(iris_values, center = "median")
+
 mahal_dist <- function (x, center = "mean", na.rm = TRUE){
   
   x <- if (is.vector(x)){

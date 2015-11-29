@@ -1,3 +1,36 @@
+#' Plots multiple platemaps with heatmap of raw values
+#' 
+#' Converts numerical values. well labels, and plate labels into multiple 
+#' plate heatmaps
+#' 
+#' @param data Numerical values to be plotted
+#' @param well Vector of well identifiers e.g "A01"
+#' @param plate_id Vector of plate identifiers e.g "Plate_1"
+#' @param ncols Number of columns to display multiple heatmaps
+#' @param plate Number of wells in complete plate (96 or 384)
+#' @param title Title of plot
+#' @param palette RColorBrewer palette
+#' 
+#' @return ggplot plot
+#' 
+#' @examples
+#' df01 <- data.frame(well = num_to_well(1:96),
+#'   vals = rnorm(96),
+#'   plate = 1)
+#' 
+#' df02 <- data.frame(well = num_to_well(1:96),
+#'   vals = rnorm(96),
+#'   plate = 2)
+#' 
+#' df <- rbind(df01, df02)
+#' 
+#' raw_grid(data = df$vals,
+#'     well = df$well,
+#'     plate_id = df$plate,
+#'     plate = 96,
+#'     title = "Plot Title")
+
+
 raw_grid <- function(data, well,
                      plate_id,
                      ncols = 2,

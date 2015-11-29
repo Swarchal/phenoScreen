@@ -1,9 +1,36 @@
+#' Platemap to identify 'hits' in a screen
+#' 
+#' Produces a plot in the form of a micro-titre layout,
+#' with colours indicating wells above or below a nominated threshold.
+#' 
+#' @param data Vector of numerical values to score
+#' @param well Vector of well identifiers e.g "A01"
+#' @param plate Number of wells in complete plate (96 or 384)
+#' @param threshold Numerical value of standard deviations from the mean
+#'   for a well to be classified as a 'hit'. Default it +/- 2 SD
+#' @param title Title of the plot
+#' @param palette RColorBrewer palette
+#' 
+#' @return ggplot plot
+#' 
+#' @examples
+#' df <- data.frame(vals = rnorm(1:384),
+#'   well = num_to_well(1:384, plate = 384))
+#' 
+#' hit_map(data = df$vals,
+#'        well = df$well,
+#'        plate = 384,
+#'        threshold = 3,
+#'        title = "Awesome plot")
+
+
+
 hit_map <- function(data, well,
-    plate = 96,
-    threshold = 2,
-    title = "",
-    palette = "Spectral"){
-    
+     plate = 96,
+     threshold = 2,
+     title = "",
+     palette = "Spectral"){
+
     require(ggplot2)
     require(dplyr)
     require(RColorBrewer)

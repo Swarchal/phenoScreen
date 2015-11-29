@@ -1,29 +1,20 @@
-###################################################################################################
-# z_factor_scan
-#--------------------------------------------------------------------------------------------------
-# calculates z-factors between two compounds for multiple variables
-# returns the z-factors and associated variables above a specified cut off: default = 0.5
-###################################################################################################
-#############   N.B: treatment groups must be under the column label 'header'   ###################
-###################################################################################################
-# * argument: 'data', dataset to be used, containing only numerical columns of variables, and single
-# column containing treatment labels
-# * argument: `treatments`, vector containing treatment groups
-# recommended to be positive and negative controls
-#  * argument: 'cutoff', numerical, selects the minimum value of returned z-factors
-#--------------------------------------------------------------------------------------------------
-# e.g:
-# z_factor_scan(data = tidy_dataset, 
-#				treatments = c("DMSO", "STS"),
-#				cutoff = 0.3)
-# e.g 2:
-# cntrols <- c("DMSO", "STS")
-# z_factor_scan(tidy_dataset, cntrols, 0.3)
-#--------------------------------------------------------------------------------------------------
-# TODO: option for selecting column containing treatment lablels,
-# at the moment column *has* to be named 'header'
-###################################################################################################
-
+#' Multiple z-factor calculations
+#' 
+#' Calculates z-factors between two compounds for multiple variables and returns the
+#' z-factors and associated features above a specified cut-off. The cut-off can be
+#' determined either by a minumum z-factor score, or return the top n features.
+#' 
+#' @param data Dataframe, containing only numerical columns of features and
+#' 		single column of treatment labels
+#' @param treatments Vector of factors of treatment groups under the column of 'header'
+#' @param cutoff Minimum z-factor threshold for returning featues. Default is 0.5
+#' @param plot If TRUE, will plot features and z-factor scores
+#' @param title Title of plot
+#' @param plotline z-factor at which to draw line if plot is TRUE
+#' @param ylabel y-axis label if plot is TRUE
+#' @param n Highest n features to be returned
+#' 
+#' @return Z-factors or plots result of plot is TRUE
 
 
 z_factor_scan <- function(data, treatments, cutoff = 0.5, plot = FALSE, title = "", plotline = 0.5, ylabel = "Feature", n = FALSE){

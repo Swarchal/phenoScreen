@@ -1,3 +1,46 @@
+#' Multivatiate Z test
+#' 
+#' Calculates the differences between multivariate distributions with a KS test
+#' of Sammon distances. N.B Experimental, not tested.
+#' 
+#' @param df_a Numerical matrix or dataframe
+#' @param df_b Numerical matrix or dataframe
+#' @param plot if TRUE will plot distributions
+#' 
+#' @return D score and p value, if plot is TRUE, then will plot results
+#' 
+#' @examples
+#' a <- rnorm(100, 101, 0.5)
+#' a2 <- rnorm(100, 5, 2)
+#' a3 <- rnorm(100, 5, 0.5)
+#' a4 <- rnorm(100, 0.1, 0.1)
+#' a5 <- rnorm(100, 5, 0.1)
+#' a6 <- rnorm(100, 100, 0.1)
+#' 
+#' sample_df_a <- data.frame(a,
+#'                    a2,
+#'                    a3,
+#'                    a4,
+#'                    a5,
+#'                    a6)
+#' 
+#' b <- rnorm(100, 5, 0.5)
+#' b2 <- rnorm(100, 5, 2)
+#' b3 <- rnorm(100, 5, 0.5)
+#' b4 <- rnorm(100, 5, 0.1)
+#' b5 <- rnorm(100, 5, 0.1)
+#' b6 <- rnorm(100, 5, 0.1)
+#' 
+#' sample_df_b <- data.frame(b,
+#'                    b2,
+#'                    b3,
+#'                    b4,
+#'                    b5,
+#'                    b6)
+#'                    
+#' z_test(sample_df_a, sample_df_b)
+#' z_test(sample_df_a, sample_df_b, plot = TRUE)
+
 z_test <- function(df_a, df_b,
                    plot = FALSE){
     

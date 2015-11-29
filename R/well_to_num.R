@@ -1,3 +1,26 @@
+#' Converts well labels to numbers
+#' 
+#' Converts alpha-numeric well labels to numbers corresponding to positions
+#' within a microtitre plate. Either 96 or 384 well plate, in column-wise order
+#' or in a column snaking pattern.
+#' 
+#' @param wells Vector of well identifiers e.g "A01"
+#' @param style Either normal, starting at the left hand column at each row
+#'     or in a snaking fashion. ('normal' or 'snake')
+#' @param plate Number of wells in the complete plate (96 or 384)
+#' 
+#' @return Vector of numbers
+#' 
+#' @examples
+#' well_to_num("A01")
+#' 
+#' well_to_num("P12", plate = 384)
+#' 
+#' well_to_num("P12", plate = 384, style = "snake")
+#' 
+#' wells <- c("A01", "A02", "A03")
+#' well_to_num(wells)
+
 well_to_num <- function(wells,
                         style = "normal",
                         plate = 96){

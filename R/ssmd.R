@@ -1,3 +1,24 @@
+#' Strictly standardised mean difference (SSMD)
+#' 
+#' SSMD is a measure of effect size, defined at the mean divided by the
+#' standard deviation of a difference between two random values each from
+#' one of the two groups.
+#' \deqn{\frac{\beta = \mu_a - \mu_b}{\sqrt{\sigma_a^2 + \sigma_b^2 - \sigma_{ab}}}}
+#' Beta is defined as the ratio of mean to SD of the two groups.
+#' 
+#' @param a Vector
+#' @param b Vector
+#' @param verbose if TRUE will return a description of effect size
+#' 
+#' @param SSMD and effect description if verbose is TRUE
+#' 
+#' @examples
+#' a <- rnorm(100, 1)
+#' b <- rnorm(100, 10)
+#' ssmd(a, b)
+
+
+
 ssmd <- function (a, b, verbose = TRUE) 
 {
     if (length(a) < 2 | length(b) < 2) {

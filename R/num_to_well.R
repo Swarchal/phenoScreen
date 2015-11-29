@@ -1,18 +1,19 @@
-###############################################################################
-# num_to_well()
-#------------------------------------------------------------------------------
-# Converts well number to well ID, e.g well 1 -> A01, well 96 -> H12
-# Counting across plate left-to-right row-wise
-# Currently returns a vector of well IDs matching the input numbers
-#
-# Arguments:
-#  - 'numbers': vector of numbers to be converted into well ID's
-#  - 'plate': integer indicating plate format, either 96 or 384, default is 96
-# 
-# Need to:
-# Ceed to consider if given a data frame, and appending a column of well IDs
-# Different counting methods, i.e snaking rather than left to right row-wise
-###############################################################################
+#' Converts numbers to well labels
+#' 
+#' Converts numerical values to corresponding alpha-numeric well labels
+#' for either 96 or 384 well plates.
+#' 
+#' @param numbers Vector of numbers to be converted
+#' @param plate Number of wells in complete plate (96 or 384)
+#' 
+#' @return Vector of alpha-numeric well labels
+#' 
+#' @examples
+#' num_to_well(1:96)
+#' num_to_well(1:96, plate = 384)
+#' 
+#' nums <- c(1:10, 20:40, 60:96)
+#' num_to_well(nums)
 
 num_to_well <- function(numbers, plate = 96L){
 

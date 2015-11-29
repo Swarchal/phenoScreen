@@ -1,3 +1,33 @@
+#' Plots CV values
+#'
+#' Function to plot CV values across factors.
+#'
+#' @param data Vector of numerical values
+#' @param group Vector of factors to group data
+#' @param fancy if TRUE, uses ggplot2
+#' @param trend if TRUE adds trend line to the points, useful for time data
+#' @param rotate if TRUE will rotate x-axis labels
+#' @param title Title of the plot
+#'
+#' @return plot
+#'
+#' @examples
+#' a <- rnorm(100, 10, 1)
+#' b <- rnorm(100, 10, 10)
+#' vals <- c(a, b)
+#' grouping <- c(rep('a', 100), rep('b', 100))
+#' df <- data.frame(vals, grouping)
+#' 
+#' cv_plot(data = df$vals,
+#'         group = df$grouping)
+#' 
+#' cv_plot(data = df$vals,
+#'         group = df$grouping,
+#'         fancy = TRUE,
+#'         trend = TRUE,
+#'         title = "Fancy CV Plot")
+
+
 cv_plot <- function(data, group,
                     fancy = FALSE,
                     trend = FALSE,

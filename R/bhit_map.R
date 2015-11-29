@@ -1,3 +1,30 @@
+#' Platemap to identify 'hits' following a B-score normalisation
+#'
+#' Produces a platemap with colours indicating wells above or below selected threshold
+#' after normalising for systematic plate effects via B-score smooth. The threshold is
+#' definined calculated from a z-score, i.e plus or minus standard deviations from the
+#' plate mean.
+#'
+#' @param data Vector of numerical values
+#' @param well Vector of well identifiers, e.g "A01"
+#' @param plate Number of wells in whole plate (96 or 384)
+#' @param threshold Standard deviations from the plate average to indicate a hit.
+#'      default is set to +/- 2 SD.
+#' @param title plot title
+#' @param palette RColorBrewer palette
+#'
+#' @return ggplot plot
+#'
+#' @examples
+#' df <- data.frame(vals = rnorm(384),
+#'    well = num_to_well(1:384, plate = 384))
+#'
+#' bhit_map(data = df$vals,
+#'    well = df$well,
+#'    plate = 384,
+#'    threshold = 3,
+#'    title = "Awesome plot")
+
 bhit_map <- function(data, well,
                      plate = 96,
                      threshold = 2,

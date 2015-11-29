@@ -1,5 +1,22 @@
-cv_check <-
-function(data, group){
+#' Calculates the coefficient of variation across groups
+#'
+#' Calculates the coefficient of varation across groups
+#'
+#' @param data Vector of numerical values
+#' @param group Vector of factors with which to group the numerical values
+#'
+#' @return dataframe with row per group, and a column of CV values
+#'
+#' @examples
+#' a <- rnorm(100, 10, 1)
+#' b <- rnorm(100, 10, 10)
+#' vals <- c(a, b)
+#' grouping <- c(rep('a', 100), rep('b', 100))
+#' df <- data.frame(vals, grouping)
+#' cv_check(data = df$vals,
+#'           group = df$grouping)
+
+cv_check <- function(data, group){
     
     # to calculate CV
     CV <- function(data){

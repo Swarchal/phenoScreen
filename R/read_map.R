@@ -1,3 +1,17 @@
+#' Annotates dataframe with metadata in a platemap matrix
+#' 
+#' Annotates a dataframe containined well identifiers with metadata in the
+#' form of a platemap matrix, matching the existing well-labels to the well
+#' position in the platemap
+#' 
+#' @param data existing daatframe, with wellIDs under the column name of 'well'
+#' @param map Matrix of metadata to be added to the dataframe, N.B NO MISSING WELLS!
+#' @param verbose Boolean, if TRUE will add row and column numbers to dataframe
+#' @param new_col_name What to call the added metadata
+#' 
+#' @return dataframe with new column named after `new_col_name`
+
+
 read_map <- function (data, map,
                       verbose = TRUE,
                       new_col_name = "header"){

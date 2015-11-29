@@ -1,3 +1,22 @@
+#' Bivariate scatter plot with a confidence boundary
+#' 
+#' Bivariate scatter plot with a confidence boundary calculates via a 
+#' 2-dimensional kernel density estimate
+#' 
+#' @param x Numerical vector
+#' @param y Numerical vector
+#' @param confidence Confidence interval between 0 and 1, default is 0.9 i.e 90% CI
+#' @param title Title of plot
+#' @param xlab x-axis label
+#' @param ylab y-axis label
+#' 
+#' @return plot
+#' 
+#' @examples
+#' x <- rnorm(1000)
+#' y <- rnorm(1000)
+#' plot_confidence(x, y, title = "Example plot")
+
 plot_confidence <- function(x, y,
                             confidence = 0.9,
                             title = "",
