@@ -5,7 +5,9 @@ Version: 0.1.4
 Date: 2015-11-22
 Author: Scott Warchal [aut, cre]
 Maintainer: Scott Warchal <S.Warchal@sms.ed.ac.uk>
-Description: Collection of functions found useful in analysing phenotypic screening data, especially multivariate data from multi-well (96 and 384) plates.
+Description: Collection of functions found useful in analysing phenotypic
+    screening data, especially multivariate data from multi-well (96 and 384)
+    plates.
 License: CCO
 Imports:
     dplyr,
@@ -14,3 +16,4 @@ Imports:
     MASS,
     magrittr,
     grid
+RoxygenNote: 5.0.1
