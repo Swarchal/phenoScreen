@@ -11,6 +11,7 @@ An R package for analysing and plotting multivariate screening data in 96 and 38
 To install with the devtools package:
 
 ```coffee
+if (!require(devtools)) install.packages(devtools)
 devtools::install_github('Swarchal/phenoScreen')
 library(phenoScreen)
 ```
