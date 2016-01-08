@@ -17,6 +17,12 @@
 
 cosine_sim_mat <- function(X){
 
+	cos_sim <- function(ix){
+    A = X[ix[1],]
+    B = X[ix[2],]
+    return( sum(A*B)/sqrt(sum(A^2)*sum(B^2)) )
+	}
+
 	# if given a dataframe, will try and convert to a matrix
 	if (is.data.frame(X)){
 		X <- as.matrix(X)
