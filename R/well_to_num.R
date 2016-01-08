@@ -11,6 +11,8 @@
 #' 
 #' @return Vector of numbers
 #' 
+#' @export
+#'
 #' @examples
 #' well_to_num("A01")
 #' 

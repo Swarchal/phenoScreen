@@ -8,6 +8,8 @@
 #' @param plot if TRUE will plot distributions
 #' 
 #' @return D score and p value, if plot is TRUE, then will plot results
+#'
+#' @export
 #' 
 #' @examples
 #' a <- rnorm(100, 101, 0.5)

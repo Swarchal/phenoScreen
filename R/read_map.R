@@ -9,6 +9,8 @@
 #' @param verbose Boolean, if TRUE will add row and column numbers to dataframe
 #' @param new_col_name What to call the added metadata
 #' 
+#' @export
+#'
 #' @return dataframe with new column named after `new_col_name`
 
 

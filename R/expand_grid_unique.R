@@ -9,6 +9,8 @@
 #'
 #' @return dataframe
 #'
+#' @export
+#'
 #' @examples
 #' x <- c('one', 'two', 'three')
 #' y <- c('a', 'b', 'c')

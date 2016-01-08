@@ -13,6 +13,8 @@
 #' 
 #' @return ggplot plot
 #' 
+#' @export
+#'
 #' @examples
 #' df01 <- data.frame(well = num_to_well(1:96),
 #'   vals = rnorm(96),

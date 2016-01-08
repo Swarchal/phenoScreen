@@ -12,6 +12,8 @@
 #' @return out A matrix if given a matrix, or a single number if given two
 #' 		vectors.
 #'
+#' @export
+#'
 #' @examples
 #' # example matrix
 #' mat <- as.matrix(iris[,1:4])

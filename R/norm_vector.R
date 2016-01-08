@@ -7,6 +7,8 @@
 #' 
 #' @return Numeric, norm of the input vector
 #' 
+#' @export
+#'
 #' @examples
 #' x <- c(3, 8)
 #' norm_vector(x)

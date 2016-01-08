@@ -9,6 +9,8 @@
 #' @param palette RColorBrewer palette
 #' 
 #' @return ggplot plot
+#'
+#' @export
 #' 
 #' @examples
 #' df <- data.frame(vals = rnorm(1:384),

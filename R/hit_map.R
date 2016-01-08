@@ -13,6 +13,8 @@
 #' 
 #' @return ggplot plot
 #' 
+#' @export
+#'
 #' @examples
 #' df <- data.frame(vals = rnorm(1:384),
 #'   well = num_to_well(1:384, plate = 384))

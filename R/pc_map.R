@@ -13,6 +13,8 @@
 #' 
 #' @return gplot plot
 #' 
+#' @export
+#'
 #' @examples
 #' df <- data.frame(
 #'   well = num_to_well(1:96),

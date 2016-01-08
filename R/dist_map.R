@@ -11,6 +11,8 @@
 #' @param column Number inficating the column within a plate
 #' @param title Title of the plot
 #'
+#' @export
+#'
 #' @return ggplot plot
 
 

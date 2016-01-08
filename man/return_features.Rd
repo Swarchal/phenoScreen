@@ -25,6 +25,7 @@ heavily weighted for that eigenvector. N.B Experimental, not tested.
 data(iris)
 pca_iris <- prcomp(iris[,1:4])
 
+
 # features for a vector pointing straight up, essentially just
 # those for PC2 in a positive direction.
 return_features(pca_iris, c(0,1))

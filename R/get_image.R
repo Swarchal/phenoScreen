@@ -8,7 +8,10 @@
 #'  for each channel
 #' @param green_url URL for green channel
 #' @param blue_url URL for blue channel
-#' @param red_url URL for red channel 
+#' @param red_url URL for red channel
+#'
+#' @export
+#'
 #' @return a raster image to the display window
 
 

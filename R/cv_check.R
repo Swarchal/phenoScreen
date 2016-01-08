@@ -7,6 +7,8 @@
 #'
 #' @return dataframe with row per group, and a column of CV values
 #'
+#' @export
+#'
 #' @examples
 #' a <- rnorm(100, 10, 1)
 #' b <- rnorm(100, 10, 10)

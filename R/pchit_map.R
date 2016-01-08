@@ -14,6 +14,8 @@
 #' 
 #' @return ggplot plot
 #' 
+#' @export
+#' 
 #' @examples
 #' v1 <- rnorm(1:96)
 #' v2 <- rnorm(1:96)

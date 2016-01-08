@@ -9,8 +9,13 @@
 #' @param normalise If true, will return a matrix of residuals subtracted from raw input values
 #' @param matrix If true, will return the values in the form of a matrix.
 #'        If false, will return a dataframe of wellID and values
+#'
 #' @return Normalised values
+#'
+#' @export
+#'
 #' @note Need all the wells of the plate to be entered, empty wells should be listed as NA
+#'
 #' @examples
 #' df <- data.frame(well = num_to_well(1:96),
 #'      val = rnorm(96))

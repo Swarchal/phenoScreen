@@ -5,6 +5,8 @@
 #' @param a Vector
 #' @return Angle, in degrees
 #' 
+#' @export
+#'
 #' @examples
 #' a <- c(1, 0)
 #' theta0(a)

@@ -11,6 +11,8 @@
 #' @param verbose if TRUE will return a description of effect size
 #' 
 #' @param SSMD and effect description if verbose is TRUE
+#'
+#' @export
 #' 
 #' @examples
 #' a <- rnorm(100, 1)

@@ -4,6 +4,9 @@
 #'
 #' @param x Matrix of numerical data. Columns are components of the data, row per vector
 #' @return Mean vector
+#'
+#' @export
+#'
 #' @examples
 #' x <- matrix(c(1,5,2,10,3,10), ncol = 2)
 #' average_vector(x)

@@ -11,6 +11,8 @@
 #' @param ylab y-axis label
 #' 
 #' @return plot
+#'
+#' @export
 #' 
 #' @examples
 #' x <- rnorm(1000)

@@ -7,6 +7,8 @@
 #' 
 #' @return Angle in degrees
 #' 
+#' @export
+#'
 #' @examples
 #' a <- c(1, 2)
 #' b <- c(3, 1)

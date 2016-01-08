@@ -12,6 +12,8 @@
 #' @param palette RColorBrewer palette
 #' @return ggplot plot
 #'
+#' @export
+#'
 #' @examples
 #' df <- data.frame(well = num_to_well(1:96),
 #' vals = rnorm(96))

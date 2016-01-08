@@ -7,7 +7,9 @@
 #' @param plate Number of wells in complete plate (96 or 384)
 #' 
 #' @return Vector of alpha-numeric well labels
-#' 
+#'
+#' @export
+#'  
 #' @examples
 #' num_to_well(1:96)
 #' num_to_well(1:96, plate = 384)

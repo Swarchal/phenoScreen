@@ -9,6 +9,8 @@
 #' 
 #' @return z-factor
 #' 
+#' @export
+#'
 #' @examples
 #' x <- rnorm(100, 100)
 #' y <- rnorm(100, 10)

@@ -11,6 +11,8 @@
 #'
 #' @return plot
 #'
+#' @export
+#' 
 #' @examples
 #' a <- rnorm(100, 10, 1)
 #' b <- rnorm(100, 10, 10)

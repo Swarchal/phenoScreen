@@ -9,6 +9,8 @@
 #' @param x Vector of angles (in degrees)
 #' @return Numerical vector
 #'
+#' @export
+#'
 #' @examples
 #' sample <- seq(1, 360, 1)
 #' fold_180(sample)

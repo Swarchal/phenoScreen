@@ -13,6 +13,8 @@
 #' @param plotline z-factor at which to draw line if plot is TRUE
 #' @param ylabel y-axis label if plot is TRUE
 #' @param n Highest n features to be returned
+#'
+#' @export
 #' 
 #' @return Z-factors or plots result of plot is TRUE
 

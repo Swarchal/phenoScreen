@@ -10,6 +10,8 @@
 #'
 #' @return The area within the calculated confidence boundary
 #'
+#' @export
+#'
 #' @examples
 #' x <- rnorm(1000) ; y <- rnorm(1000)
 #' area_of_confidence(x, y)

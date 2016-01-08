@@ -12,6 +12,8 @@
 #' 
 #' @return vector of distances
 #' 
+#' @export
+#' 
 #' @examples
 #' data(iris)
 #' 

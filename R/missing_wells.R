@@ -7,7 +7,9 @@
 #' @param well Column containing well identifiers i.e "A01"
 #' 
 #' @return vector of missing wells
-#' 
+#'
+#' @export
+#'
 #' @examples 
 #' vals <- rnorm(96) ; wells <- num_to_well(1:96)
 #' df <- data.frame(vals, wells)
