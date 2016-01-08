@@ -1,0 +1,6 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+README.md
+graphics
+.Rhistory*
+.travis.yml
