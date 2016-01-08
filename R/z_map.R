@@ -9,7 +9,10 @@
 #' @param palette RColorBrewer palette
 #' 
 #' @return ggplot plot
-#' 
+#'
+#' @import ggplot2
+#' @import dplyr
+#' @import RColorBrewer
 #' @export
 #'
 #' @examples
@@ -26,10 +29,6 @@ z_map <- function(data, well,
     plate = 96,
     title = "",
     palette = "Spectral"){
-    
-    require(ggplot2)
-    require(dplyr)
-    require(RColorBrewer)
 
     if (!is.vector(data)){
         stop("'data' has to be a single column or a vector")

@@ -12,6 +12,8 @@
 #'
 #' @return Normalised values
 #'
+#' @import dplyr
+#'
 #' @export
 #'
 #' @note Need all the wells of the plate to be entered, empty wells should be listed as NA
@@ -25,8 +27,6 @@ b_score <- function(data, well,
                     plate = 96,
                     normalise = FALSE,
                     matrix = FALSE){
-    
-    require(dplyr)
     
     # need to transform columns of wellID and data into
     # matrix corresponding to well positions:

@@ -14,6 +14,8 @@
 #' @param ylabel y-axis label if plot is TRUE
 #' @param n Highest n features to be returned
 #'
+#' @import ggplot2
+#'
 #' @export
 #' 
 #' @return Z-factors or plots result of plot is TRUE
@@ -87,7 +89,6 @@ z_factor_scan <- function(data, treatments, cutoff = 0.5, plot = FALSE, title = 
 	
     # plot:
 	if (plot == TRUE){
-	    require(ggplot2)
 	    
         # order factors dependent on Z-factor score makes it so features in
         # plot go from highest to lowest rather than in alphabetical order

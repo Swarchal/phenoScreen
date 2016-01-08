@@ -10,6 +10,8 @@
 #' @param xlab x-axis label
 #' @param ylab y-axis label
 #' 
+#' @importFrom MASS kde2d
+#'
 #' @return plot
 #'
 #' @export
@@ -24,7 +26,6 @@ plot_confidence <- function(x, y,
                             title = "",
                             xlab = "x",
                             ylab = "y"){
-    require(MASS)
     
     kerneld <- kde2d(x, y) # kde2d estimate for x and y
     

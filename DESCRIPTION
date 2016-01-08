@@ -12,6 +12,8 @@ License: CCO
 Imports:
     dplyr,
     ggplot2,
+    plyr,
+    raster,
     RColorBrewer,
     MASS,
     magrittr,

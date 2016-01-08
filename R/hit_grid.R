@@ -17,6 +17,11 @@
 #' 
 #' @return ggplot plot
 #'
+#' @import dplyr
+#' @import ggplot2
+#' @import RColorBrewer
+#' @import grid
+#'
 #' @export
 #' 
 #' @examples
@@ -47,12 +52,6 @@ hit_grid <- function(data, well,
                    palette = "Spectral"){
     
     ## multiple platemap plots in a single figure using facet_wrap
-    
-    require(dplyr)
-    require(ggplot2)
-    require(RColorBrewer)
-    require(grid)
-    
     ## transform well labels into row-column values for a 96-well plate
     ## need to include plate_id labels into this dataframe
     ## scale for all values, or scale per plate??

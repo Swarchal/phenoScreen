@@ -11,14 +11,14 @@
 #' @param column Number inficating the column within a plate
 #' @param title Title of the plot
 #'
+#' @import ggplot2
+#'
 #' @export
 #'
 #' @return ggplot plot
 
 
 dist_map <- function(data, feature, row, column, title = ""){
-    
-    require(ggplot2)
     
     localenv <- environment()
     

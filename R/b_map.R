@@ -12,6 +12,9 @@
 #' @param palette RColorBrewer palette
 #' @return ggplot plot
 #'
+#' @import ggplot2
+#' @import dplyr
+#' @import RColorBrewer
 #' @export
 #'
 #' @examples
@@ -41,10 +44,6 @@
     
     # b_score() to obtain residual values
     #--------------------------------------------------------------------------
-    require(dplyr)
-    require(ggplot2)
-    require(dplyr)
-    require(RColorBrewer)
 
     if (!is.vector(data)){
         stop("'data' has to be a single column or a vector")

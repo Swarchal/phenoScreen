@@ -11,6 +11,10 @@
 #' @param title Title of the plot
 #' @param palette RColorBrewer palette
 #' 
+#' @import ggplot2
+#' @import dplyr
+#' @import RColorBrewer
+#'
 #' @return ggplot plot
 #' 
 #' @export
@@ -32,10 +36,6 @@ hit_map <- function(data, well,
      threshold = 2,
      title = "",
      palette = "Spectral"){
-
-    require(ggplot2)
-    require(dplyr)
-    require(RColorBrewer)
     
     # transform well labels into row-column values for a 96-well plate
     platemap <- as.data.frame(well)

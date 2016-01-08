@@ -12,7 +12,12 @@
 #' @param palette RColorBrewer palette
 #' 
 #' @return ggplot plot
-#' 
+#'
+#' @import dplyr
+#' @import ggplot2
+#' @import RColorBrewer
+#' @import grid
+
 #' @export
 #'
 #' @examples
@@ -41,11 +46,6 @@ raw_grid <- function(data, well,
                      palette = "YlGnBu"){
   
   ## multiple platemap plots in a single figure using facet_wrap
-  
-  require(dplyr)
-  require(ggplot2)
-  require(RColorBrewer)
-  require(grid)
 
   if (!is.vector(data)){
         stop("'data' has to be a single column or a vector")

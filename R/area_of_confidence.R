@@ -10,6 +10,7 @@
 #'
 #' @return The area within the calculated confidence boundary
 #'
+#' @importFrom MASS kde2d
 #' @export
 #'
 #' @examples
@@ -19,10 +20,8 @@
 area_of_confidence <- function(x, y,
                                confidence = 0.9){
     
-    require(MASS)
-    
     # 2D KDE for x,y co-ordinates
-    kerneld <- MASS::kde2d(x, y)
+    kerneld <- kde2d(x, y)
     
     # array of maximum density values for each x,y co-ordinate
     pp <- array()

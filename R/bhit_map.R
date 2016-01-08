@@ -15,6 +15,10 @@
 #'
 #' @return ggplot plot
 #'
+#' @import dplyr
+#' @import ggplot2
+#' @import RColorBrewer
+#'
 #' @export
 #'
 #' @examples
@@ -32,10 +36,6 @@ bhit_map <- function(data, well,
                      threshold = 2,
                      title = "",
                      palette = "Spectral"){
-    
-    require(ggplot2)
-    require(dplyr)
-    require(RColorBrewer)
     
     # need to transform columns of wellID and data into
     # matrix corresponding to well positions:

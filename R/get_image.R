@@ -10,6 +10,9 @@
 #' @param blue_url URL for blue channel
 #' @param red_url URL for red channel
 #'
+#' @import raster
+#' @import RColorBrewer
+#'
 #' @export
 #'
 #' @return a raster image to the display window

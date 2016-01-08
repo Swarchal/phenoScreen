@@ -8,6 +8,10 @@
 #' @param title Title of plot
 #' @param palette RColorBrewer palette
 #' 
+#' @import ggplot2
+#' @import dplyr
+#' @import RColorBrewer
+#'
 #' @return ggplot plot
 #'
 #' @export
@@ -25,10 +29,6 @@ raw_map <- function(data, well,
                     title = "",
                     palette = "YlGnBu"){
   
-  require(ggplot2)
-  require(dplyr)
-  require(RColorBrewer)
-
   if (!is.vector(data)){
         stop("'data' has to be a single column or a vector")
     }

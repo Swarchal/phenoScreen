@@ -13,6 +13,11 @@
 #' 
 #' @return ggplot plot
 #'
+#' @import ggplot2
+#' @import dplyr
+#' @import RColorBrewer
+#' @import grid
+#'
 #' @export
 #'
 #' @examples
@@ -38,11 +43,6 @@ z_grid <- function(data, well,
                    plate = 96,
                    title = "",
                    palette = "Spectral"){
-  
-  require(ggplot2)
-  require(dplyr)
-  require(RColorBrewer)
-  require(grid)
 
   if (!is.vector(data)){
         stop("'data' has to be a single column or a vector")

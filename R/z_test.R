@@ -9,6 +9,9 @@
 #' 
 #' @return D score and p value, if plot is TRUE, then will plot results
 #'
+#' @import magrittr
+#' @import MASS
+#'
 #' @export
 #' 
 #' @examples
@@ -45,9 +48,6 @@
 
 z_test <- function(df_a, df_b,
                    plot = FALSE){
-    
-    require(magrittr)
-    require(MASS)
     
     # scale data to 1D with Sammon's non-linear mapping
     # canberra distance metric used

@@ -7,6 +7,8 @@
 #' @param plate Number of wells in complete plate (96 or 384)
 #' @param well Column containing well identifiers i.e "A01"
 #' 
+#' @importFrom plyr rbind.fill
+#'
 #' @return dataframe
 #' 
 #' @export
@@ -57,7 +59,7 @@ fill_plate <- function(df, well, plate = 96){
     
     missing_df <- data.frame(missing_wells) # dataframe of just missing wells
     names(missing_df) <- eval(substitute(well)) # name column after original well column
-    filled_df <- plyr::rbind.fill(df, missing_df) # rbind, fill rows with NAs
+    filled_df <- rbind.fill(df, missing_df) # rbind, fill rows with NAs
     return(filled_df)
     
 }

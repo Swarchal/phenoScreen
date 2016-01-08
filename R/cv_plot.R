@@ -11,6 +11,8 @@
 #'
 #' @return plot
 #'
+#' @import ggplot2
+#'
 #' @export
 #' 
 #' @examples
