@@ -19,7 +19,7 @@
 read_map <- function (data, map,
                       verbose = TRUE,
                       new_col_name = "header"){
-  require(dplyr)
+  
   if (is.character(map) == TRUE) {
     map <- as.matrix(read.csv(map, header = FALSE))
   }
