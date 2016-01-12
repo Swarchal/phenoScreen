@@ -96,11 +96,11 @@ b_score <- function(data, well,
             df$well[num] <- num_to_well(num, plate = plate)
         }
         
-        df <- as.data.frame(
-            cbind("well" = df$well,
-                  "residual" = df$residual))
+        df <- data.frame(
+            "well" = df$well,
+            "value" = df$residual)
         # change residuals from factor to numeric
-        df$residual <- as.numeric(as.character(df$residual))
+        df$value <- as.numeric(as.character(df$value))
         return(df) 
     } else stop("Matrix has to be either TRUE or FALSE")
 }
