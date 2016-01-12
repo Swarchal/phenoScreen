@@ -21,6 +21,6 @@ angular_similarity0(a)
 
 # Vectors of length > 2
 x <- c(1, 4, 2, 2.5)
-angular_similarity0(x, y)
+angular_similarity0(x)
 }
 
