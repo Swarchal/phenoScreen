@@ -20,7 +20,7 @@
 #' @import dplyr
 #' @import ggplot2
 #' @import RColorBrewer
-#' @import grid
+#' @importFrom grid unit
 #'
 #' @export
 #' 
