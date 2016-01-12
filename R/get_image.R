@@ -10,7 +10,7 @@
 #' @param blue_url URL for blue channel
 #' @param red_url URL for red channel
 #'
-#' @import raster
+#' @importFrom raster raster brick
 #' @import RColorBrewer
 #'
 #' @export
@@ -23,8 +23,6 @@ get_image <- function(df, row_number,
                       green_url = "URL_Actin",
                       blue_url = "URL_DNA",
                       red_url = "URL_HCS"){
-  require(raster)
-  require(RColorBrewer)
   
   sanitize_files <- function(x){
     x_char <- as.character(x)
@@ -33,7 +31,7 @@ get_image <- function(df, row_number,
     # replace "%20" with a space
     spaced <- gsub("%20", " ", raw)
     # remove nonsense before actual file name that win recognises
-    truncated <- unlist(strsplit(spaced, split='file:\\', fixed = TRUE))[2]
+    truncated <- unlist(strsplit(spaced, split = 'file:\\', fixed = TRUE))[2]
     return(truncated)
   }
   

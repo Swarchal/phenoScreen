@@ -9,8 +9,8 @@
 #' 
 #' @return D score and p value, if plot is TRUE, then will plot results
 #'
-#' @import magrittr
-#' @import MASS
+#' @import dplyr
+#' @importFrom MASS sammon
 #'
 #' @export
 #' 
