@@ -74,7 +74,6 @@ cv_plot <- function(data, group,
     }
     
     if(fancy == TRUE){
-        require(ggplot2)
         plt <- ggplot(data = cv_df,
                       aes(x = group,
                           y = CV)) +
