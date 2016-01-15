@@ -20,6 +20,6 @@ orthogonal
 }
 \examples{
 vals <- runif(100, -1, 1) # random values
-cossim_to_angsim(values)
+cossim_to_angsim(vals)
 }
 
