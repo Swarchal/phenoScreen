@@ -16,7 +16,6 @@
 #' @import ggplot2
 #' @import dplyr
 #' @import RColorBrewer
-#' @importFrom grid unit
 #'
 #' @export
 #'
