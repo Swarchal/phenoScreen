@@ -4,10 +4,10 @@
 \alias{num_to_well}
 \title{Converts numbers to well labels}
 \usage{
-num_to_well(numbers, plate = 96L)
+num_to_well(x, plate = 96)
 }
 \arguments{
-\item{numbers}{Vector of numbers to be converted}
+\item{x}{Vector of numbers to be converted}
 
 \item{plate}{Number of wells in complete plate (96 or 384)}
 }
