@@ -5,7 +5,7 @@
 \title{Plots multiple heatmaps identifying hits from the first principal component}
 \usage{
 pchit_grid(data, well, plate_id, ncols = 2, plate = 96, threshold = 2,
-  title = "", palette = "Spectral")
+  each = FALSE, title = "", palette = "Spectral")
 }
 \arguments{
 \item{data}{Numerical values, either a dataframe or a matrix}
@@ -20,6 +20,9 @@ pchit_grid(data, well, plate_id, ncols = 2, plate = 96, threshold = 2,
 
 \item{threshold}{Threshold of +/- standard deviations form the average
 to determine a hit}
+
+\item{each}{boolean, if true scales each plate individually, if false will
+scale the pooled values of \code{data}}
 
 \item{title}{Title of plot}
 

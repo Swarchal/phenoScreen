@@ -12,7 +12,8 @@
 #' @param ncols Number of columns in the grid of plates
 #' @param plate Number of wells in the complete plates (96 or 384)
 #' @param title Title of the plot
-#' @param scale Not currently used
+#' @param each boolean, if true scales each plate individually, if false will
+#'     scale the pooled values of \code{data}
 #' @param palette RColorBrewer palette
 #' 
 #' @return ggplot plot
@@ -38,6 +39,7 @@
 #'     well = df$well,
 #'     plate_id = df$plate,
 #'     plate = 96,
+#'     each = FALSE,
 #'     title = "Plot Title")
 
 
@@ -47,58 +49,17 @@ hit_grid <- function(data, well,
                    ncols = 2,
                    plate = 96,
                    title = "",
-                   scale = "all",
+                   each = FALSE,
                    palette = "Spectral"){
-    
-    ## multiple platemap plots in a single figure using facet_wrap
-    ## transform well labels into row-column values for a 96-well plate
-    ## need to include plate_id labels into this dataframe
-    ## scale for all values, or scale per plate??
-    
-    
-    if (scale == "all"){
-        
-        # normalised across entire range of values
-        platemap <- as.data.frame(well)
-        names(platemap)[1] <- "well"
-        platemap <- mutate(platemap,
-                           Row = as.numeric(match(toupper(substr(well, 1, 1)), LETTERS)),
-                           Column = as.numeric(substr(well, 2, 5)))
-        values <- as.data.frame(data)
-        plate_label <- as.data.frame(plate_id)
-        scaled_data <- scale(values)
-        platemap <- cbind(platemap, scaled_data[,1], plate_id)
-        names(platemap)[4] <- "scaled_data"
-        names(platemap)[5] <- "plate_label"
-        platemap$hit <- NA
-        
-    } else if (scale == "plate"){
-        stop("Not added this yet.")
-        #         ## need to add scale-by-plate functionality        
-        #         # normalised on a plate-by-plate basis
-        #         platemap <- as.data.frame(well)
-        #         names(platemap)[1] <- "well"
-        #         platemap <- mutate(platemap,
-        #                            Row = as.numeric(match(toupper(substr(well, 1, 1)), LETTERS)),
-        #                            Column = as.numeric(substr(well, 2, 5)))
-        #         values <- as.data.frame(data)
-        #         plate_label <- as.data.frame(plate_id)
-        #         scaled_data <- values # just raw/un-scaled values for now
-        #         platemap <- cbind(platemap, scaled_data[,1], plate_id)
-        #         names(platemap)[4] <- "scaled_data"
-        #         names(platemap)[5] <- "plate_label"
-        #         platemap_temp <- group_by(platemap, plate_label)
-        #         platemap_temp2 <- summarise(platemap_temp, scale(scaled_data))
-        #         platemap <- as.data.frame(platemap_temp2)
-        
-        
-    } else stop("Not a valid input for 'scale'. \nOptions: 'all' or 'plate'.")
-    
+          
+    # normalised across entire range of values
+    platemap <- plate_map_grid_scale(data, well, plate_id, each)
+    platemap$hit <- NA
     
     # calculate whether values are beyond the threshold; defined as hit or null
     for (row in 1:nrow(platemap)){
-        if (scaled_data[row] > threshold){platemap$hit[row] <- "hit"
-        } else  if (scaled_data[row] < (-1 * threshold)){platemap$hit[row] <- "neg_hit"
+        if (platemap[row, 'values'] > threshold){platemap$hit[row] <- "hit"
+        } else  if (platemap[row, 'values'] < (-1 * threshold)){platemap$hit[row] <- "neg_hit"
         } else {platemap$hit[row] <- "null"}
     }
     

@@ -37,22 +37,16 @@ hit_map <- function(data, well,
      title = "",
      palette = "Spectral"){
     
+    stopifnot(is.vector(data))
+
     # transform well labels into row-column values for a 96-well plate
-    platemap <- as.data.frame(well)
-    names(platemap)[1] <- "well"
-    platemap <- mutate(platemap,
-                       Row = as.numeric(match(toupper(substr(well, 1, 1)), LETTERS)),
-                       Column = as.numeric(substr(well, 2, 5)))
-    values <- as.data.frame(data)
-    scaled_data <- scale(values)
-    platemap <- cbind(platemap, scaled_data[,1])
-    names(platemap)[4] <- "scaled_data"
+    platemap <- plate_map_scale(data, well)
     platemap$hit <- NA
     
     # calculate whether values are beyond the threshold; defined as hit or null
     for (row in 1:nrow(platemap)){
-        if (scaled_data[row] > threshold){platemap$hit[row] <- "hit"
-        } else  if (scaled_data[row] < (-1 * threshold)){platemap$hit[row] <- "neg_hit"
+        if (platemap[row, 'values'] > threshold) {platemap$hit[row] <- "hit"
+        } else  if (platemap[row, 'values'] < (-1 * threshold)){platemap$hit[row] <- "neg_hit"
         } else {platemap$hit[row] <- "null"}
     }
     

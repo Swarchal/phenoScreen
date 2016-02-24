@@ -5,7 +5,7 @@
 \title{Plots multiple platemaps with heatmap of scaled values}
 \usage{
 z_grid(data, well, plate_id, ncols = 2, plate = 96, title = "",
-  palette = "Spectral")
+  palette = "Spectral", each = FALSE)
 }
 \arguments{
 \item{data}{Numerical values to be plotted}
@@ -21,6 +21,9 @@ z_grid(data, well, plate_id, ncols = 2, plate = 96, title = "",
 \item{title}{Title of plot}
 
 \item{palette}{RColorBrewer palette}
+
+\item{each}{boolean, if true scales each plate individually, if false will
+scale the pooled values of \code{data}}
 }
 \value{
 ggplot plot

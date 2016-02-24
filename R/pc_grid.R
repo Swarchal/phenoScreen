@@ -10,6 +10,7 @@
 #' @param plate Number of wells in complete plate (96 or 384)
 #' @param title Title of plot
 #' @param palette RColorBrewer palette
+#' @param ... additional arguments to be passed to z_grid
 #' 
 #' @return ggplot plot
 #'
@@ -46,7 +47,8 @@ pc_grid <- function(data, well,
                     ncols = 2,
                     plate = 96,
                     title = "",
-                    palette = "Spectral"){
+                    palette = "Spectral",
+                    ...){
   
   pca_data <- prcomp(data) # pca of data
   pc1 <- pca_data$x[, 1] # take first principal component
@@ -57,7 +59,8 @@ pc_grid <- function(data, well,
     ncols,
     plate,
     title,
-    palette)
+    palette,
+    ...)
 
   return(pc_grid)
 }

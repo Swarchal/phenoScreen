@@ -12,6 +12,8 @@
 #' @param threshold Threshold of +/- standard deviations form the average
 #'     to determine a hit
 #' @param title Title of plot
+#' @param each boolean, if true scales each plate individually, if false will
+#'     scale the pooled values of \code{data}
 #' @param palette RColorBrewer palette
 #' 
 #' @return ggplot plot
@@ -48,6 +50,7 @@ pchit_grid <- function(data, well,
                       ncols = 2,
                       plate = 96,
                       threshold = 2,
+                      each = FALSE,
                       title = "",
                       palette = "Spectral"){
   
@@ -60,7 +63,7 @@ pchit_grid <- function(data, well,
     plate_id = plate_id,
     ncols = ncols,
     plate = plate,
-    scale = "all",
+    each,
     threshold = threshold,
     title = title,
     palette = palette)

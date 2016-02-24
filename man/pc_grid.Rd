@@ -5,7 +5,7 @@
 \title{Plots multiple platemaps as a heatmap of the first principal component.}
 \usage{
 pc_grid(data, well, plate_id, ncols = 2, plate = 96, title = "",
-  palette = "Spectral")
+  palette = "Spectral", ...)
 }
 \arguments{
 \item{data}{Numerical values be transformed, scaled and plotted as a colour}
@@ -21,6 +21,8 @@ pc_grid(data, well, plate_id, ncols = 2, plate = 96, title = "",
 \item{title}{Title of plot}
 
 \item{palette}{RColorBrewer palette}
+
+\item{...}{additional arguments to be passed to z_grid}
 }
 \value{
 ggplot plot
