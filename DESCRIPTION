@@ -16,5 +16,5 @@ Imports:
     raster,
     RColorBrewer,
     MASS,
-    magrittrd
+    magrittr
 RoxygenNote: 5.0.1
