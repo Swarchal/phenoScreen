@@ -8,7 +8,7 @@ Maintainer: Scott Warchal <S.Warchal@sms.ed.ac.uk>
 Description: Collection of functions found useful in analysing phenotypic
     screening data, especially multivariate data from multi-well (96 and 384)
     plates.
-License: CCO
+License: MIT + file LICENSE
 Imports:
     dplyr,
     ggplot2,
