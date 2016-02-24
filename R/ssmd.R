@@ -10,7 +10,7 @@
 #' @param b Vector
 #' @param verbose if TRUE will return a description of effect size
 #' 
-#' @param SSMD and effect description if verbose is TRUE
+#' @return SSMD and effect description if verbose is TRUE
 #'
 #' @export
 #' 

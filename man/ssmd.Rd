@@ -12,8 +12,9 @@ ssmd(a, b, verbose = TRUE)
 \item{b}{Vector}
 
 \item{verbose}{if TRUE will return a description of effect size}
-
-\item{SSMD}{and effect description if verbose is TRUE}
+}
+\value{
+SSMD and effect description if verbose is TRUE
 }
 \description{
 SSMD is a measure of effect size, defined at the mean divided by the
