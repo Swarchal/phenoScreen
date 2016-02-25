@@ -1,7 +1,7 @@
 Package: phenoScreen
 Type: Package
 Title: Useful Functions For Multivariate Chemical Screening Assays
-Version: '0.3'
+Version: 0.3
 Date: 2015-11-22
 Author: Scott Warchal [aut, cre]
 Maintainer: Scott Warchal <S.Warchal@sms.ed.ac.uk>
