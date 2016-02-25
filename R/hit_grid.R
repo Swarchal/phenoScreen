@@ -83,7 +83,7 @@ hit_grid <- function(data, well,
           panel.margin.y = unit(0.5, "lines")) + # increase spacing between facets
           facet_wrap(~plate_label,
                      ncol = ncols,
-                     scales = free)
+                     scales = 'free')
       } else if (plate == 384){
       # produce a 384-well plate map layout in ggplot
       plt <- plt384(platemap) +
@@ -94,7 +94,7 @@ hit_grid <- function(data, well,
           panel.margin.y = unit(0.5, "lines")) + # increase spacing between facets
           facet_wrap(~plate_label,
                      ncol = ncols,
-                     scales = free)
+                     scales = 'free')
     } else stop("Not a valid plate format. Enter either 96 or 384.", call. = FALSE)
   
   return(plt)
