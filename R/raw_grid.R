@@ -10,7 +10,6 @@
 #' @param plate Number of wells in complete plate (96 or 384)
 #' @param title Title of plot
 #' @param palette RColorBrewer palette
-#' @param pretty viridis colour option (makes palette redundant)
 #' 
 #' @return ggplot plot
 #'
@@ -43,8 +42,7 @@ raw_grid <- function(data, well,
                      ncols = 2,
                      plate = 96,
                      title = "",
-                     palette = "YlGnBu",
-                     pretty = NULL){
+                     palette = "YlGnBu"){
   
   ## multiple platemap plots in a single figure using facet_wrap
 
