@@ -62,7 +62,7 @@ z_grid <- function(data, well,
                  ncol = ncols)
   } else if (plate == 384){
     plt <- plt384(platemap) +
-      scale_fill_gradient2("z-score", palette = palette) +
+      scale_fill_distiller("z-score", palette = palette) +
       ggtitle(title) +
       theme_bw() +
       theme(panel.margin.x = unit(1, "lines"), 
