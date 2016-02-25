@@ -59,7 +59,8 @@ z_grid <- function(data, well,
       theme(panel.margin.x = unit(1, "lines"), 
             panel.margin.y = unit(0.5, "lines")) + # increase spacing between facets
       facet_wrap(~plate_label,
-                 ncol = ncols)
+                 ncol = ncols,
+                 scales = 'free')
   } else if (plate == 384){
     plt <- plt384(platemap) +
       scale_fill_distiller("z-score", palette = palette) +
@@ -68,7 +69,8 @@ z_grid <- function(data, well,
       theme(panel.margin.x = unit(1, "lines"), 
             panel.margin.y = unit(1, "lines")) + # increase spacing between facets
       facet_wrap(~plate_label,
-                 ncol = ncols)
+                 ncol = ncols,
+                 scales = 'free')
   } else stop("Invalid argument for 'plate'. \nOptions: 96 or 384.",
             call. = FALSE)
 

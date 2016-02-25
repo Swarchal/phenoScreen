@@ -10,6 +10,7 @@
 #' @param plate Number of wells in complete plate (96 or 384)
 #' @param title Title of plot
 #' @param palette RColorBrewer palette
+#' @param pretty viridis colour option (makes palette redundant)
 #' 
 #' @return ggplot plot
 #'
@@ -42,7 +43,8 @@ raw_grid <- function(data, well,
                      ncols = 2,
                      plate = 96,
                      title = "",
-                     palette = "YlGnBu"){
+                     palette = "YlGnBu",
+                     pretty = NULL){
   
   ## multiple platemap plots in a single figure using facet_wrap
 
@@ -61,7 +63,8 @@ raw_grid <- function(data, well,
         theme(panel.margin.x = unit(1, "lines"), 
         panel.margin.y = unit(0.5, "lines")) + # increase spacing between facets
         facet_wrap(~plate_label,
-                   ncol = ncols)
+                   ncol = ncols,
+                   scales = 'free')
     }else if (plate == 384){
       # produce a plate map in ggplot (384-well format)
       plt <- plt384(platemap) +
@@ -71,7 +74,8 @@ raw_grid <- function(data, well,
         theme(panel.margin.x = unit(1, "lines"), 
         panel.margin.y = unit(0.5, "lines")) + # increase spacing between facets
         facet_wrap(~plate_label,
-                   ncol = ncols)
+                   ncol = ncols,
+                   scales = 'free')
   } else stop("Invalid argument for 'plate'. \nOption: 96 or 384.",
             call. = FALSE)
 
