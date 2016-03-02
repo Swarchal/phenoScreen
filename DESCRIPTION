@@ -16,5 +16,5 @@ Imports:
     raster,
     RColorBrewer,
     MASS,
-    magrittr
+    viridis
 RoxygenNote: 5.0.1
