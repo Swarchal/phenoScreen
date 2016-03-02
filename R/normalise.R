@@ -45,7 +45,7 @@ normalise <- function(df, plate_id, compound = "Metadata_compound", neg_compound
 #' @export
 
 scale_features <- function(df){
-    feature_data <- get_feature_data(df)
+    feature_data <- get_featuredata(df)
     apply(df[, feature_data], 2, scale)
 }
 
