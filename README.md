@@ -10,12 +10,27 @@ An R package for analysing and plotting multivariate screening data in 96 and 38
 
 To install with the devtools package:
 
-```coffee
+```r
 if (!require(devtools)) install.packages("devtools")
 devtools::install_github('Swarchal/phenoScreen')
 library(phenoScreen)
 ```
 
+### Demo
+
+```r
+# example data
+df <- data.frame(vals = rnorm(1:384),
+                 well = num_to_well(1:384, plate = 384))
+
+raw_map(data = df$vals,
+        well = df$well,
+        title = "Title of plot")
+```
+
+![example plate](/graphics/example_plate.png)
+
+
+------------
+
 Currently a work in progress, version no. `0.3`.
-
-
