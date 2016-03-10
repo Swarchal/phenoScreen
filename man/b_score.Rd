@@ -2,35 +2,29 @@
 % Please edit documentation in R/b_score.R
 \name{b_score}
 \alias{b_score}
-\title{Calculates a b-score smooth for individual microtitre plates}
+\title{2 way median polish}
 \usage{
-b_score(data, well, plate = 96, normalise = FALSE, matrix = FALSE)
+b_score(data, well, plate)
 }
 \arguments{
-\item{data}{Vector containing numerical values to normalise}
+\item{data}{numeric data, either a vector or dataframe column}
 
-\item{well}{Vector of well labels, i.e "A01"}
+\item{well}{alpha-numeric wellIDs. e.g 'A01'}
 
-\item{plate}{Integer indicating number of wells in the complete plate (96 or 384)}
-
-\item{normalise}{If true, will return a matrix of residuals subtracted from raw input values}
-
-\item{matrix}{If true, will return the values in the form of a matrix.
-If false, will return a dataframe of wellID and values}
-}
-\value{
-Normalised values
+\item{plate}{numeric, number of wells within a plate, either 96 or 384}
 }
 \description{
-Performs a two-way median smooth to normalise for row and column effects in
-microtitre plates. Normalises each to and column to have a median of zero.
-}
-\note{
-Need all the wells of the plate to be entered, empty wells should be listed as NA
+2 way median polish to remove plate effects such as row/column/edge effects.
+Given a dataframe containing alpha-numeric wellIDs and numerical values,
+this \code{b_score} will return a dataframe of the same structure after
+a two-way median smooth.
 }
 \examples{
 df <- data.frame(well = num_to_well(1:96),
-     val = rnorm(96))
-b_score(data = df$val, well = df$well)
+                 vals = rnorm(96))
+
+b_score(data = df$vals,
+        well = df$well,
+        plate = 96)
 }
 
