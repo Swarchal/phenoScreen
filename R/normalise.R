@@ -5,8 +5,8 @@
 #' @param x dataframe
 #' @export
 
-get_featuredata <- function(x){
-    setdiff(1:ncol(x), grep("Metadata_", colnames(x)))
+get_featuredata <- function(x, metadata_prefix = "Metadata"){
+    setdiff(1:ncol(x), grep(metadata_prefix, colnames(x)))
 }
 
 
