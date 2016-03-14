@@ -4,10 +4,12 @@
 \alias{get_featuredata}
 \title{Get featuredata columns}
 \usage{
-get_featuredata(x)
+get_featuredata(x, metadata_prefix = "Metadata")
 }
 \arguments{
 \item{x}{dataframe}
+
+\item{metadata_prefix}{pattern to match metadata columns}
 }
 \description{
 Identifies columns in a dataframe that are not labelled Metadata
