@@ -16,7 +16,7 @@ get_featuredata <- function(x, metadata_prefix = "Metadata"){
 #' This function will normalise multivariate data on a plate-by-plate basis
 #' by dividing each feature by the median of the negative control for
 #' that feature. Note: Assumes any metadata columns are prefixed with
-#' "Metadata_", and everything else is numerical featuredata
+#' \code{metadata_prefix} , and everything else is numerical featuredata
 #'
 #' @param df dataframe
 #' @param plate_id string, name of the column of plate names, name for each plate
