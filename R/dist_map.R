@@ -24,8 +24,7 @@ dist_map <- function(well, data, title = ""){
                   environment = localenv) +
         geom_density(alpha = 0.6,
                      fill = "gray80") + 
-        facet_grid(Row ~ Column) + 
-        xlab(colnames(data)[feature]) + 
+        facet_grid(Row ~ Column) +
         theme_bw() + 
         theme(axis.text.x=element_text(angle = -90, hjust = 0)) # rot. x-axis lab
     
