@@ -1,33 +1,30 @@
 #' Plots distributions per well in a plate layout
 #'
-#' Produces distribution plots facetted in a plate-layout format. Requires
-#' columns within a dataframe labelled 'row' and 'column' indicating the plate
-#' row and column, these can be produced with \code{num_to_well}.
+#' Produces distribution plots facetted in a plate-layout format.
 #'
-#' @param data Dataframe
-#' @param feature Numerical values indicating column index which contains the values
-#'    to produce the distribution.
-#' @param row Number indicating the row within a plate
-#' @param column Number inficating the column within a plate
+#' @param well vector of alphanumeric wellIDs e.g 'A01'
+#' @param data numeric vector
 #' @param title Title of the plot
 #'
 #' @import ggplot2
 #'
 #' @export
-#'
+
 #' @return ggplot plot
 
 
-dist_map <- function(data, feature, row, column, title = ""){
+dist_map <- function(well, data, title = ""){
     
     localenv <- environment()
     
-    plt <- ggplot(data = data,
-                  aes(x = data[,feature]),
+    platemap <- plate_map(data, well)
+
+    plt <- ggplot(data = platemap,
+                  aes(x = values),
                   environment = localenv) +
         geom_density(alpha = 0.6,
                      fill = "gray80") + 
-        facet_grid(row ~ column) + 
+        facet_grid(Row ~ Column) + 
         xlab(colnames(data)[feature]) + 
         theme_bw() + 
         theme(axis.text.x=element_text(angle = -90, hjust = 0)) # rot. x-axis lab

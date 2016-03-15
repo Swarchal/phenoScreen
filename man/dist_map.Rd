@@ -4,17 +4,12 @@
 \alias{dist_map}
 \title{Plots distributions per well in a plate layout}
 \usage{
-dist_map(data, feature, row, column, title = "")
+dist_map(well, data, title = "")
 }
 \arguments{
-\item{data}{Dataframe}
+\item{well}{vector of alphanumeric wellIDs e.g 'A01'}
 
-\item{feature}{Numerical values indicating column index which contains the values
-to produce the distribution.}
-
-\item{row}{Number indicating the row within a plate}
-
-\item{column}{Number inficating the column within a plate}
+\item{data}{numeric vector}
 
 \item{title}{Title of the plot}
 }
@@ -22,8 +17,6 @@ to produce the distribution.}
 ggplot plot
 }
 \description{
-Produces distribution plots facetted in a plate-layout format. Requires
-columns within a dataframe labelled 'row' and 'column' indicating the plate
-row and column, these can be produced with \code{num_to_well}.
+Produces distribution plots facetted in a plate-layout format.
 }
 

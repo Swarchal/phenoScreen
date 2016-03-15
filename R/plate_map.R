@@ -76,3 +76,21 @@ plate_map_grid_scale <- function(data, well, plate_id, each){
 	}
 	return(df)
 }
+
+
+
+#' row, column for multiple features
+#'
+#' Generates a dataframe for multiple features, given a wellID column and multiple
+#' features
+#'
+#' @param data vector or dataframe of numeric data
+#' @param well vector of alphanumeric well IDs e.g 'A01'
+plate_map_multiple <- function(data, well){
+    platemap <- as.data.frame(well)
+    platemap <- mutate(platemap,
+	Row = as.numeric(match(toupper(substr(well, 1, 1)), LETTERS)),
+	Column = as.numeric(substr(well, 2, 5)))
+    platemap_out <- data.frame(platemap, data)
+    return(platemap_out)
+}
