@@ -4,7 +4,7 @@
 \alias{ssmd}
 \title{Strictly standardised mean difference (SSMD)}
 \usage{
-ssmd(a, b, verbose = TRUE)
+ssmd(a, b, verbose = TRUE, ...)
 }
 \arguments{
 \item{a}{Vector}
@@ -12,6 +12,8 @@ ssmd(a, b, verbose = TRUE)
 \item{b}{Vector}
 
 \item{verbose}{if TRUE will return a description of effect size}
+
+\item{...}{additional arguments to be passed to mean() or var()}
 }
 \value{
 SSMD and effect description if verbose is TRUE
