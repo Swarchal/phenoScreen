@@ -9,7 +9,7 @@
 #' @param a Vector
 #' @param b Vector
 #' @param verbose if TRUE will return a description of effect size
-#' 
+#' @param ... additional arguments to be passed to mean() or var()
 #' @return SSMD and effect description if verbose is TRUE
 #'
 #' @export
@@ -21,7 +21,7 @@
 
 
 
-ssmd <- function (a, b, verbose = TRUE) 
+ssmd <- function (a, b, verbose = TRUE, ...) 
 {
     if (length(a) < 2 | length(b) < 2) {
         stop(call. = FALSE, "Inputs need to be greater at least 2 elements long")
@@ -30,10 +30,10 @@ ssmd <- function (a, b, verbose = TRUE)
         stop(call. = FALSE, "Input needs to be numeric.")
     }
     
-    mu_a <- mean(a, na.rm = TRUE)
-    mu_b <- mean(b, na.rm = TRUE)
-    var_a <- var(a, na.rm = TRUE)
-    var_b <- var(b, na.rm = TRUE)
+    mu_a <- mean(a, ...)
+    mu_b <- mean(b, ...)
+    var_a <- var(a, ...)
+    var_b <- var(b, ...)
     
     # if lengths are equal assume correlation and calculate covariance
     if (length(a) == length(b)) {
