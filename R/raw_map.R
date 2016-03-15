@@ -29,26 +29,26 @@ raw_map <- function(data, well,
                     title = "",
                     palette = "YlGnBu"){
   
-  if (!is.vector(data)){
-        stop("'data' has to be a single column or a vector")
+    if (!is.vector(data)){
+	stop("'data' has to be a single column or a vector")
     }
   
-  # transform well labels into row-column values
-  platemap <- plate_map(data, well)
+    # transform well labels into row-column values
+    platemap <- plate_map(data, well)
   
-  if (plate == 96){
-    plt <- plt96(platemap) +
-      scale_fill_distiller("values", palette = palette) +
-      ggtitle(title) +
-      theme_bw()
-  } else if (plate == 384){
-    plt <- plt384(platemap) +
-      scale_fill_distiller("values", palette = palette) +
-      ggtitle(title) +
-      theme_bw()
-  } else stop("Invalid argument for 'plate'. \nOption: 96 or 384",
-            call. = FALSE)
+    if (plate == 96){
+	plt <- plt96(platemap) +
+	scale_fill_distiller("values", palette = palette) +
+	ggtitle(title) +
+	theme_bw()
+    } else if (plate == 384){
+	plt <- plt384(platemap) +
+	scale_fill_distiller("values", palette = palette) +
+	ggtitle(title) +
+	theme_bw()
+    } else stop("Invalid argument for 'plate'. \nOption: 96 or 384",
+	call. = FALSE)
 
-  return(plt)
+    return(plt)
   
 }
