@@ -9,7 +9,7 @@ Description: Collection of functions found useful in analysing phenotypic
     screening data, especially multivariate data from multi-well (96 and 384)
     plates.
 License: MIT + file LICENSE
-Imports:
+Imports: 
     dplyr,
     ggplot2,
     plyr,
@@ -18,3 +18,4 @@ Imports:
     MASS,
     viridis
 RoxygenNote: 5.0.1
+Suggests: testthat
