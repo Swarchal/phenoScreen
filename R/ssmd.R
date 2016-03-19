@@ -49,30 +49,32 @@ ssmd <- function (a, b, verbose = TRUE, ...)
     }
     
     
-    if (verbose == TRUE) {
-        diff <- abs(beta)
-        if (diff == 0) 
-            message("No effect")
-        if (diff <= 0.25 & diff > 0) 
-            message("Extremely weak")
-        if (diff <= 0.5 & diff > 0.25) 
-            message("Very weak")
-        if (diff <= 0.75 & diff > 0.5) 
-            message("Weak")
-        if (diff <= 1 & diff > 0.75) 
-            message("Fairly weak")
-        if (diff <= 1.28 & diff > 1) 
-            message("Fairly moderate")
-        if (diff <= 1.654 & diff > 1.28) 
-            message("Moderate")
-        if (diff <= 2 & diff > 1.654) 
-            message("Fairly strong")
-        if (diff <= 3 & diff > 2) 
-            message("Strong")
-        if (diff <= 5 & diff > 3) 
-            message("Very strong")
-        if (diff > 5) 
-            message("Extremely strong (yay)")
-    }
+#     if (verbose == TRUE) {
+#         diff <- abs(beta)
+# 	if (is.na(diff)) {
+# 	    message("abs(diff) returned NA")}
+#         if (identical(diff, 0)) {
+# 	    message("No effect")}
+#         if (diff <= 0.25 & diff > 0) { 
+#            message("Extremely weak")}
+#         if (diff <= 0.5 & diff > 0.25 ){ 
+#             message("Very weak")}
+#         if (diff <= 0.75 & diff > 0.5) { 
+#             message("Weak")}
+#         if (diff <= 1 & diff > 0.75) {
+#             message("Fairly weak")}
+#         if (diff <= 1.28 & diff > 1) {
+#             message("Fairly moderate")}
+#         if (diff <= 1.654 & diff > 1.28) {
+#             message("Moderate")}
+#         if (diff <= 2 & diff > 1.654) {
+#             message("Fairly strong")}
+#         if (diff <= 3 & diff > 2) {
+#             message("Strong")}
+#         if (diff <= 5 & diff > 3) {
+#             message("Very strong")}
+#         if (diff > 5) {
+#             message("Extremely strong")}
+#     }
     return(beta)
 }
