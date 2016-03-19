@@ -18,18 +18,20 @@
 #' num_to_well(nums)
 
 num_to_well <- function(x, plate = 96){
-  
-  if (plate == 96L){
-    rows <- LETTERS[1:8]
-    columns <- 1:12
-  } else if (plate == 384L){
-    rows <- LETTERS[1:16]
-    columns <- 1:24 
-  } else stop("Plate needs to be 96 or 384")
-  
-  # columns then rows for normal row-wise counting  
-  combinations <-  expand.grid(columns, rows)
-  # but then have to reverse order to print in the normal way
-  out <- paste0(combinations[x, 2], combinations[x, 1]) 
-  return(out)
+    
+    stopifnot(is.numeric(x))
+
+    if (plate == 96L){
+      rows <- LETTERS[1:8]
+      columns <- 1:12
+    } else if (plate == 384L){
+      rows <- LETTERS[1:16]
+      columns <- 1:24 
+    } else stop("Plate needs to be 96 or 384")
+    
+    # columns then rows for normal row-wise counting  
+    combinations <-  expand.grid(columns, rows)
+    # but then have to reverse order to print in the normal way
+    out <- paste0(combinations[x, 2], combinations[x, 1]) 
+    return(out)
 }
