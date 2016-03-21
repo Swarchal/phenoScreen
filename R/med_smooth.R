@@ -37,7 +37,8 @@ if (plate == 96){
     
     # median polish of the data
     data_pol <- medpolish(mat_plate_map,
-                          na.rm = TRUE)
+                          na.rm = TRUE,
+                          trace.iter = FALSE)
     
     # transpose of residual matrix (as counts in column-wise fashion)
     # now well numbers correspond i.e t_out[12] = A12, t_out[13] = B01
