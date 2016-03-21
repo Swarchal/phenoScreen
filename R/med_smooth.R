@@ -16,7 +16,7 @@
 
 med_smooth <- function(platemap, plate){
 
-if (plate == 96){
+    if (plate == 96){
         # transform into 12*8 matrix (96-well plate)
         # fills matrix in a row-wise fashion i.e, A01, A02 ...
         mat_plate_map <- matrix(platemap$values,
@@ -61,4 +61,35 @@ if (plate == 96){
 
     return(df)
 
+}
+
+#' Two way-median smooth on a plate map
+#'
+#' Given a platemap produced by \code{plate_map}, this will perform
+#' a two way median smooth, and return the results of \code{medpolish}.
+#' Useful for row and column effects, as well as the raw residuals.
+#'
+#' @param platemap platemap produced by \code{plate_map}
+#' @param plate, integer either 96 or 384
+#' @export
+
+
+plate_effect <- function(platemap, plate){
+    if (plate == 96){
+	mat_plate_map <- matrix(platemap$values,
+				nrow = 8,
+				ncol = 12,
+				byrow = TRUE)
+    } else if (plate == 384){
+	mat_plate_map <- matrix(platemap$values,
+				nrow = 16,
+				ncol = 24,
+				byrow = TRUE)
+    } else stop("Not a plate format")
+
+    data_pol <- med_polish(mat_plate_map,
+			   na.rm = TRUE,
+			   trace.iter = FALSE)
+
+    return(data_pol)
 }
