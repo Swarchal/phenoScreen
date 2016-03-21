@@ -87,7 +87,7 @@ plate_effect <- function(platemap, plate){
 				byrow = TRUE)
     } else stop("Not a plate format")
 
-    data_pol <- med_polish(mat_plate_map,
+    data_pol <- medpolish(mat_plate_map,
 			   na.rm = TRUE,
 			   trace.iter = FALSE)
 
