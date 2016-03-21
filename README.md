@@ -1,4 +1,5 @@
 [![build_status](https://travis-ci.org/Swarchal/phenoScreen.svg?branch=master)](https://travis-ci.org/Swarchal/phenoScreen/)
+[![codecov.io](https://codecov.io/github/Swarchal/phenoScreen/coverage.svg?branch=master)](https://codecov.io/github/Swarchal/phenoScreen?branch=master)
 
 # phenoScreen
 
