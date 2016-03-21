@@ -41,7 +41,8 @@ test_that("plate_map returns expected values",{
 test_that("plate_map_scale returns expected values",{
     out_scale <- plate_map_scale(data = data_96$val,
 				 well = data_96$well)
-
+    expect_true(is.data.frame(out_scale))
+    expect_equal(names(out_scale), c("well", "Row", "Column", "values"))
     expect_equal(mean(out_scale$values), 0, tolerance = 1e-5)
 })
 
@@ -54,6 +55,7 @@ out_grid <- plate_map_grid(data = data_grid$val,
 			   plate_id = data_grid$plate_id)
 
 test_that("plate_map_grid returns column of plate ids",{
+    expect_true(is.data.frame(out_grid))
     expect_equal(names(out_grid),
 		 c("well", "Row", "Column", "values", "plate_label"))
 })
