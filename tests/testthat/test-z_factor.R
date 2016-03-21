@@ -11,6 +11,6 @@ test_that("z_factor returns a number",{
 })
 
 test_that("z_factor returns expected value",{
-    expect_true(z_factor(rnorm(1000, 1), rnorm(1000, 1) < 0))
+    expect_true(z_factor(rnorm(1000, 1), rnorm(1000, 1)) < 0)
     expect_true(out > 0.5)
 })
