@@ -32,6 +32,6 @@ num_to_well <- function(x, plate = 96){
     # columns then rows for normal row-wise counting  
     combinations <-  expand.grid(columns, rows)
     # but then have to reverse order to print in the normal way
-    out <- paste0(combinations[x, 2], combinations[x, 1]) 
+    out <- paste0(combinations[x, 2], formatC(combinations[x, 1], width = 2, flag = "0"))
     return(out)
 }

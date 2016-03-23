@@ -14,7 +14,7 @@ test_that("returns expected values",{
     expect_true(is.vector(p384))
     expect_equal(length(p96), 96L)
     expect_equal(length(p384), 384L)
-    expect_equal(p96[1], "A1")
+    expect_equal(p96[1], "A01")
     expect_equal(p96[length(p96)], "H12")
     expect_equal(p384[384], "P24")
 })
