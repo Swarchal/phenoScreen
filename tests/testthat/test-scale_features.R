@@ -9,7 +9,7 @@ df <- data.frame(Metadata_x = meta,
 out <- scale_features(df)
 
 test_that("scale_features returns a dataframe",{
-    expect_is(out, 'data.frame')
+    expect_is(out, 'matrix')
 })
 
 test_that("scale features returns correct dimensions",{
@@ -18,6 +18,6 @@ test_that("scale features returns correct dimensions",{
 })
 
 test_that("scales values",{
-   expect_equal(mean(out$v1), 0L, tolerance = 1e-3)
-   expect_equal(mean(out$v2), 0L, tolerance = 1e-3)
+   expect_equal(mean(out[,1]), 0L, tolerance = 1e-3)
+   expect_equal(mean(out[,2]), 0L, tolerance = 1e-3)
 })
