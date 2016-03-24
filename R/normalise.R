@@ -26,6 +26,32 @@ get_featuredata <- function(x, metadata_prefix = "Metadata"){
 #' @import dplyr
 #' @importFrom lazyeval interp
 #' @export
+#' @examples
+#' # example data
+#' N_PLATES <- 5
+#' wells <- rep(num_to_well(1:96), N_PLATES)
+#' plate_id <- rep(c("plate_1", "plate_2", "plate_3", "plate_4", "plate_5"),
+#' 		each = 96)
+#' val1 <- rnorm(96 * N_PLATES, 10, 10)
+#' val2 <- rnorm(96 * N_PLATES, 1, 100)
+#' comps <- c(rep("cmpd", 80), rep("DMSO", 16))
+#' compound <- rep(comps, N_PLATES)
+#' 
+#' df <- data.frame(Metadata_well = wells,
+#' 		 Metadata_plate_id = plate_id,
+#' 		 Metadata_compound = compound,
+#' 		 val1, val2)
+#' 
+#' df_out <- normalise(df,
+#' 		    plate_id = "Metadata_plate_id",
+#' 		    compound = "Metadata_compound",
+#' 		    neg_compound = "DMSO")
+#' 
+
+
+
+
+
 
 normalise <- function(df, plate_id, compound = "Metadata_compound", neg_compound = "DMSO"){
     stopifnot(is.data.frame(df))
