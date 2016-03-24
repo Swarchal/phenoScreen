@@ -21,9 +21,10 @@ get_featuredata <- function(x, metadata_prefix = "Metadata"){
 #' @param df dataframe
 #' @param plate_id string, name of the column of plate names, name for each plate
 #' @param compound string, name of column of compound names
-#' @param neg_compound, name of the negative control to normalise against
+#' @param neg_compound, string, name of the negative control to normalise against
 #'
 #' @import dplyr
+#' @importFrom lazyeval interp
 #' @export
 
 normalise <- function(df, plate_id, compound = "Metadata_compound", neg_compound = "DMSO"){
@@ -34,7 +35,8 @@ normalise <- function(df, plate_id, compound = "Metadata_compound", neg_compound
 
     out <- df %>%
 	group_by_(plate_id) %>%
-	mutate_each_(funs(./median(.[compound == neg_compound], na.rm = TRUE)), feature_data)
+	mutate_each(funs_(interp(~./median(.[x == neg_compound], na.rm = TRUE),
+			  x = as.name(compound))), feature_data)
 	return(out)
 }
 

@@ -14,7 +14,7 @@ normalise(df, plate_id, compound = "Metadata_compound",
 
 \item{compound}{string, name of column of compound names}
 
-\item{neg_compound, }{name of the negative control to normalise against}
+\item{neg_compound, }{string, name of the negative control to normalise against}
 }
 \description{
 This function will normalise multivariate data on a plate-by-plate basis
