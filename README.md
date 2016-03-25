@@ -24,7 +24,7 @@ df <- data.frame(vals = rnorm(1:384),
                  well = num_to_well(1:384, plate = 384))
 
 raw_map(data = df$vals,
-        well = df$well,
+	well = df$well,
 	plate = 384)
 ```
 
@@ -53,7 +53,6 @@ raw_map(data = df_partial$vals,
 	well = df_partial$well,
 	plate = 384) +
     ggtitle("Partial Plate")
-
 ```
 
 ![partial_plate](/graphics/partial_plate.png)
@@ -68,8 +67,8 @@ wells <- rep(num_to_well(1:96), 2)
 plate_id <- rep(c("plate_1", "plate_2"), each = 96)
 
 z_grid(data = vals, 
-       well = wells,
-       plate_id = plate_id) + 
+	well = wells,
+	plate_id = plate_id) + 
     ggtitle("Two very different plates")
 ```
 
@@ -79,9 +78,9 @@ When the difference in values between two plates is large, the colour scale can 
 
 ```r
 z_grid(data = vals,
-       well = wells,
-       plate_id = plate_id,
-       each = TRUE) + 
+	well = wells,
+	plate_id = plate_id,
+	each = TRUE) + 
     ggtitle("Plates scaled separately")
 ```
 
@@ -92,11 +91,11 @@ z_grid(data = vals,
 Edge effects can be removed with a median polish (or B-score), this can be performed on data while it's still in tabular form without converting to a matrix.
 ```r
 z_map(df_edge$vals,
-      df_edge$well,
-      plate = 384)  +
-  ggtitle("Plate with an edge effect") +
-  theme_dark() + 
-  viridis::scale_fill_viridis(option = "A")
+	df_edge$well,
+	plate = 384)  +
+    ggtitle("Plate with an edge effect") +
+    theme_dark() + 
+    viridis::scale_fill_viridis(option = "A")
 ```
 
 ![edge_plate](/graphics/edge_plate.png)
@@ -104,11 +103,11 @@ z_map(df_edge$vals,
 ```r
 
 b_map_test(df_edge$vals,
-	   df_edge$well,
-	   plate = 384) + 
-  ggtitle("Median polish to remove edge effect") +
-  theme_dark() + 
-  viridis::scale_fill_viridis(option = "A")
+	df_edge$well,
+	plate = 384) + 
+    ggtitle("Median polish to remove edge effect") +
+    theme_dark() + 
+    viridis::scale_fill_viridis(option = "A")
 ```
 
 ![edge_fixed](/graphics/edge_fixed.png)
