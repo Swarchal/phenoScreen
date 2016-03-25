@@ -99,7 +99,7 @@ z_map(df_edge$vals,
   viridis::scale_fill_viridis(option = "A")
 ```
 
-![edge_plate](/graphics/each_plate.png)
+![edge_plate](/graphics/edge_plate.png)
 
 ```r
 
