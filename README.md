@@ -102,7 +102,7 @@ z_map(df_edge$vals,
 
 ```r
 
-b_map_test(df_edge$vals,
+b_map(df_edge$vals,
 	df_edge$well,
 	plate = 384) + 
     ggtitle("Median polish to remove edge effect") +
