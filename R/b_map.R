@@ -67,6 +67,7 @@
     df <- med_smooth(platemap, plate)
     
     df$values <- scale(df$residual)
+    platemap <- plate_map(df$values, df$well)
     
     # produce a plate map in ggplot (96-well format)
     if (plate == 96){
