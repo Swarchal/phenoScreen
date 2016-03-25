@@ -36,7 +36,7 @@ The plots can be treated like any ggplot object and chained with additional func
 raw_map(data = df$well,
 	well = df$well,
 	plate = 384) +
-    ggtitle("Platemap Title") + 
+    ggtitle("Platemap") + 
     theme_dark() + 
     scale_fill_viridis()
 ```
