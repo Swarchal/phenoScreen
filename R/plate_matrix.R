@@ -5,6 +5,7 @@
 #'
 #' @param data vector of data to be placed in matrix
 #' @param well vector of alphanumeric well IDs. e.g ("A01")
+#' @param plate number of wells in plate (96 or 384)
 #' 
 #' @return matrix
 #' 
