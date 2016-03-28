@@ -10,6 +10,8 @@ plate_matrix(data, well, plate = 96)
 \item{data}{vector of data to be placed in matrix}
 
 \item{well}{vector of alphanumeric well IDs. e.g ("A01")}
+
+\item{plate}{number of wells in plate (96 or 384)}
 }
 \value{
 matrix
