@@ -1,27 +1,37 @@
 context("plate_matix")
 
 # example data
-x <- 1:384
-wells <- num_to_well(1:384, plate = 384)
-out <- plate_matrix(data = x, well = wells, plate = 384)
+x384 <- 1:384
+wells384 <- num_to_well(1:384, plate = 384)
+out384 <- plate_matrix(data = x384, well = wells384, plate = 384)
+
+x96 <- 1:96
+wells96 <- num_to_well(1:96)
+out96 <- plate_matrix(data = x96, well = wells96)
 
 test_that("returns error when expected",{
-    expect_error(plate_matrix(data = x,
-			      well = wells,
+    expect_error(plate_matrix(data = x384,
+			      well = wells384,
 			      plate = 1)
     )
 })
 
 test_that("returns a matrix",{
-    expect_is(out, 'matrix')
+    expect_is(out384, 'matrix')
+    expect_is(out96, 'matrix')
 })
 
 test_that("returns correct size matrix",{
-    expect_equal(prod(dim(out)), 384L)
-    expect_equal(ncol(out), 24L)
-    expect_equal(nrow(out), 16L)
+    expect_equal(prod(dim(out384)), 384L)
+    expect_equal(ncol(out384), 24L)
+    expect_equal(nrow(out384), 16L)
+
+    expect_equal(prod(dim(out96)), 96L)
+    expect_equal(ncol(out96), 12L)
+    expect_equal(nrow(out96), 8L)
 })
 
 test_that("returns expected values",{
-    expect_equal(matrix(1:384, ncol = 24, nrow = 16, byrow = TRUE), out)
+    expect_equal(matrix(1:384, ncol = 24, nrow = 16, byrow = TRUE), out384)
+    expect_equal(matrix(1:96, ncol = 12, nrow = 8, byrow = TRUE), out96)
 })
