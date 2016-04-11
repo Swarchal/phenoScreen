@@ -30,3 +30,31 @@ test_that("returns a dataframe",{
     expect_equal(nrow(df_out), N_PLATES * 96)
 })
 
+df_out_sub <- normalise(df,
+			plate_id = "Metadata_plate_id",
+			compound = "Metadata_compound",
+			neg_compound = "DMSO",
+			method = "subtract")
+
+test_that("subtract returns a dataframe",{
+    expect_is(df_out_sub, "data.frame")
+})
+
+print(df_out)
+print(df_out_sub)
+
+
+
+test_that("divide and subtract return different answers",{
+    expect_true(any(df_out_sub != df_out))
+})
+
+test_that("returns error for incorrect method",{
+    expect_error(
+		 normalise(df,
+			   plate_id = "Metadata_plate_id",
+			   compound = "Metadata_compound",
+			   neg_compound = "DMSO",
+			   method = "not_valid_method")
+		 )
+})

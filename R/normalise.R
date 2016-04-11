@@ -22,7 +22,8 @@ get_featuredata <- function(x, metadata_prefix = "Metadata"){
 #' @param plate_id string, name of the column of plate names, name for each plate
 #' @param compound string, name of column of compound names
 #' @param neg_compound, string, name of the negative control to normalise against
-#'
+#' @param method string, How to normalise the data. Options are divide or
+#'	subtract. e.g subtract DMSO median from values, or divide by DMSO values.
 #' @import dplyr
 #' @importFrom lazyeval interp
 #' @export
@@ -49,19 +50,25 @@ get_featuredata <- function(x, metadata_prefix = "Metadata"){
 #' 
 
 
-
-
-
-
-normalise <- function(df, plate_id, compound = "Metadata_compound", neg_compound = "DMSO"){
+normalise <- function(df, plate_id, compound = "Metadata_compound", neg_compound = "DMSO",
+		      method = "divide"){
     stopifnot(is.data.frame(df))
     
+    if (method == "divide"){
+	`%op%` <- `/`
+    } else if (method == "subtract"){
+	`%op%` <- `-`
+    } else{
+	stop("Not a valid method. Options: divide or subtract",
+	     call. = FALSE)
+    }
+
     # identify feature data columns
     feature_data <- get_featuredata(df)
 
     out <- df %>%
 	group_by_(plate_id) %>%
-	mutate_each(funs_(interp(~./median(.[x == neg_compound], na.rm = TRUE),
+	mutate_each(funs_(interp(~. %op% median(.[x == neg_compound], na.rm = TRUE),
 			  x = as.name(compound))), feature_data)
 	return(out)
 }

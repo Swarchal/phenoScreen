@@ -5,7 +5,7 @@
 \title{Normalise per plate against negative control}
 \usage{
 normalise(df, plate_id, compound = "Metadata_compound",
-  neg_compound = "DMSO")
+  neg_compound = "DMSO", method = "divide")
 }
 \arguments{
 \item{df}{dataframe}
@@ -15,6 +15,9 @@ normalise(df, plate_id, compound = "Metadata_compound",
 \item{compound}{string, name of column of compound names}
 
 \item{neg_compound, }{string, name of the negative control to normalise against}
+
+\item{method}{string, How to normalise the data. Options are divide or
+subtract. e.g subtract DMSO median from values, or divide by DMSO values.}
 }
 \description{
 This function will normalise multivariate data on a plate-by-plate basis
