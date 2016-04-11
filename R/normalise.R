@@ -69,7 +69,8 @@ normalise <- function(df, plate_id, compound = "Metadata_compound", neg_compound
     out <- df %>%
 	group_by_(plate_id) %>%
 	mutate_each(funs_(interp(~. %op% median(.[x == neg_compound], na.rm = TRUE),
-			  x = as.name(compound))), feature_data)
+			  x = as.name(compound))), feature_data) %>%
+	ungroup()
 	return(out)
 }
 
