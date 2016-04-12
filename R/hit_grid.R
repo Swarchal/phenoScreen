@@ -10,7 +10,7 @@
 #' @param threshold Numerical value of standard deviations from the mean
 #'  for a well to be classified as a 'hit'. Default it +/- 2 SD
 #' @param ncols Number of columns in the grid of plates
-#' @param plate Number of wells in the complete plates (96 or 384)
+#' @param plate Number of wells in the complete plates (96, 384 or 1536)
 #' @param title Title of the plot
 #' @param each boolean, if true scales each plate individually, if false will
 #'     scale the pooled values of \code{data}
@@ -73,7 +73,7 @@ hit_grid <- function(data, well,
     my_colours <- c(hit = my_cols[1], neg_hit = my_cols[3], null = my_cols[2])
     
     
-    if (plate == 96){
+    if (plate == 96L){
       # produce a 96-well plate map layout in ggplot
       plt <- plt96(platemap) +
           ggtitle(title) + 
@@ -84,7 +84,7 @@ hit_grid <- function(data, well,
           facet_wrap(~plate_label,
                      ncol = ncols,
                      scales = 'free')
-      } else if (plate == 384){
+      } else if (plate == 384L){
       # produce a 384-well plate map layout in ggplot
       plt <- plt384(platemap) +
           ggtitle(title) +
@@ -95,7 +95,17 @@ hit_grid <- function(data, well,
           facet_wrap(~plate_label,
                      ncol = ncols,
                      scales = 'free')
-    } else stop("Not a valid plate format. Enter either 96 or 384.", call. = FALSE)
+    } else if (plate == 1536L){
+	plt <- plt1536(platemap) + 
+	    ggtitle(title) +
+	    scale_fill_manual("hit", values = my_colours) + 
+	    theme_bw() +
+	    theme(panel.margin.x = unit(1, "lines"),
+	    panel.margin.y = unit(0.5, "lines")) # increase spacing between facets
+	    facet_wrap(~plate_label,
+			ncol = ncols,
+			scales = "free")
+    } else stop("Not a valid plate format. Enter either 96, 384 or 1536.", call. = FALSE)
   
   return(plt)
 }

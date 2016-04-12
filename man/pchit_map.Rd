@@ -12,7 +12,7 @@ pchit_map(data, well, plate = 96, threshold = 2, title = "",
 
 \item{well}{Vector of well identifers e.g "A01"}
 
-\item{plate}{Number of wells in complete plate (96 or 384)}
+\item{plate}{Number of wells in complete plate (96, 384 or 1536)}
 
 \item{threshold}{Threshold of +/- standard deviations form the average
 to determine a hit}

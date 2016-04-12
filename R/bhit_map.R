@@ -7,7 +7,7 @@
 #'
 #' @param data Vector of numerical values
 #' @param well Vector of well identifiers, e.g "A01"
-#' @param plate Number of wells in whole plate (96 or 384)
+#' @param plate Number of wells in whole plate (96, 384 or 1536)
 #' @param threshold Standard deviations from the plate average to indicate a hit.
 #'      default is set to +/- 2 SD.
 #' @param title plot title
@@ -52,22 +52,27 @@ bhit_map <- function(data, well,
         warning("Invalid plate selection. The data given has more rows then number of wells. \nAre you sure argument 'plate' is correct for the number of wells in your data? \nnote: Default is a 96-well plate.",
                 call. = FALSE)
     }
-    if (plate == 96){
+    if (plate == 96L){
         # transform into 12*8 matrix (96-well plate)
         # fills matrix in a row-wise fashion i.e, A01, A02 ...
         mat_plate_map <- matrix(data,
                                 nrow = 8,
                                 ncol = 12,
                                 byrow = TRUE)
-    } else if (plate == 384){
+    } else if (plate == 384L){
         # transform into 24*16 matrix (384-well plate)
         # fills matrix in a row-wise fashion, i.e A01, A02 ...
         mat_plate_map <- matrix(data,
                                 nrow = 16,
                                 ncol = 24,
                                 byrow = TRUE)
+    } else if (plate == 1536L){
+	mat_plate_map <- matrix(data,
+				nrow = 32,
+				ncol = 24,
+				byrow = TRUE)
     } else{
-        stop("Not a plate format. \nArgument 'plate' should be 96 or 384.",
+        stop("Not a plate format. \nArgument 'plate' should be 96, 384 or 1536.",
              call. = FALSE)
     }
     
@@ -125,6 +130,11 @@ bhit_map <- function(data, well,
             ggtitle(title) +
             scale_fill_manual("hit", values = my_colours) + 
             theme_bw()
+    } else if (plate == 1536L){
+	plt <- plt1536(platemap) + 
+	    ggtitle(title) +
+	    scale_fill_manual("hit", values = my_colours) +
+	    theme_bw()
     } else stop("Not a valid plate format. Either 96 or 384.", call. = FALSE)
 
     if (length(well) > plate) {

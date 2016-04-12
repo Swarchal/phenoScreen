@@ -7,7 +7,7 @@
 #' @param well Vector of well identifiers e.g "A01"
 #' @param plate_id Vector of plate labels or identifiers e.g "plate_1"
 #' @param ncols Number of columns to plot multiple platemaps
-#' @param plate Number of wells in complete plate (96 or 384)
+#' @param plate Number of wells in complete plate (96, 384 or 1536)
 #' @param title Title of plot
 #' @param palette RColorBrewer palette
 #' @param ... additional arguments to be passed to z_grid
@@ -50,17 +50,17 @@ pc_grid <- function(data, well,
                     palette = "Spectral",
                     ...){
   
-  pca_data <- prcomp(data) # pca of data
-  pc1 <- pca_data$x[, 1] # take first principal component
-  
-  pc_grid <- z_grid(pc1,
-    well,
-    plate_id,
-    ncols,
-    plate,
-    title,
-    palette,
-    ...)
+      pca_data <- prcomp(data) # pca of data
+      pc1 <- pca_data$x[, 1] # take first principal component
+      
+      pc_grid <- z_grid(pc1,
+			well,
+			plate_id,
+			ncols,
+			plate,
+			title,
+			palette,
+			...)
 
-  return(pc_grid)
+      return(pc_grid)
 }

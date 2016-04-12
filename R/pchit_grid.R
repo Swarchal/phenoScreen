@@ -8,7 +8,7 @@
 #' @param well Vector of well identifers e.g "A01"
 #' @param plate_id Vector of plate identifiers e.g "Plate_1"
 #' @param ncols Number of columns to display multiple plates
-#' @param plate Number of wells in complete plate (96 or 384)
+#' @param plate Number of wells in complete plate (96, 384 or 1536)
 #' @param threshold Threshold of +/- standard deviations form the average
 #'     to determine a hit
 #' @param title Title of plot
@@ -54,20 +54,20 @@ pchit_grid <- function(data, well,
                       title = "",
                       palette = "Spectral"){
   
-  pca_data <- prcomp(data) # pca of data
-  pc1 <- pca_data$x[,1] # take first principal component
+    pca_data <- prcomp(data) # pca of data
+    pc1 <- pca_data$x[,1] # take first principal component
   
-  pc_hit_grid <- hit_grid(
-    pc1,
-    well = well,
-    plate_id = plate_id,
-    ncols = ncols,
-    plate = plate,
-    each,
-    threshold = threshold,
-    title = title,
-    palette = palette)
+    pc_hit_grid <- hit_grid(
+	pc1,
+	well = well,
+	plate_id = plate_id,
+	ncols = ncols,
+	plate = plate,
+	each,
+	threshold = threshold,
+	title = title,
+	palette = palette)
 
-  return(pc_hit_grid)
+    return(pc_hit_grid)
   
 }

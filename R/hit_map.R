@@ -5,7 +5,7 @@
 #' 
 #' @param data Vector of numerical values to score
 #' @param well Vector of well identifiers e.g "A01"
-#' @param plate Number of wells in complete plate (96 or 384)
+#' @param plate Number of wells in complete plate (96, 384 or 1536)
 #' @param threshold Numerical value of standard deviations from the mean
 #'   for a well to be classified as a 'hit'. Default it +/- 2 SD
 #' @param title Title of the plot
@@ -59,19 +59,24 @@ hit_map <- function(data, well,
     platemap$actual_vales <- platemap$values
     platemap$values <- platemap$hit
     
-    if (plate == 96){
+    if (plate == 96L){
         # produce a 96-well plate map layout in ggplot
         plt <- plt96(platemap) +
             ggtitle(title) + 
             scale_fill_manual("hit", values = my_colours) + 
             theme_bw()
-    } else if (plate == 384){
+    } else if (plate == 384L){
         # produce a 384-well plate map layout in ggplot
         plt <- plt384(platemap) +
             ggtitle(title) +
             scale_fill_manual("hit", values = my_colours) + 
             theme_bw()
-    } else stop("Not a valid plate format. Either 96 or 384.", call. = FALSE)
+    } else if (plate == 1536L){
+	plt <- plt1536(platemap) + 
+	    ggtitle(title) + 
+	    scale_fill_manual("hit", values = my_colours) + 
+	    theme_bw()
+    } else stop("Not a valid plate format. Either 96, 384 or 1536.", call. = FALSE)
 
     if (length(well) > plate) {
         stop("Invalid plate selection. The data given has more rows than the number of wells. \nAre you sure argument 'plate' is correct for the number of wells in your data? \nnote: Default is set to a 96-well plate.")

@@ -19,7 +19,7 @@ for a well to be classified as a 'hit'. Default it +/- 2 SD}
 
 \item{ncols}{Number of columns in the grid of plates}
 
-\item{plate}{Number of wells in the complete plates (96 or 384)}
+\item{plate}{Number of wells in the complete plates (96, 384 or 1536)}
 
 \item{title}{Title of the plot}
 

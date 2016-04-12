@@ -11,7 +11,7 @@ raw_map(data, well, plate = 96, title = "", palette = "YlGnBu")
 
 \item{well}{Vector of well identifiers e.g "A01"}
 
-\item{plate}{Number of wells in complete plate (96 or 384)}
+\item{plate}{Number of wells in complete plate (96, 384 or 1536)}
 
 \item{title}{Title of plot}
 

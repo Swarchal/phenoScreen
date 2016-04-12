@@ -7,7 +7,7 @@
 #' @param well Vector of well identifiers e.g "A01"
 #' @param plate_id Vector of plate identifiers e.g "Plate_1"
 #' @param ncols Number of columns to display multiple heatmaps
-#' @param plate Number of wells in complete plate (96 or 384)
+#' @param plate Number of wells in complete plate (96, 384 or 1536)
 #' @param title Title of plot
 #' @param palette RColorBrewer palette
 #' 
@@ -44,39 +44,52 @@ raw_grid <- function(data, well,
                      title = "",
                      palette = "YlGnBu"){
   
-  ## multiple platemap plots in a single figure using facet_wrap
+    ## multiple platemap plots in a single figure using facet_wrap
 
-  stopifnot(is.vector(data))
+    stopifnot(is.vector(data))
 
-  # transform well labels into row-column values for a 96-well plate
-  # need to include plate_id labels into this dataframe
-  platemap <- plate_map_grid(data, well, plate_id)
+    # transform well labels into row-column values for a 96-well plate
+    # need to include plate_id labels into this dataframe
+    platemap <- plate_map_grid(data, well, plate_id)
   
-  if (plate == 96) {
-      # produce a plate map in ggplot (96-well format)
-      plt<- plt96(platemap) +
-        scale_fill_distiller("values", palette = palette) +
-        ggtitle(title) +
-        theme_bw() + 
-        theme(panel.margin.x = unit(1, "lines"), 
-        panel.margin.y = unit(0.5, "lines")) + # increase spacing between facets
-        facet_wrap(~plate_label,
-                   ncol = ncols,
-                   scales = 'free')
-    }else if (plate == 384){
-      # produce a plate map in ggplot (384-well format)
-      plt <- plt384(platemap) +
-        scale_fill_distiller("values", palette = palette) +
-        ggtitle(title) +
-        theme_bw() +
-        theme(panel.margin.x = unit(1, "lines"), 
-        panel.margin.y = unit(0.5, "lines")) + # increase spacing between facets
-        facet_wrap(~plate_label,
-                   ncol = ncols,
-                   scales = 'free')
-  } else stop("Invalid argument for 'plate'. \nOption: 96 or 384.",
+    if (plate == 96) {
+	# produce a plate map in ggplot (96-well format)
+	plt<- plt96(platemap) +
+	    scale_fill_distiller("values", palette = palette) +
+	    ggtitle(title) +
+	    theme_bw() + 
+	    theme(panel.margin.x = unit(1, "lines"), 
+	    panel.margin.y = unit(0.5, "lines")) + # increase spacing between facets
+	    facet_wrap(~plate_label,
+			ncol = ncols,
+			scales = 'free')
+
+    } else if (plate == 384L){
+	# produce a plate map in ggplot (384-well format)
+	plt <- plt384(platemap) +
+	    scale_fill_distiller("values", palette = palette) +
+	    ggtitle(title) +
+	    theme_bw() +
+	    theme(panel.margin.x = unit(1, "lines"), 
+	    panel.margin.y = unit(0.5, "lines")) + # increase spacing between facets
+	    facet_wrap(~plate_label,
+			ncol = ncols,
+			scales = 'free')
+	
+    } else if (plate == 1536L){
+	plt <- plt1536(platemap) +
+	    scale_fill_distiller("values", palette = palette) +
+	    ggtitle(title) +
+	    theme_bw() +
+	    theme(panel.margin.x = unit(1, "lines"), 
+	    panel.margin.y = unit(0.5, "lines")) + # increase spacing between facets
+	    facet_wrap(~plate_label,
+			ncol = ncols,
+			scales = 'free')
+	
+    } else stop("Invalid argument for 'plate'. \nOption: 96 or 384.",
             call. = FALSE)
 
-  return(plt)
+    return(plt)
   
 }

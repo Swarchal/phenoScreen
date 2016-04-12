@@ -16,7 +16,7 @@ pchit_grid(data, well, plate_id, ncols = 2, plate = 96, threshold = 2,
 
 \item{ncols}{Number of columns to display multiple plates}
 
-\item{plate}{Number of wells in complete plate (96 or 384)}
+\item{plate}{Number of wells in complete plate (96, 384 or 1536)}
 
 \item{threshold}{Threshold of +/- standard deviations form the average
 to determine a hit}

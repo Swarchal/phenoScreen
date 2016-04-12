@@ -16,7 +16,7 @@ raw_grid(data, well, plate_id, ncols = 2, plate = 96, title = "",
 
 \item{ncols}{Number of columns to display multiple heatmaps}
 
-\item{plate}{Number of wells in complete plate (96 or 384)}
+\item{plate}{Number of wells in complete plate (96, 384 or 1536)}
 
 \item{title}{Title of plot}
 

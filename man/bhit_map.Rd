@@ -12,7 +12,7 @@ bhit_map(data, well, plate = 96, threshold = 2, title = "",
 
 \item{well}{Vector of well identifiers, e.g "A01"}
 
-\item{plate}{Number of wells in whole plate (96 or 384)}
+\item{plate}{Number of wells in whole plate (96, 384 or 1536)}
 
 \item{threshold}{Standard deviations from the plate average to indicate a hit.
 default is set to +/- 2 SD.}

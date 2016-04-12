@@ -6,7 +6,7 @@
 #' 
 #' @param data Numerical values, either a dataframe or a matrix
 #' @param well Vector of well identifers e.g "A01"
-#' @param plate Number of wells in complete plate (96 or 384)
+#' @param plate Number of wells in complete plate (96, 384 or 1536)
 #' @param threshold Threshold of +/- standard deviations form the average
 #'     to determine a hit
 #' @param title Title of plot

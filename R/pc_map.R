@@ -7,7 +7,7 @@
 #' 
 #' @param data Vector of numerical data to calculate the first principal component
 #' @param well Vector of well identifiers e.g "A01"
-#' @param plate Number of wells in complete plate (96 or 384)
+#' @param plate Number of wells in complete plate (96, 384 or 1536)
 #' @param title Title of plot
 #' @param palette RColourBrewer palette
 #' 

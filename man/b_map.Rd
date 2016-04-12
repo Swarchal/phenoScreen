@@ -14,7 +14,7 @@ b_map(data, well, normalise = FALSE, plate = 96, title = "",
 
 \item{normalise}{Not currently used}
 
-\item{plate}{Plate format, either 96 or 384}
+\item{plate}{integer, 96, 384 or 1536}
 
 \item{title}{Title of the plot}
 
@@ -26,7 +26,7 @@ ggplot plot
 \description{
 Transforms numerical values using the b-score normalisation process to account
 for row and column effects. Uses well labels to plot the normalised values in
-the form of a microtitre plate. Works for either 96 or 384 well plates
+the form of a microtitre plate. Works for 96, 384 or 1536 well plates
 }
 \examples{
 df <- data.frame(well = num_to_well(1:96),

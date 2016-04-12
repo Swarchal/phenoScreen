@@ -2,11 +2,11 @@
 #'
 #' Transforms numerical values using the b-score normalisation process to account
 #' for row and column effects. Uses well labels to plot the normalised values in
-#' the form of a microtitre plate. Works for either 96 or 384 well plates
+#' the form of a microtitre plate. Works for 96, 384 or 1536 well plates
 #'
 #' @param data Numerical values in the form of a vector to be normalised
 #' @param well Vector of well identifiers, e.g "A01"
-#' @param plate Plate format, either 96 or 384
+#' @param plate integer, 96, 384 or 1536
 #' @param normalise Not currently used
 #' @param title Title of the plot
 #' @param palette RColorBrewer palette
@@ -70,18 +70,23 @@
     platemap <- plate_map(df$values, df$well)
     
     # produce a plate map in ggplot (96-well format)
-    if (plate == 96){
+    if (plate == 96L){
         plt <- plt96(platemap) +
             scale_fill_distiller("z-score", palette = palette) +
             ggtitle(title)+
             theme_bw()
-    } else if (plate == 384){
+    } else if (plate == 384L){
         # produce a plate map in ggplot (384-well format)
         plt <- plt384(platemap) +
             scale_fill_distiller("z-score", palette = palette) +
             ggtitle(title) +
             theme_bw()
-        } else stop("Not a valid plate format. Enter either 96 or 384.", call. = FALSE)
+    } else if (plate == 1536L){
+	plt <- plt1536(platemap) + 
+	    scale_fill_distiller("z-score", palette = palette) + 
+	    ggtitle(title) +
+	    theme_bw()
+    } else stop("Not a valid plate format. Enter either 96, 384 or 1536.", call. = FALSE)
     
     if (length(well) > plate) {
         stop("Invalid plate selection. The data given has more rows than number of wells. \nAre you sure argument 'plate' is correct for the number of wells in your data? \nnote: Default is set to a 96-well plate.",
