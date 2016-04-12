@@ -11,7 +11,7 @@ fill_plate(df, well, plate = 96)
 
 \item{well}{Column containing well identifiers i.e "A01"}
 
-\item{plate}{Number of wells in complete plate (96 or 384)}
+\item{plate}{Number of wells in complete plate (96, 384 or 1536)}
 }
 \value{
 dataframe

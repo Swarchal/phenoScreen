@@ -4,7 +4,7 @@
 #' that require a complete plate such as `b_score`.
 #' 
 #' @param df dataframe
-#' @param plate Number of wells in complete plate (96 or 384)
+#' @param plate Number of wells in complete plate (96, 384 or 1536)
 #' @param well Column containing well identifiers i.e "A01"
 #' 
 #' @importFrom plyr rbind.fill
@@ -37,9 +37,9 @@ fill_plate <- function(df, well, plate = 96){
     }
     
     # check plate is a valid plate format
-    accepted_plates <- c(96, 384)
+    accepted_plates <- c(96L, 384L, 1536L)
     if (plate %in% accepted_plates == FALSE){
-        stop("'plate' needs to be either 96 or 384", call. = FALSE)
+        stop("'plate' needs to be either 96, 384 or 1536", call. = FALSE)
     }
     
     # check that well is a column in df

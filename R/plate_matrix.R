@@ -33,8 +33,10 @@ plate_matrix <- function(data, well, plate = 96){
         mat <- matrix(NA, nrow = 8, ncol = 12)
     } else if (plate == 384L){
         mat <- matrix(NA, nrow = 16, ncol = 24)
+    } else if (plate == 1536L){
+	mat <- matrix(NA, nrow = 32, ncol = 48)
     } else {
-        stop("incorrect plate size -- 96 or 384 only")
+        stop("incorrect plate size -- 96, 384 or 1536 only")
     }
     
     # fill mat with values (header) from Row and Column index

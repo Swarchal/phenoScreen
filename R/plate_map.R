@@ -1,3 +1,14 @@
+#' internal 1536 plate function for plate_map
+#'
+#' @param well vector of alphanumeric well labels
+#' @return boolean
+
+is_1536 <- function(well){
+    # check if contains double character well labels
+    any(nchar(as.character(well)) == 4)
+}
+
+
 #' creates dataframe of row,column,data from wellID and data
 #' 
 #' internal function
@@ -9,16 +20,34 @@
 
 plate_map <- function(data, well){
 	
-	platemap <- as.data.frame(well)
-	names(platemap)[1] <- "well"
+    platemap <- as.data.frame(well)
+    names(platemap)[1] <- "well"
+
+    # if not a 1536 well plate, we can just convert well labels to numbers
+    if (!is_1536(well)){
 	platemap <- mutate(platemap,
 		Row = as.numeric(match(toupper(substr(well, 1,1)), LETTERS)),
 		Column = as.numeric(substr(well, 2, 5)))
+    } else {
+	# if a 1536 plate cannot convert the well labels directly to row and column
+	# values as we have double well ID's, i.e 'AA' isn't a number
+	Row <- as.numeric(match(toupper(substr(well, 1, 1)), LETTERS))
+	add_to_row <- ifelse(nchar(as.character(well)) == 4, 26, 0)
+	Row <- Row + add_to_row
 
-	platemap['values'] <- data
+	platemap <- mutate(platemap,
+	    Row = Row,
+	    Column = as.numeric(substr(well, nchar(as.character(well)) - 1, 5)))
 
-	return(platemap)
+    }
+    platemap['values'] <- data
+
+    return(platemap)
 }
+
+
+
+
 
 
 #' creates dataframe of row, column, and scaled data from well IDs

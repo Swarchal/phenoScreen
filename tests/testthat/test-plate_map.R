@@ -9,6 +9,11 @@ data_384 <- data.frame(well = num_to_well(1:384, plate = 384),
 out_96 <- plate_map(data = data_96$val, well = data_96$well)
 out_384 <- plate_map(data = data_384$val, well = data_384$well)
 
+data_1536 <- data.frame(well = num_to_well(1:1536, plate = 1536),
+                        val = rnorm(1536, 100))
+
+out_1536 <- plate_map(data = data_1536$val, well = data_1536$well)
+
 test_that("plate_map returns a dataframe",{
     expect_true(is.data.frame(out_96))
     expect_equal(nrow(out_96), 96L)
@@ -17,17 +22,23 @@ test_that("plate_map returns a dataframe",{
     expect_true(is.data.frame(out_384))
     expect_equal(nrow(out_384), 384L)
     expect_equal(ncol(out_384), 4L)
+    
+    expect_true(is.data.frame(out_1536))
+    expect_equal(nrow(out_1536), 1536L)
+    expect_equal(ncol(out_1536), 4L)
 })
 
 test_that("plate_map returns expected columns",{
     expect_equal(names(out_96), c("well", "Row", "Column", "values"))
     expect_equal(names(out_384), c("well", "Row", "Column", "values"))
+    expect_equal(names(out_1536), c("well", "Row", "Column", "values"))
 })
 
 test_that("plate_map returns expected values",{
     expect_equal(as.character(out_96$well), num_to_well(1:96))
     expect_equal(as.character(out_384$well), num_to_well(1:384, plate = 384))
-
+    expect_equal(as.character(out_1536$well), num_to_well(1:1536, plate = 1536))
+    
     expect_equal(out_96$Row, rep(1:8, each = 12))
     expect_equal(out_96$Column, rep(1:12, 8))
     expect_equal(out_96$values, data_96$val)
@@ -35,6 +46,10 @@ test_that("plate_map returns expected values",{
     expect_equal(out_384$Row, rep(1:16, each = 24))
     expect_equal(out_384$Column, rep(1:24, 16))
     expect_equal(out_384$values, data_384$val)
+    
+    expect_equal(out_1536$Row, rep(1:32, each = 48))
+    expect_equal(out_1536$Column, rep(1:48, 32))
+    expect_equal(out_1536$values, data_1536$val)
 })
 
 

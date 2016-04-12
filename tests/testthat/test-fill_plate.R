@@ -32,3 +32,19 @@ test_that("returns the same values",{
 		 as.numeric(df_missing$vals),
 		 tolerance = 1e-5)
 })
+
+# test 384 well plate
+vals384 <- rnorm(384)
+wells384 <- num_to_well(1:384, plate = 384)
+df384 <- data.frame(wells = wells384, vals = vals384)
+df384_missing <- df[-c(1:10), ]
+df384_out <- fill_plate(df384_missing, "wells", plate = 384)
+
+# test 1536 plate
+vals1536 <- rnorm(1536)
+wells1536 <- num_to_well(1:1536, plate = 1536)
+df384 <- data.frame(wells = wells1536, vals = vals1536)
+df384_missing <- df[-c(1:10), ]
+df384_out <- fill_plate(df384_missing, "wells", plate = 1536)
+
+
