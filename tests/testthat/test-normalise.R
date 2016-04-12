@@ -40,9 +40,6 @@ test_that("subtract returns a dataframe",{
     expect_is(df_out_sub, "data.frame")
 })
 
-print(df_out)
-print(df_out_sub)
-
 
 
 test_that("divide and subtract return different answers",{
