@@ -112,6 +112,10 @@ b_map(df_edge$vals,
 
 ![edge_fixed](/graphics/edge_fixed.png)
 
+#### 1536 well plates
+
+![plate_1536](/graphics/plate_1536.png)
+
 ------------
 
 Currently a work in progress, version no. `0.3`.
