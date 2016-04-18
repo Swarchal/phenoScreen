@@ -48,17 +48,25 @@ get_featuredata <- function(x, metadata_prefix = "Metadata"){
 #' 		    compound = "Metadata_compound",
 #' 		    neg_compound = "DMSO")
 #' 
+#' df_out <- normalise(df,
+#'		       plate_id = "Metadata_plate_id",
+#'		       compound = "Metadata_compound",
+#'		       neg_compound = "DMSO",
+#'		       method = "subtract")
 
 
-normalise <- function(df, plate_id, compound = "Metadata_compound", neg_compound = "DMSO",
-		      method = "divide"){
+normalise <- function(df, plate_id,
+		      compound = "Metadata_compound",
+		      neg_compound = "DMSO",
+		      method = "divide") {
+
     stopifnot(is.data.frame(df))
     
-    if (method == "divide"){
+    if (method == "divide") {
 	`%op%` <- `/`
-    } else if (method == "subtract"){
+    } else if (method == "subtract") {
 	`%op%` <- `-`
-    } else{
+    } else {
 	stop("Not a valid method. Options: divide or subtract",
 	     call. = FALSE)
     }
@@ -66,12 +74,11 @@ normalise <- function(df, plate_id, compound = "Metadata_compound", neg_compound
     # identify feature data columns
     feature_data <- get_featuredata(df)
 
-    out <- df %>%
+    df %>%
 	group_by_(plate_id) %>%
 	mutate_each(funs_(interp(~. %op% median(.[x == neg_compound], na.rm = TRUE),
 			  x = as.name(compound))), feature_data) %>%
 	ungroup()
-	return(out)
 }
 
 #' Scale feature data
@@ -81,8 +88,9 @@ normalise <- function(df, plate_id, compound = "Metadata_compound", neg_compound
 #' @param df dataframe
 #' @export
 
-scale_features <- function(df){
+scale_features <- function(df) {
     feature_data <- get_featuredata(df)
-    apply(df[, feature_data], 2, scale)
+    df[, feature_data] <- apply(df[, feature_data], 2, scale)
+    return(df)
 }
 
