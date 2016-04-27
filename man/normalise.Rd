@@ -5,7 +5,7 @@
 \title{Normalise per plate against negative control}
 \usage{
 normalise(df, plate_id, compound = "Metadata_compound",
-  neg_compound = "DMSO", method = "divide")
+  neg_compound = "DMSO", method = "subtract")
 }
 \arguments{
 \item{df}{dataframe}
@@ -46,5 +46,10 @@ df_out <- normalise(df,
 		    compound = "Metadata_compound",
 		    neg_compound = "DMSO")
 
+df_out <- normalise(df,
+	       plate_id = "Metadata_plate_id",
+	       compound = "Metadata_compound",
+	       neg_compound = "DMSO",
+	       method = "subtract")
 }
 
