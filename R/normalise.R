@@ -58,7 +58,7 @@ get_featuredata <- function(x, metadata_prefix = "Metadata"){
 normalise <- function(df, plate_id,
 		      compound = "Metadata_compound",
 		      neg_compound = "DMSO",
-		      method = "divide") {
+		      method = "subtract") {
 
     stopifnot(is.data.frame(df))
     
