@@ -15,10 +15,11 @@ df <- data.frame(Metadata_well = wells,
 		 Metadata_compound = compound,
 		 val1, val2)
 
-df_out <- normalise(df,
+df_out_div <- normalise(df,
 		    plate_id = "Metadata_plate_id",
 		    compound = "Metadata_compound",
-		    neg_compound = "DMSO")
+		    neg_compound = "DMSO",
+		    method = "divide")
 
 test_that("errors when expected",{
     expect_error(normalise(val1, plate_id, compound, neg_compound = "DMSO"))
@@ -26,8 +27,8 @@ test_that("errors when expected",{
 })
 
 test_that("returns a dataframe",{
-    expect_is(df_out, "data.frame")
-    expect_equal(nrow(df_out), N_PLATES * 96)
+    expect_is(df_out_div, "data.frame")
+    expect_equal(nrow(df_out_div), N_PLATES * 96)
 })
 
 df_out_sub <- normalise(df,
@@ -43,7 +44,7 @@ test_that("subtract returns a dataframe",{
 
 
 test_that("divide and subtract return different answers",{
-    expect_true(any(df_out_sub != df_out))
+    expect_true(any(df_out_sub != df_out_div))
 })
 
 test_that("returns error for incorrect method",{
