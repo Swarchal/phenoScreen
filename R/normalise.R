@@ -123,7 +123,7 @@ normalise <- function(df, plate_id,
 
 r_normalise <- function(df, plate_id,
 			compound = "Metadata_compound",
-			neg_compount = "DMSO",
+			neg_compound = "DMSO",
 			...) {
 
     # identify feature data columns
