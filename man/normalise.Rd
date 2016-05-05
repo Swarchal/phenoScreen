@@ -18,6 +18,8 @@ normalise(df, plate_id, compound = "Metadata_compound",
 
 \item{method}{string, How to normalise the data. Options are divide or
 subtract. e.g subtract DMSO median from values, or divide by DMSO values.}
+
+\item{...}{additional arguments for \code{median}}
 }
 \description{
 This function will normalise multivariate data on a plate-by-plate basis

@@ -24,6 +24,7 @@ get_featuredata <- function(x, metadata_prefix = "Metadata"){
 #' @param neg_compound, string, name of the negative control to normalise against
 #' @param method string, How to normalise the data. Options are divide or
 #'	subtract. e.g subtract DMSO median from values, or divide by DMSO values.
+#' @param ... additional arguments for \code{median}
 #' @import dplyr
 #' @importFrom lazyeval interp
 #' @export
@@ -76,9 +77,10 @@ normalise <- function(df, plate_id,
 
     df %>%
 	group_by_(plate_id) %>%
-	mutate_each(funs_(interp(~. %op% median(.[x == neg_compound], na.rm = TRUE),
+	mutate_each(funs_(interp(~. %op% median(.[x == neg_compound], ...),
 			  x = as.name(compound))), feature_data) %>%
-	ungroup()
+	ungroup() %>%
+	as.data.frame()
 }
 
 #' Scale feature data
