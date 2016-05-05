@@ -131,8 +131,10 @@ r_normalise <- function(df, plate_id,
 
     df %>%
 	group_by_(plate_id) %>%
-	mutate_each(funs_(interp((~. - median(.[x == neg_compound],...)) / 
-				 mad(.[x == neg_compound],...),
+	mutate_each(funs_(interp(~. - median(.[x == neg_compound],...),
+				 x = as.name(compound))),
+		    feature_data) %>%
+	mutate_each(funs_(interp(~. / mad(.[x == neg_compound],...),
 				 x = as.name(compound))),
 		    feature_data) %>%
 	ungroup() %>%
