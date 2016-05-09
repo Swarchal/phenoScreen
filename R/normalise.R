@@ -10,6 +10,36 @@ get_featuredata <- function(x, metadata_prefix = "Metadata"){
     setdiff(1:ncol(x), grep(metadata_prefix, colnames(x)))
 }
 
+#' check for no negative control
+#'
+#' Checks number of negative control values for each plate
+#' and will return an error if a plate contains no negative
+#' control values
+#' @param df dataframe
+#' @param plate_id string, col name in df that has plate ID ref
+#' @param compound string, col name in df that has compound ref
+#' @param neg_compound string, name of negative control compound
+#' @import dplyr
+
+
+check_control <- function(df, plate_id,
+			  compound = "Metadata_compound",
+			  neg_compound = "DMSO") {
+
+    # count number of matches for compound in each plate
+    # error if no negative control wells in any of the plates
+    count <- df[ c(df[, compound] == neg_compound), ] %>%
+	    group_by_(plate_id) %>%
+	    tally() %>%
+	    as.data.frame()
+    
+    if (any(count$n) == 0){
+	# identify plate with no negative controls
+	none_plate <- as.character(count[which(count$n == 0), 1])
+	stop(paste("Plate", none_plate, "contains no negative controls"))
+    }
+}
+
 
 #' Normalise per plate against negative control
 #'
@@ -63,6 +93,9 @@ normalise <- function(df, plate_id,
 		      ...) {
 
     stopifnot(is.data.frame(df))
+
+    # check for negative control wells
+    check_control(df, plate_id, compound, neg_compound)
     
     if (method == "divide") {
 	`%op%` <- `/`
@@ -125,6 +158,11 @@ r_normalise <- function(df, plate_id,
 			compound = "Metadata_compound",
 			neg_compound = "DMSO",
 			...) {
+
+    stopifnot(is.data.frame(df))
+
+    # check for negative control wells
+    check_control(df, plate_id, compound, neg_compound)
 
     # identify feature data columns
     feature_data <- get_featuredata(df)

@@ -15,6 +15,16 @@ df <- data.frame(Metadata_well = wells,
 		 Metadata_compound = compound,
 		 val1, val2)
 
+
+test_that("check_control works",{
+    expect_silent(check_control(df,
+				plate_id = "Metadata_plate_id",
+				compound = "Metadata_compound",
+				neg_compound = "DMSO"))
+})
+
+
+
 df_out_div <- normalise(df,
 		    plate_id = "Metadata_plate_id",
 		    compound = "Metadata_compound",

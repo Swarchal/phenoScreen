@@ -14,6 +14,15 @@ df <- data.frame(Metadata_well = wells,
 		 Metadata_compound = compound,
 		 val1, val2)
 
+test_that("check_control works",{
+    expect_silent(check_control(df,
+				plate_id = "Metadata_plate_id",
+				compound = "Metadata_compound",
+				neg_compound = "DMSO"))
+})
+
+
+
 test_that("returns errors when expected", {
     expect_error(r_normalise(iris))
     # NSE check
@@ -21,11 +30,12 @@ test_that("returns errors when expected", {
 			     plate_id = Metadata_plate_id,
 			     compound = Metadata_compound,
 			     neg_compound = "DMSO"))
-#    expect_error(r_normalise(df,
-#			     plate_id = "Metadata_plate_id",
-#			     compound = "Metadata_compound",
-#			     neg_compound = "not a compound"))
-#
+
+    expect_error(r_normalise(df,
+			     plate_id = "Metadata_plate_id",
+			     compound = "Metadata_compound",
+			     neg_compound = "not a compound"))
+
 })
 
 test_that("returns a dataframe", {
