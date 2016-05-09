@@ -12,9 +12,9 @@ check_control(df, plate_id, compound = "Metadata_compound",
 
 \item{plate_id}{string, col name in df that has plate ID ref}
 
-\item{comopund}{string, col name in df that has compound ref}
+\item{compound}{string, col name in df that has compound ref}
 
-\item{neg_compoudn}{string, name of negative control compound}
+\item{neg_compound}{string, name of negative control compound}
 }
 \description{
 Checks number of negative control values for each plate
