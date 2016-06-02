@@ -22,7 +22,8 @@
 #'
 #' raw_map(data = df$vals,
 #'         well = df$well,
-#'         title = "Title of plot")
+#'         title = "Title of plot",
+#'         plate = 384)
 
 raw_map <- function(data, well,
                     plate = 96,
@@ -36,7 +37,7 @@ raw_map <- function(data, well,
     if (length(well) > plate) {
         stop("Invalid plate selection. The data given has more rows than the number of wells. \nAre you sure argument 'plate' is correct for the number of wells in your data? \nnote: Default is set to a 96-well plate.")
     }
-    
+
     # transform well labels into row-column values
     platemap <- plate_map(data, well)
 

@@ -29,6 +29,7 @@ df <- data.frame(vals = rnorm(1:384),
 
 raw_map(data = df$vals,
         well = df$well,
-        title = "Title of plot")
+        title = "Title of plot",
+        plate = 384)
 }
 
