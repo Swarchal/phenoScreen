@@ -4,8 +4,7 @@
 \alias{pchit_map}
 \title{Plots a heatmap identifying hits from the first principal component}
 \usage{
-pchit_map(data, well, plate = 96, threshold = 2, title = "",
-  palette = "Spectral")
+pchit_map(data, well, plate = 96, threshold = 2, palette = "Spectral")
 }
 \arguments{
 \item{data}{Numerical values, either a dataframe or a matrix}
@@ -16,8 +15,6 @@ pchit_map(data, well, plate = 96, threshold = 2, title = "",
 
 \item{threshold}{Threshold of +/- standard deviations form the average
 to determine a hit}
-
-\item{title}{Title of plot}
 
 \item{palette}{RColorBrewer palette}
 }
@@ -39,7 +36,6 @@ df <- data.frame(wells, v1, v2, v3)
 
 pchit_map(data = df[, 2:4],
           well = df$wells,
-          threshold = 1.5,
-          title = "pc_hit: Example plot")
+          threshold = 1.5)
 }
 

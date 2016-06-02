@@ -4,7 +4,7 @@
 \alias{z_map}
 \title{Plots a platemap with heatmap of scaled values}
 \usage{
-z_map(data, well, plate = 96, title = "", palette = "Spectral")
+z_map(data, well, plate = 96)
 }
 \arguments{
 \item{data}{Numerical values to be plotted}
@@ -12,10 +12,6 @@ z_map(data, well, plate = 96, title = "", palette = "Spectral")
 \item{well}{Vector of well identifiers e.g "A01"}
 
 \item{plate}{Number of wells in complete plate (96, 384 or 1536))}
-
-\item{title}{Title of plot}
-
-\item{palette}{RColorBrewer palette}
 }
 \value{
 ggplot plot
@@ -29,7 +25,6 @@ df <- data.frame(vals = rnorm(1:384),
 
 z_map(data = df$vals,
       well = df$well,
-      plate = 384,
-      title = "Title of plot")
+      plate = 384)
 }
 

@@ -4,7 +4,7 @@
 \alias{raw_map}
 \title{Plots a platemap with heatmap of raw values}
 \usage{
-raw_map(data, well, plate = 96, title = "", palette = "YlGnBu")
+raw_map(data, well, plate = 96)
 }
 \arguments{
 \item{data}{Numerical values to be plotted}
@@ -12,10 +12,6 @@ raw_map(data, well, plate = 96, title = "", palette = "YlGnBu")
 \item{well}{Vector of well identifiers e.g "A01"}
 
 \item{plate}{Number of wells in complete plate (96, 384 or 1536)}
-
-\item{title}{Title of plot}
-
-\item{palette}{RColorBrewer palette}
 }
 \value{
 ggplot plot
@@ -29,7 +25,6 @@ df <- data.frame(vals = rnorm(1:384),
 
 raw_map(data = df$vals,
         well = df$well,
-        title = "Title of plot",
         plate = 384)
 }
 

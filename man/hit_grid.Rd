@@ -5,7 +5,7 @@
 \title{Plots multiple platemaps with and identifies hits}
 \usage{
 hit_grid(data, well, plate_id, threshold = 2, ncols = 2, plate = 96,
-  title = "", each = FALSE, palette = "Spectral")
+  each = FALSE, palette = "Spectral")
 }
 \arguments{
 \item{data}{Numerical values to be scaled and plotted}
@@ -21,8 +21,6 @@ for a well to be classified as a 'hit'. Default it +/- 2 SD}
 
 \item{plate}{Number of wells in the complete plates (96, 384 or 1536)}
 
-\item{title}{Title of the plot}
-
 \item{each}{boolean, if true scales each plate individually, if false will
 scale the pooled values of \code{data}}
 
@@ -33,7 +31,7 @@ ggplot plot
 }
 \description{
 Converts numerical values and well labels into 'hits' in the form of
-multiple plate maps. Hits are calculated as wells above or below a 
+multiple plate maps. Hits are calculated as wells above or below a
 specified number of standard deviations from the overall average
 }
 \examples{
@@ -51,7 +49,6 @@ hit_grid(data = df$vals,
     well = df$well,
     plate_id = df$plate,
     plate = 96,
-    each = FALSE,
-    title = "Plot Title")
+    each = FALSE)
 }
 

@@ -4,18 +4,14 @@
 \alias{pc_map}
 \title{Principal component heatmap in a plate layout}
 \usage{
-pc_map(data, well, plate = 96, title = "", palette = "Spectral")
+pc_map(data, well, plate = 96)
 }
 \arguments{
 \item{data}{Vector of numerical data to calculate the first principal component}
 
 \item{well}{Vector of well identifiers e.g "A01"}
 
-\item{plate}{Number of wells in complete plate (96, 384 or 1536)}
-
-\item{title}{Title of plot}
-
-\item{palette}{RColourBrewer palette}
+\item{plate}{Number of wells in complete plate (96, 384 or 1536}
 }
 \value{
 gplot plot
@@ -34,7 +30,6 @@ df <- data.frame(
 
 pc_map(data = df[, 2:3],
        well = df$well,
-       title = "PC plate heatmap",
        plate = 384)
 }
 

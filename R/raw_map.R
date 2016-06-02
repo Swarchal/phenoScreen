@@ -5,8 +5,6 @@
 #' @param data Numerical values to be plotted
 #' @param well Vector of well identifiers e.g "A01"
 #' @param plate Number of wells in complete plate (96, 384 or 1536)
-#' @param title Title of plot
-#' @param palette RColorBrewer palette
 #'
 #' @import ggplot2
 #' @import dplyr
@@ -22,13 +20,10 @@
 #'
 #' raw_map(data = df$vals,
 #'         well = df$well,
-#'         title = "Title of plot",
 #'         plate = 384)
 
 raw_map <- function(data, well,
-                    plate = 96,
-                    title = "",
-                    palette = "YlGnBu"){
+                    plate = 96) {
 
     if (!is.vector(data)){
 	stop("'data' has to be a single column or a vector")
@@ -43,18 +38,12 @@ raw_map <- function(data, well,
 
     if (plate == 96){
 	plt <- plt96(platemap) +
-	    scale_fill_distiller("values", palette = palette) +
-	    ggtitle(title) +
 	    theme_bw()
     } else if (plate == 384){
 	plt <- plt384(platemap) +
-	    scale_fill_distiller("values", palette = palette) +
-	    ggtitle(title) +
 	    theme_bw()
     } else if (plate == 1536L){
 	plt <- plt1536(platemap) +
-	    scale_fill_distiller("values", palette = palette) +
-	    ggtitle(title) +
 	    theme_bw()
     } else{
 	stop("Invalid argument for 'plate'. \nOption: 96, 384 or 1546",

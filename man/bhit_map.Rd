@@ -4,8 +4,7 @@
 \alias{bhit_map}
 \title{Platemap to identify 'hits' following a B-score normalisation}
 \usage{
-bhit_map(data, well, plate = 96, threshold = 2, title = "",
-  palette = "Spectral")
+bhit_map(data, well, plate = 96, threshold = 2, palette = "Spectral")
 }
 \arguments{
 \item{data}{Vector of numerical values}
@@ -16,8 +15,6 @@ bhit_map(data, well, plate = 96, threshold = 2, title = "",
 
 \item{threshold}{Standard deviations from the plate average to indicate a hit.
 default is set to +/- 2 SD.}
-
-\item{title}{plot title}
 
 \item{palette}{RColorBrewer palette}
 }
@@ -37,7 +34,6 @@ df <- data.frame(vals = rnorm(384),
 bhit_map(data = df$vals,
    well = df$well,
    plate = 384,
-   threshold = 3,
-   title = "Awesome plot")
+   threshold = 3)
 }
 

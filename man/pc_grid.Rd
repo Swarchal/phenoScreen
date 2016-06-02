@@ -4,8 +4,7 @@
 \alias{pc_grid}
 \title{Plots multiple platemaps as a heatmap of the first principal component.}
 \usage{
-pc_grid(data, well, plate_id, ncols = 2, plate = 96, title = "",
-  palette = "Spectral", ...)
+pc_grid(data, well, plate_id, ncols = 2, plate = 96, ...)
 }
 \arguments{
 \item{data}{Numerical values be transformed, scaled and plotted as a colour}
@@ -17,10 +16,6 @@ pc_grid(data, well, plate_id, ncols = 2, plate = 96, title = "",
 \item{ncols}{Number of columns to plot multiple platemaps}
 
 \item{plate}{Number of wells in complete plate (96, 384 or 1536)}
-
-\item{title}{Title of plot}
-
-\item{palette}{RColorBrewer palette}
 
 \item{...}{additional arguments to be passed to z_grid}
 }
@@ -49,7 +44,6 @@ df <- rbind(df01, df02)
 pc_grid(data = df[, 3:4],
     well = df$well,
     plate_id = df$plate,
-    plate = 96,
-    title = "Plot Title")
+    plate = 96)
 }
 

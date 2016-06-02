@@ -5,7 +5,7 @@
 \title{Plots multiple heatmaps identifying hits from the first principal component}
 \usage{
 pchit_grid(data, well, plate_id, ncols = 2, plate = 96, threshold = 2,
-  each = FALSE, title = "", palette = "Spectral")
+  each = FALSE, palette = "Spectral")
 }
 \arguments{
 \item{data}{Numerical values, either a dataframe or a matrix}
@@ -23,8 +23,6 @@ to determine a hit}
 
 \item{each}{boolean, if true scales each plate individually, if false will
 scale the pooled values of \code{data}}
-
-\item{title}{Title of plot}
 
 \item{palette}{RColorBrewer palette}
 }
@@ -54,7 +52,6 @@ df <- rbind(df01, df02)
 pchit_grid(data = df[,3:4],
   well = df$well,
   plate_id = df$plate,
-  plate = 96,
-  title = "Plot Title")
+  plate = 96)
 }
 

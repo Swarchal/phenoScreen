@@ -4,8 +4,7 @@
 \alias{hit_map}
 \title{Platemap to identify 'hits' in a screen}
 \usage{
-hit_map(data, well, plate = 96, threshold = 2, title = "",
-  palette = "Spectral")
+hit_map(data, well, plate = 96, threshold = 2, palette = "Spectral")
 }
 \arguments{
 \item{data}{Vector of numerical values to score}
@@ -16,8 +15,6 @@ hit_map(data, well, plate = 96, threshold = 2, title = "",
 
 \item{threshold}{Numerical value of standard deviations from the mean
 for a well to be classified as a 'hit'. Default it +/- 2 SD}
-
-\item{title}{Title of the plot}
 
 \item{palette}{RColorBrewer palette}
 }
@@ -35,7 +32,6 @@ df <- data.frame(vals = rnorm(1:384),
 hit_map(data = df$vals,
        well = df$well,
        plate = 384,
-       threshold = 3,
-       title = "Awesome plot")
+       threshold = 3)
 }
 

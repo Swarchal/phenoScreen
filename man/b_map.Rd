@@ -4,8 +4,7 @@
 \alias{b_map}
 \title{Plots a heatmap of b-score normalised values in a plate layout}
 \usage{
-b_map(data, well, normalise = FALSE, plate = 96, title = "",
-  palette = "Spectral")
+b_map(data, well, normalise = FALSE, plate = 96)
 }
 \arguments{
 \item{data}{Numerical values in the form of a vector to be normalised}
@@ -15,10 +14,6 @@ b_map(data, well, normalise = FALSE, plate = 96, title = "",
 \item{normalise}{Not currently used}
 
 \item{plate}{integer, 96, 384 or 1536}
-
-\item{title}{Title of the plot}
-
-\item{palette}{RColorBrewer palette}
 }
 \value{
 ggplot plot
@@ -34,13 +29,12 @@ vals = rnorm(96))
 
 b_map(data = df$vals,
      well = df$well,
-     plate = 96,
-     title = "Plot Title")
+     plate = 96)
 
 df_384 <- data.frame(
-  well = num_to_well(1:384, plate = 384),
-  vals = rnorm(384))
-      
+         well = num_to_well(1:384, plate = 384),
+         vals = rnorm(384))
+
 b_map(data = df_384$vals,
      well = df_384$well,
      plate = 384)

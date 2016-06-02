@@ -4,8 +4,7 @@
 \alias{z_grid}
 \title{Plots multiple platemaps with heatmap of scaled values}
 \usage{
-z_grid(data, well, plate_id, ncols = 2, plate = 96, title = "",
-  palette = "Spectral", each = FALSE)
+z_grid(data, well, plate_id, ncols = 2, plate = 96, each = FALSE)
 }
 \arguments{
 \item{data}{Numerical values to be plotted}
@@ -18,10 +17,6 @@ z_grid(data, well, plate_id, ncols = 2, plate = 96, title = "",
 
 \item{plate}{Number of wells in complete plate (96, 384 or 1569)}
 
-\item{title}{Title of plot}
-
-\item{palette}{RColorBrewer palette}
-
 \item{each}{boolean, if true scales each plate individually, if false will
 scale the pooled values of \code{data}}
 }
@@ -29,7 +24,7 @@ scale the pooled values of \code{data}}
 ggplot plot
 }
 \description{
-Converts numerical values. well labels, and plate labels into multiple 
+Converts numerical values. well labels, and plate labels into multiple
 plate heatmaps
 }
 \examples{
@@ -46,7 +41,6 @@ df <- rbind(df01, df02)
 z_grid(data = df$vals,
        well = df$well,
        plate_id = df$plate,
-       plate = 96,
-       title = "Plot Title")
+       plate = 96)
 }
 

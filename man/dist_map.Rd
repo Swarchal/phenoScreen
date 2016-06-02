@@ -4,14 +4,12 @@
 \alias{dist_map}
 \title{Plots distributions per well in a plate layout}
 \usage{
-dist_map(well, data, title = "")
+dist_map(well, data)
 }
 \arguments{
 \item{well}{vector of alphanumeric wellIDs e.g 'A01'}
 
 \item{data}{numeric vector}
-
-\item{title}{Title of the plot}
 }
 \value{
 ggplot plot

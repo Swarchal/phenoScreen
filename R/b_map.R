@@ -8,8 +8,6 @@
 #' @param well Vector of well identifiers, e.g "A01"
 #' @param plate integer, 96, 384 or 1536
 #' @param normalise Not currently used
-#' @param title Title of the plot
-#' @param palette RColorBrewer palette
 #' @return ggplot plot
 #'
 #' @import ggplot2
@@ -23,12 +21,11 @@
 #'
 #' b_map(data = df$vals,
 #'      well = df$well,
-#'      plate = 96,
-#'      title = "Plot Title")
+#'      plate = 96)
 #'
 #' df_384 <- data.frame(
-#'   well = num_to_well(1:384, plate = 384),
-#'   vals = rnorm(384))
+#'          well = num_to_well(1:384, plate = 384),
+#'          vals = rnorm(384))
 #'
 #' b_map(data = df_384$vals,
 #'      well = df_384$well,
@@ -37,9 +34,7 @@
 
  b_map <- function(data, well,
                   normalise = FALSE,
-                  plate = 96,
-                  title = "",
-                  palette = "Spectral"){
+                  plate = 96){
 
 
     # b_score() to obtain residual values
@@ -77,22 +72,16 @@
     # produce a plate map in ggplot (96-well format)
     if (plate == 96L){
         plt <- plt96(platemap) +
-            scale_fill_distiller("z-score", palette = palette) +
-            ggtitle(title)+
             theme_bw()
     } else if (plate == 384L){
         # produce a plate map in ggplot (384-well format)
         plt <- plt384(platemap) +
-            scale_fill_distiller("z-score", palette = palette) +
-            ggtitle(title) +
             theme_bw()
     } else if (plate == 1536L){
 	plt <- plt1536(platemap) +
-	    scale_fill_distiller("z-score", palette = palette) +
-	    ggtitle(title) +
 	    theme_bw()
     } else stop("Not a valid plate format. Enter either 96, 384 or 1536.",
     call. = FALSE)
-        
+
     return(plt)
 }
