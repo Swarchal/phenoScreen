@@ -101,7 +101,7 @@ plate_map_grid_scale <- function(data, well, plate_id, each){
 		df$values <- scale(df$values)
 	} else if (each == TRUE){
 		df <- df %>% group_by(plate_label) %>%
-			mutate(values = scale(values)) %>%
+			mutate(values = scale(values)[,]) %>% #STOP SCALE RETURNING STUPID ATTRIBUTES!
 			ungroup() %>%
 			as.data.frame()
 	}
