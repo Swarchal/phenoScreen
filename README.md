@@ -24,8 +24,8 @@ df <- data.frame(vals = rnorm(1:384),
                  well = num_to_well(1:384, plate = 384))
 
 raw_map(data = df$vals,
-	well = df$well,
-	plate = 384)
+	    well = df$well,
+	    plate = 384)
 ```
 
 ![example plate](/graphics/example_plate.png)
@@ -34,10 +34,10 @@ The plots can be treated like any ggplot object and chained with additional func
 
 ```r
 raw_map(data = df$well,
-	well = df$well,
-	plate = 384) +
-    ggtitle("Platemap") + 
-    theme_dark() + 
+	    well = df$well,
+	    plate = 384) +
+    ggtitle("Platemap") +
+    theme_dark() +
     scale_fill_viridis()
 ```
 
@@ -50,8 +50,8 @@ The platemaps handle missing wells and partial plates:
 df_partial <- dplyr::sample_frac(df, 0.7)
 
 raw_map(data = df_partial$vals,
-	well = df_partial$well,
-	plate = 384) +
+	    well = df_partial$well,
+	    plate = 384) +
     ggtitle("Partial Plate")
 ```
 
@@ -66,9 +66,9 @@ vals <- c(rnorm(96), rnorm(96, mean = 10))
 wells <- rep(num_to_well(1:96), 2)
 plate_id <- rep(c("plate_1", "plate_2"), each = 96)
 
-z_grid(data = vals, 
-	well = wells,
-	plate_id = plate_id) + 
+z_grid(data = vals,
+	   well = wells,
+	   plate_id = plate_id) +
     ggtitle("Two very different plates")
 ```
 
@@ -78,9 +78,9 @@ When the difference in values between two plates is large, the colour scale can 
 
 ```r
 z_grid(data = vals,
-	well = wells,
-	plate_id = plate_id,
-	each = TRUE) + 
+	   well = wells,
+	   plate_id = plate_id,
+	   each = TRUE) +
     ggtitle("Plates scaled separately")
 ```
 
@@ -91,10 +91,10 @@ z_grid(data = vals,
 Edge effects can be removed with a median polish (or B-score), this can be performed on data while it's still in tabular form without converting to a matrix.
 ```r
 z_map(df_edge$vals,
-	df_edge$well,
-	plate = 384)  +
+	  df_edge$well,
+	  plate = 384)  +
     ggtitle("Plate with an edge effect") +
-    theme_dark() + 
+    theme_dark() +
     viridis::scale_fill_viridis(option = "A")
 ```
 
@@ -103,10 +103,10 @@ z_map(df_edge$vals,
 ```r
 
 b_map(df_edge$vals,
-	df_edge$well,
-	plate = 384) + 
+	  df_edge$well,
+	  plate = 384) +
     ggtitle("Median polish to remove edge effect") +
-    theme_dark() + 
+    theme_dark() +
     viridis::scale_fill_viridis(option = "A")
 ```
 
