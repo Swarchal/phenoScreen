@@ -33,7 +33,7 @@ test_that("works for 384 well plates",{
 
     expect_true(is.data.frame(out384))
     expect_equal(nrow(out384), 384L)
-    expect_equal(nrow(out384), 2L)
+    expect_equal(ncol(out384), 2L)
 })
 
 test_that("works for 1546 well plates",{
@@ -45,5 +45,5 @@ test_that("works for 1546 well plates",{
 
     expect_true(is.data.frame(out1536))
     expect_equal(nrow(out1536), 1536L)
-    expect_equal(nrow(out1536), 2L)
+    expect_equal(ncol(out1536), 2L)
 })
