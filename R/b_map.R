@@ -29,7 +29,7 @@
 #' df_384 <- data.frame(
 #'   well = num_to_well(1:384, plate = 384),
 #'   vals = rnorm(384))
-#'       
+#'
 #' b_map(data = df_384$vals,
 #'      well = df_384$well,
 #'      plate = 384)
@@ -40,21 +40,21 @@
                   plate = 96,
                   title = "",
                   palette = "Spectral"){
-    
-    
+
+
     # b_score() to obtain residual values
     #--------------------------------------------------------------------------
 
     stopifnot(is.vector(data))
-    
+
     # need to transform columns of wellID and data into
     # matrix corresponding to well positions:
-    
+
     platemap <- plate_map(data, well)
     # ensure data is ordered properly before passing to matrix()
     platemap <- platemap[order(platemap$Row, platemap$Column), ]
-    
-    
+
+
     if (length(well) > plate){
         warning("Invalid plate selection. The data given has more rows then number of wells. \nAre you sure argument 'plate' is correct for the number of wells in your data? \nnote: Default is a 96-well plate.",
                 call. = FALSE)
@@ -64,11 +64,16 @@
                 call. = FALSE)
     }
 
+    if (length(well) > plate) {
+        stop("Invalid plate selection. The data given has more rows than number of wells. \nAre you sure argument 'plate' is correct for the number of wells in your data? \nnote: Default is set to a 96-well plate.",
+             call. = FALSE)
+    }
+
     df <- med_smooth(platemap, plate)
-    
+
     df$values <- scale(df$residual)
     platemap <- plate_map(df$values, df$well)
-    
+
     # produce a plate map in ggplot (96-well format)
     if (plate == 96L){
         plt <- plt96(platemap) +
@@ -82,16 +87,12 @@
             ggtitle(title) +
             theme_bw()
     } else if (plate == 1536L){
-	plt <- plt1536(platemap) + 
-	    scale_fill_distiller("z-score", palette = palette) + 
+	plt <- plt1536(platemap) +
+	    scale_fill_distiller("z-score", palette = palette) +
 	    ggtitle(title) +
 	    theme_bw()
-    } else stop("Not a valid plate format. Enter either 96, 384 or 1536.", call. = FALSE)
-    
-    if (length(well) > plate) {
-        stop("Invalid plate selection. The data given has more rows than number of wells. \nAre you sure argument 'plate' is correct for the number of wells in your data? \nnote: Default is set to a 96-well plate.",
-             call. = FALSE)
-    }
-
+    } else stop("Not a valid plate format. Enter either 96, 384 or 1536.",
+    call. = FALSE)
+        
     return(plt)
 }
