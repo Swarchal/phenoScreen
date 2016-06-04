@@ -110,7 +110,7 @@ b_map(df_edge$vals,
     viridis::scale_fill_viridis(option = "A")
 ```
 
-![edge_fixed](/graphics/z_map.png)
+![edge_fixed](/graphics/b_map.png)
 
 #### 1536 well plates
 
