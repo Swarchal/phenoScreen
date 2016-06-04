@@ -33,7 +33,7 @@ raw_map(data = df$vals,
 The plots can be treated like any ggplot object and chained with additional functions:
 
 ```r
-raw_map(data = df$well,
+raw_map(data = df$vals,
 	    well = df$well,
 	    plate = 384) +
     ggtitle("Platemap") +
