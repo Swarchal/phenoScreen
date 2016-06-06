@@ -38,7 +38,7 @@ raw_map(data = df$vals,
 	    plate = 384) +
     ggtitle("Platemap") +
     theme_dark() +
-    scale_fill_viridis()
+    viridis::scale_fill_viridis()
 ```
 
 ![example_plate2](/graphics/example_plate_2.png)
@@ -95,7 +95,7 @@ z_map(df_edge$vals,
 	  plate = 384)  +
     ggtitle("Plate with an edge effect") +
     theme_dark() +
-    viridis::scale_fill_viridis(option = "A")
+    viridis::scale_fill_viridis()
 ```
 
 ![edge_plate](/graphics/z_map.png)
@@ -107,7 +107,7 @@ b_map(df_edge$vals,
 	  plate = 384) +
     ggtitle("Median polish to remove edge effect") +
     theme_dark() +
-    viridis::scale_fill_viridis(option = "A")
+    viridis::scale_fill_viridis()
 ```
 
 ![edge_fixed](/graphics/b_map.png)
