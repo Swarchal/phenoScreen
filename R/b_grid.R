@@ -13,7 +13,6 @@
 #' 
 #' @import ggplot2
 #' @import dplyr
-#' @import RColorBrewer
 #' @importFrom Smisc list_to_dataframe
 #' @export
 #' 
