@@ -116,14 +116,14 @@ b_map(df_edge$vals,
 
 
 #### Prefix:
-	- `raw`: raw values
-	- `z`: z-scored values
-	- `b`: b-scored values
+- `raw`: raw values
+- `z`: z-scored values
+- `b`: b-scored values
 
 #### Suffix:
 
-	- `map`: single plate map
-	- `grid`: multple plate maps
+- `map`: single plate map
+- `grid`: multple plate maps
 
 e.g:
 
