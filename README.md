@@ -114,18 +114,19 @@ b_map(df_edge$vals,
 
 ### Grammar
 
-**Prefix:**
 
+#### Prefix:
 	- `raw`: raw values
 	- `z`: z-scored values
 	- `b`: b-scored values
 
-**Suffix:**
+#### Suffix:
 
 	- `map`: single plate map
 	- `grid`: multple plate maps
 
 e.g:
+
 `z_map`: z-scored plate map  
 `raw_grid:` raw values, multiple plate maps
 
