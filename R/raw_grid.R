@@ -8,8 +8,6 @@
 #' @param plate_id Vector of plate identifiers e.g "Plate_1"
 #' @param ncols Number of columns to display multiple heatmaps
 #' @param plate Number of wells in complete plate (96, 384 or 1536)
-#' @param title Title of plot
-#' @param palette RColorBrewer palette
 #' 
 #' @return ggplot plot
 #'
@@ -33,16 +31,13 @@
 #' raw_grid(data = df$vals,
 #'     well = df$well,
 #'     plate_id = df$plate,
-#'     plate = 96,
-#'     title = "Plot Title")
+#'     plate = 96)
 
 
 raw_grid <- function(data, well,
                      plate_id,
                      ncols = 2,
-                     plate = 96,
-                     title = "",
-                     palette = "YlGnBu"){
+                     plate = 96){
   
     ## multiple platemap plots in a single figure using facet_wrap
 
@@ -55,8 +50,6 @@ raw_grid <- function(data, well,
     if (plate == 96) {
 	# produce a plate map in ggplot (96-well format)
 	plt<- plt96(platemap) +
-	    scale_fill_distiller("values", palette = palette) +
-	    ggtitle(title) +
 	    theme_bw() + 
 	    theme(panel.margin.x = unit(1, "lines"), 
 	    panel.margin.y = unit(0.5, "lines")) + # increase spacing between facets
@@ -67,8 +60,6 @@ raw_grid <- function(data, well,
     } else if (plate == 384L){
 	# produce a plate map in ggplot (384-well format)
 	plt <- plt384(platemap) +
-	    scale_fill_distiller("values", palette = palette) +
-	    ggtitle(title) +
 	    theme_bw() +
 	    theme(panel.margin.x = unit(1, "lines"), 
 	    panel.margin.y = unit(0.5, "lines")) + # increase spacing between facets
@@ -78,8 +69,6 @@ raw_grid <- function(data, well,
 	
     } else if (plate == 1536L){
 	plt <- plt1536(platemap) +
-	    scale_fill_distiller("values", palette = palette) +
-	    ggtitle(title) +
 	    theme_bw() +
 	    theme(panel.margin.x = unit(1, "lines"), 
 	    panel.margin.y = unit(0.5, "lines")) + # increase spacing between facets

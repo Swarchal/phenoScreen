@@ -4,8 +4,7 @@
 \alias{raw_grid}
 \title{Plots multiple platemaps with heatmap of raw values}
 \usage{
-raw_grid(data, well, plate_id, ncols = 2, plate = 96, title = "",
-  palette = "YlGnBu")
+raw_grid(data, well, plate_id, ncols = 2, plate = 96)
 }
 \arguments{
 \item{data}{Numerical values to be plotted}
@@ -17,10 +16,6 @@ raw_grid(data, well, plate_id, ncols = 2, plate = 96, title = "",
 \item{ncols}{Number of columns to display multiple heatmaps}
 
 \item{plate}{Number of wells in complete plate (96, 384 or 1536)}
-
-\item{title}{Title of plot}
-
-\item{palette}{RColorBrewer palette}
 }
 \value{
 ggplot plot
@@ -43,7 +38,6 @@ df <- rbind(df01, df02)
 raw_grid(data = df$vals,
     well = df$well,
     plate_id = df$plate,
-    plate = 96,
-    title = "Plot Title")
+    plate = 96)
 }
 
