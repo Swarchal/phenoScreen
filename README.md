@@ -112,9 +112,20 @@ b_map(df_edge$vals,
 
 ![edge_fixed](/graphics/b_map.png)
 
-#### 1536 well plates
+### Grammar
 
-![plate_1536](/graphics/plate_1536.png)
+Prefix:
+	- `raw`: raw values
+	- `z`: z-scored values
+	- `b`: b-scored values
+
+Suffix:
+	- `map`: single plate map
+	- `grid`: multple plate maps
+
+e.g:  
+`z_map`: z-scored plate map  
+`raw_grid:` raw values, multiple plate maps
 
 ------------
 
