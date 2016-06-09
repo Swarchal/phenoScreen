@@ -22,4 +22,3 @@ Imports:
     Smisc
 RoxygenNote: 5.0.1
 Suggests: testthat
-Remotes: github::Swarchal/Smisc

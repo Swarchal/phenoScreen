@@ -19,7 +19,7 @@ b_grid(data, well, plate_id, plate = 96)
 ggplot plot
 }
 \description{
-Transforms numerical values using the b-score normalisation process to 
+Transforms numerical values using the b-score normalisation process to
 account for row and column effects. Uses well and plate labels to plot the
 normalised values in the form of microtitre plates. Works for 96, 384 and
 1536 well plates.
