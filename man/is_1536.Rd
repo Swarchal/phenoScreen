@@ -9,9 +9,6 @@ is_1536(well)
 \arguments{
 \item{well}{vector of alphanumeric well labels}
 }
-\value{
-boolean
-}
 \description{
 internal 1536 plate function for plate_map
 }

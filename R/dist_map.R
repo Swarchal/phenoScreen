@@ -19,7 +19,7 @@ dist_map <- function(well, data){
     platemap <- plate_map(data, well)
 
     plt <- ggplot(data = platemap,
-                  aes(x = values),
+                  aes_string(x = "values"),
                   environment = localenv) +
         geom_density(alpha = 0.6,
                      fill = "gray80") +

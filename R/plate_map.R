@@ -1,25 +1,14 @@
-#' internal 1536 plate function for plate_map
-#'
-#' @param well vector of alphanumeric well labels
-#' @return boolean
-
-is_1536 <- function(well){
-    # check if contains double character well labels
-    any(nchar(as.character(well)) == 4)
-}
-
-
 #' creates dataframe of row,column,data from wellID and data
-#' 
+#'
 #' internal function
-#' 
+#'
 #' @param data numeric data to be used as colour scale
 #' @param well alpha-numeric well IDs, e.g 'A01'
 #' @return dataframe
 #' @export
 
 plate_map <- function(data, well){
-	
+
     platemap <- as.data.frame(well)
     names(platemap)[1] <- "well"
 
@@ -51,14 +40,14 @@ plate_map <- function(data, well){
 
 
 #' creates dataframe of row, column, and scaled data from well IDs
-#' 
+#'
 #' internal function
-#' 
+#'
 #' @param data numeric data to be used as colour scale
 #' @param well alpha-numeric well IDs, e.g 'A01'
 #' @return dataframe
 #' @export
-#' 
+#'
 plate_map_scale <- function(data, well){
 	df <- plate_map(data, well)
 	df$values <- scale(df$values)
@@ -68,7 +57,7 @@ plate_map_scale <- function(data, well){
 #' creates dataframe of row, column, plate_id from data regarding wellIDs
 #'
 #' internal function
-#' 
+#'
 #' @param data numerical data to be used as colour scale
 #' @param well alpha-numeric wellIDs, e.g 'A01'
 #' @param plate_id plate identifers e.g 'plate_1'
@@ -84,7 +73,7 @@ plate_map_grid <- function(data, well, plate_id){
 #' creates dataframe of row, column, plate_id from data regarding wellIDs
 #'
 #' internal function
-#' 
+#'
 #' @param data numerical data to be used as colour scale
 #' @param well alpha-numeric wellIDs, e.g 'A01'
 #' @param plate_id plate identifers e.g 'plate_1'
@@ -96,11 +85,11 @@ plate_map_grid <- function(data, well, plate_id){
 
 plate_map_grid_scale <- function(data, well, plate_id, each){
 	df <- plate_map_grid(data, well, plate_id)
-	
+
 	if (each == FALSE){
 		df$values <- scale(df$values)
 	} else if (each == TRUE){
-		df <- df %>% group_by(plate_label) %>%
+		df <- df %>% group_by_("plate_label") %>%
 			mutate(values = scale(values)[,]) %>% #STOP SCALE RETURNING STUPID ATTRIBUTES!
 			ungroup() %>%
 			as.data.frame()
@@ -120,8 +109,18 @@ plate_map_grid_scale <- function(data, well, plate_id, each){
 plate_map_multiple <- function(data, well){
     platemap <- as.data.frame(well)
     platemap <- mutate(platemap,
-	Row = as.numeric(match(toupper(substr(well, 1, 1)), LETTERS)),
-	Column = as.numeric(substr(well, 2, 5)))
+	       Row = as.numeric(match(toupper(substr(well, 1, 1)), LETTERS)),
+	          Column = as.numeric(substr(well, 2, 5)))
     platemap_out <- data.frame(platemap, data)
     return(platemap_out)
+}
+
+
+#' internal 1536 plate function for plate_map
+#'
+#' @param well vector of alphanumeric well labels
+
+is_1536 <- function(well){
+    # check if contains double character well labels
+    any(nchar(as.character(well)) == 4)
 }

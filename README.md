@@ -16,19 +16,20 @@ devtools::install_github('Swarchal/phenoScreen')
 
 #### Prefix:
 - `raw`: raw values
+- `hit`: hit detection based on standard deviations
 - `z`: z-scored values
 - `b`: b-scored values
+- `bhit`: b-score values before hit detection
 
 #### Suffix:
 
 - `map`: single plate map
 - `grid`: multple plate maps
 
-e.g:
-
+e.g:  
 `z_map`: z-scored plate map  
-`raw_grid:` raw values, multiple plate maps
-
+`raw_grid:` raw values, multiple plate maps  
+`bhit_grid:` b-scored values, coloured by hits, multiple plates
 
 ### Examples
 
