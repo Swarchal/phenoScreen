@@ -51,13 +51,9 @@ b_grid <- function(data, well, plate_id, plate = 96) {
         med_smooth(x, plate = plate)
     })
 
-    print(med_smooth_list)
-
     # list to dataframe
     med_smooth_df <- list_to_dataframe(med_smooth_list,
                                        col_name = "plate_label")
-
-    print(med_smooth_df)
 
     raw_grid(data = med_smooth_df$residual,
              well = med_smooth_df$well,
