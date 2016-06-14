@@ -18,7 +18,6 @@ Imports:
     raster,
     RColorBrewer,
     MASS,
-    viridis,
-    Smisc
+    viridis
 RoxygenNote: 5.0.1
 Suggests: testthat
