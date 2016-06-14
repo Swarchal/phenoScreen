@@ -5,7 +5,7 @@
 
 An R package for analysing and plotting multivariate screening data in 96 and 384-well plates.
 
-**Note:** Functions related specifically to multi-well plates have been moved to the [`platetools`](www.github.com/swarchal/platetools) package which is now on CRAN :tada:
+**Note:** Functions related specifically to multi-well plates have been moved to the [`platetools`](https://www.github.com/swarchal/platetools) package which is now on CRAN :tada:
 
 To install with the devtools package:
 
