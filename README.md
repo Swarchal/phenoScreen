@@ -5,6 +5,8 @@
 
 An R package for analysing and plotting multivariate screening data in 96 and 384-well plates.
 
+**Pretty broken as dplyr is unstable and keeps breaking things** :thumbsdown:
+
 **Note:** Functions related specifically to multi-well plates have been moved to the [`platetools`](https://www.github.com/swarchal/platetools) package which is now on CRAN :tada:
 
 To install with the devtools package:
@@ -13,5 +15,3 @@ To install with the devtools package:
 if (!require(devtools)) install.packages("devtools")
 devtools::install_github('Swarchal/phenoScreen')
 ```
-
-Currently a work in progress, version no. `0.3`.
