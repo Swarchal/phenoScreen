@@ -1,197 +1,50 @@
-#' Get featuredata columns
-#'
-#' Identifies columns in a dataframe that are not labelled Metadata
-#'
-#' @param x dataframe
-#' @param metadata_prefix pattern to match metadata columns
-#' @export
-
-get_featuredata <- function(x, metadata_prefix = "Metadata"){
+#' TODO: docstring
+get_feature_index <- function(x, metadata_prefix = "Metadata") {
     setdiff(1:ncol(x), grep(metadata_prefix, colnames(x)))
 }
 
-#' check for no negative control
-#'
-#' Checks number of negative control values for each plate
-#' and will return an error if a plate contains no negative
-#' control values
-#' @param df dataframe
-#' @param plate_id string, col name in df that has plate ID ref
-#' @param compound string, col name in df that has compound ref
-#' @param neg_compound string, name of negative control compound
-#' @import dplyr
 
-
-check_control <- function(df, plate_id,
-			  compound = "Metadata_compound",
-			  neg_compound = "DMSO") {
-
-    # count number of matches for compound in each plate
-    # error if no negative control wells in any of the plates
-    count <- df[ c(df[, compound] == neg_compound), ] %>%
-	    group_by_(plate_id) %>%
-	    tally() %>%
-	    as.data.frame()
-    
-    if (any(count$n) == 0){
-	# identify plate with no negative controls
-	none_plate <- as.character(count[which(count$n == 0), 1])
-	stop(paste("Plate", none_plate, "contains no negative controls"))
-    }
+get_feature_cols <- function(x, ...) {
+    colnames(x)[get_feature_index(x, ...)]
 }
 
-
-#' Normalise per plate against negative control
-#'
-#' This function will normalise multivariate data on a plate-by-plate basis
-#' by dividing each feature by the median of the negative control for
-#' that feature. Note: Assumes any metadata columns are prefixed with
-#' \code{metadata_prefix} , and everything else is numerical featuredata
-#'
-#' @param df dataframe
-#' @param plate_id string, name of the column of plate names, name for each plate
-#' @param compound string, name of column of compound names
-#' @param neg_compound, string, name of the negative control to normalise against
-#' @param method string, How to normalise the data. Options are divide or
-#'	subtract. e.g subtract DMSO median from values, or divide by DMSO values.
-#' @param ... additional arguments for \code{median}
-#' @import dplyr
-#' @importFrom lazyeval interp
-#' @export
-#' @examples
-#' # example data
-#' N_PLATES <- 5
-#' wells <- rep(num_to_well(1:96), N_PLATES)
-#' plate_id <- rep(c("plate_1", "plate_2", "plate_3", "plate_4", "plate_5"),
-#' 		each = 96)
-#' val1 <- rnorm(96 * N_PLATES, 10, 10)
-#' val2 <- rnorm(96 * N_PLATES, 1, 100)
-#' comps <- c(rep("cmpd", 80), rep("DMSO", 16))
-#' compound <- rep(comps, N_PLATES)
-#' 
-#' df <- data.frame(Metadata_well = wells,
-#' 		 Metadata_plate_id = plate_id,
-#' 		 Metadata_compound = compound,
-#' 		 val1, val2)
-#' 
-#' df_out <- normalise(df,
-#' 		    plate_id = "Metadata_plate_id",
-#' 		    compound = "Metadata_compound",
-#' 		    neg_compound = "DMSO")
-#' 
-#' df_out <- normalise(df,
-#'		       plate_id = "Metadata_plate_id",
-#'		       compound = "Metadata_compound",
-#'		       neg_compound = "DMSO",
-#'		       method = "subtract")
-
-
-normalise <- function(df, plate_id,
-		      compound = "Metadata_compound",
-		      neg_compound = "DMSO",
-		      method = "subtract",
-		      ...) {
-
-    stopifnot(is.data.frame(df))
-
-    # check for negative control wells
-    check_control(df, plate_id, compound, neg_compound)
-    
+#' TODO: docstring
+set_operator <- function(method) {
+    # set normalisation method, error if not valid
     if (method == "divide") {
-	`%op%` <- `/`
+        operator <- `/`
     } else if (method == "subtract") {
-	`%op%` <- `-`
+        operator <- `-`
     } else {
-	stop("Not a valid method. Options: divide or subtract",
-	     call. = FALSE)
+        stop("Invalid method. Options: divide, subtract.", call. = FALSE)
     }
-
-    # identify feature data columns
-    feature_data <- get_featuredata(df)
-
-    df %>%
-	group_by_(plate_id) %>%
-	mutate_each(funs_(interp(~. %op% median(.[x == neg_compound], ...),
-			  x = as.name(compound))), feature_data) %>%
-	ungroup() %>%
-	as.data.frame()
+    return(operator)
 }
 
 
-
-#' Robust normalisation
+#' normalise against negative control
 #'
-#' Method used in the Carpenter lab. Subtract the median feature value for
-#' each plate from the treatment feature value and divide by the median
-#' absolute deviation.
+#' description
 #'
-#' @param df dataframe
-#' @param plate_id string, name of the column of plate names, name for each plate
-#' @param compound string, name of column of compound names
-#' @param neg_compound, string, name of the negative control to normalise against
-#' @param ... additional arguments for \code{median}
+#' @param data dataframe, can be a grouped dataframe
+#' @param compound_col name of column containing compound information
+#' @param neg_compound name of the negative control compound in `compound_col`
+#' @param method how to normalise, either "subtract" or "divide"
+#' @param average average function
+#' @param ... extras arguments passed to average
+#'
 #' @import dplyr
-#' @importFrom lazyeval interp
 #' @export
-#' @examples
-#' # example data
-#' N_PLATES <- 5
-#' wells <- rep(num_to_well(1:96), N_PLATES)
-#' plate_id <- rep(c("plate_1", "plate_2", "plate_3", "plate_4", "plate_5"),
-#' 		each = 96)
-#' val1 <- rnorm(96 * N_PLATES, 10, 10)
-#' val2 <- rnorm(96 * N_PLATES, 1, 100)
-#' comps <- c(rep("cmpd", 80), rep("DMSO", 16))
-#' compound <- rep(comps, N_PLATES)
-#' 
-#' df <- data.frame(Metadata_well = wells,
-#' 		 Metadata_plate_id = plate_id,
-#' 		 Metadata_compound = compound,
-#' 		 val1, val2)
-#' 
-#' df_out <- r_normalise(df,
-#' 		    plate_id = "Metadata_plate_id",
-#' 		    compound = "Metadata_compound",
-#' 		    neg_compound = "DMSO")
+normalise <- function(data, compound_col,
+                      neg_compound = "DMSO", method = "subtract",
+                      average = mean, metadata_prefix="Metadata_", ...) {
 
-r_normalise <- function(df, plate_id,
-			compound = "Metadata_compound",
-			neg_compound = "DMSO",
-			...) {
+    `%op%` = set_operator(method)
+    feature_cols = get_feature_cols(data, metadata_prefix)
+    compound_col_ = enquo(compound_col)
 
-    stopifnot(is.data.frame(df))
-
-    # check for negative control wells
-    check_control(df, plate_id, compound, neg_compound)
-
-    # identify feature data columns
-    feature_data <- get_featuredata(df)
-
-    df %>%
-	group_by_(plate_id) %>%
-	mutate_each(funs_(interp(~. - median(.[x == neg_compound],...),
-				 x = as.name(compound))),
-		    feature_data) %>%
-	mutate_each(funs_(interp(~. / mad(.[x == neg_compound],...),
-				 x = as.name(compound))),
-		    feature_data) %>%
-	ungroup() %>%
-	as.data.frame()
-
+    data %>%
+        mutate_at(
+            vars(feature_cols),
+            funs(. %op% average(.[(!!!compound_col_) == neg_compound], ...)))
 }
-
-
-#' Scale feature data
-#'
-#' Z-score of feature data, each features scaled separately
-#'
-#' @param df dataframe
-#' @export
-
-scale_features <- function(df) {
-    feature_data <- get_featuredata(df)
-    df[, feature_data] <- apply(df[, feature_data], 2, scale)
-    return(df)
-}
-
-
