@@ -15,4 +15,3 @@ glog(x, lambda = 0)
 defined as \code{log(y + sqrt(y^2 + lambda)}, where lambda = 0 is a normal
 log transformation
 }
-

@@ -2,56 +2,26 @@
 % Please edit documentation in R/normalise.R
 \name{normalise}
 \alias{normalise}
-\title{Normalise per plate against negative control}
+\title{normalise against negative control}
 \usage{
-normalise(df, plate_id, compound = "Metadata_compound",
-  neg_compound = "DMSO", method = "subtract", ...)
+normalise(data, compound_col, neg_compound = "DMSO", method = "subtract",
+  average = mean, metadata_prefix = "Metadata_", ...)
 }
 \arguments{
-\item{df}{dataframe}
+\item{data}{dataframe, can be a grouped dataframe}
 
-\item{plate_id}{string, name of the column of plate names, name for each plate}
+\item{compound_col}{name of column containing compound information}
 
-\item{compound}{string, name of column of compound names}
+\item{neg_compound}{name of the negative control compound in `compound_col`}
 
-\item{neg_compound, }{string, name of the negative control to normalise against}
+\item{method}{how to normalise, either "subtract" or "divide"}
 
-\item{method}{string, How to normalise the data. Options are divide or
-subtract. e.g subtract DMSO median from values, or divide by DMSO values.}
+\item{average}{average function}
 
-\item{...}{additional arguments for \code{median}}
+\item{metadata_prefix}{string, prefix of metadata columns}
+
+\item{...}{extras arguments passed to average}
 }
 \description{
-This function will normalise multivariate data on a plate-by-plate basis
-by dividing each feature by the median of the negative control for
-that feature. Note: Assumes any metadata columns are prefixed with
-\code{metadata_prefix} , and everything else is numerical featuredata
+description
 }
-\examples{
-# example data
-N_PLATES <- 5
-wells <- rep(num_to_well(1:96), N_PLATES)
-plate_id <- rep(c("plate_1", "plate_2", "plate_3", "plate_4", "plate_5"),
-		each = 96)
-val1 <- rnorm(96 * N_PLATES, 10, 10)
-val2 <- rnorm(96 * N_PLATES, 1, 100)
-comps <- c(rep("cmpd", 80), rep("DMSO", 16))
-compound <- rep(comps, N_PLATES)
-
-df <- data.frame(Metadata_well = wells,
-		 Metadata_plate_id = plate_id,
-		 Metadata_compound = compound,
-		 val1, val2)
-
-df_out <- normalise(df,
-		    plate_id = "Metadata_plate_id",
-		    compound = "Metadata_compound",
-		    neg_compound = "DMSO")
-
-df_out <- normalise(df,
-	       plate_id = "Metadata_plate_id",
-	       compound = "Metadata_compound",
-	       neg_compound = "DMSO",
-	       method = "subtract")
-}
-

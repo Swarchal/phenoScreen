@@ -1,20 +1,26 @@
-#' TODO: docstring
-get_feature_index <- function(x, metadata_prefix = "Metadata") {
+#' return feature column names
+#' @param x data
+#' @param metadata_prefix string, prefix of metadata columns
+#' @export
+get_feature_index = function(x, metadata_prefix = "Metadata") {
     setdiff(1:ncol(x), grep(metadata_prefix, colnames(x)))
 }
 
 
-get_feature_cols <- function(x, ...) {
+#' return feature column names
+#' @param x data
+#' @param ... arguments to `get_feature_index`
+#' @export
+get_feature_cols = function(x, ...) {
     colnames(x)[get_feature_index(x, ...)]
 }
 
-#' TODO: docstring
-set_operator <- function(method) {
+set_operator = function(method) {
     # set normalisation method, error if not valid
     if (method == "divide") {
-        operator <- `/`
+        operator = `/`
     } else if (method == "subtract") {
-        operator <- `-`
+        operator = `-`
     } else {
         stop("Invalid method. Options: divide, subtract.", call. = FALSE)
     }
@@ -31,11 +37,12 @@ set_operator <- function(method) {
 #' @param neg_compound name of the negative control compound in `compound_col`
 #' @param method how to normalise, either "subtract" or "divide"
 #' @param average average function
+#' @param metadata_prefix string, prefix of metadata columns
 #' @param ... extras arguments passed to average
 #'
 #' @import dplyr
 #' @export
-normalise <- function(data, compound_col,
+normalise = function(data, compound_col,
                       neg_compound = "DMSO", method = "subtract",
                       average = mean, metadata_prefix="Metadata_", ...) {
 
@@ -48,3 +55,6 @@ normalise <- function(data, compound_col,
             vars(feature_cols),
             funs(. %op% average(.[(!!!compound_col_) == neg_compound], ...)))
 }
+
+# alias for American spelling
+normalize = normalise
