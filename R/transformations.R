@@ -7,7 +7,6 @@
 #' @param lambda transformation parameter
 #'
 #' @export
-
 glog <- function(x, lambda = 0) {
     
     x <- as.matrix(x)
