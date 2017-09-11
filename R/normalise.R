@@ -1,33 +1,3 @@
-#' return feature column names
-#' @param x data
-#' @param metadata_prefix string, prefix of metadata columns
-#' @export
-get_feature_index = function(x, metadata_prefix = "Metadata") {
-    setdiff(1:ncol(x), grep(metadata_prefix, colnames(x)))
-}
-
-
-#' return feature column names
-#' @param x data
-#' @param ... arguments to `get_feature_index`
-#' @export
-get_feature_cols = function(x, ...) {
-    colnames(x)[get_feature_index(x, ...)]
-}
-
-set_operator = function(method) {
-    # set normalisation method, error if not valid
-    if (method == "divide") {
-        operator = `/`
-    } else if (method == "subtract") {
-        operator = `-`
-    } else {
-        stop("Invalid method. Options: divide, subtract.", call. = FALSE)
-    }
-    return(operator)
-}
-
-
 #' normalise against negative control
 #'
 #' description
@@ -42,9 +12,9 @@ set_operator = function(method) {
 #'
 #' @import dplyr
 #' @export
-normalise = function(data, compound_col,
+normalise <- function(data, compound_col,
                       neg_compound = "DMSO", method = "subtract",
-                      average = mean, metadata_prefix="Metadata_", ...) {
+                      average = median, metadata_prefix="Metadata_", ...) {
 
     `%op%` = set_operator(method)
     feature_cols = get_feature_cols(data, metadata_prefix)
@@ -58,3 +28,17 @@ normalise = function(data, compound_col,
 
 # alias for American spelling
 normalize = normalise
+
+
+# internal function to set operator
+set_operator <- function(method) {
+    # set normalisation method, error if not valid
+    if (method == "divide") {
+        operator = `/`
+    } else if (method == "subtract") {
+        operator = `-`
+    } else {
+        stop("Invalid method. Options: divide, subtract.", call. = FALSE)
+    }
+    return(operator)
+}
