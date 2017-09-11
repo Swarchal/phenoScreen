@@ -4,7 +4,7 @@
 \alias{normalise}
 \title{normalise against negative control}
 \usage{
-normalise(data, compound_col, neg_compound = "DMSO", method = "subtract",
+normalise(data, compound_col, neg_control = "DMSO", method = "subtract",
   average = median, metadata_prefix = "Metadata_", ...)
 }
 \arguments{
@@ -12,7 +12,7 @@ normalise(data, compound_col, neg_compound = "DMSO", method = "subtract",
 
 \item{compound_col}{name of column containing compound information}
 
-\item{neg_compound}{name of the negative control compound in `compound_col`}
+\item{neg_control}{name of the negative control compound in `compound_col`}
 
 \item{method}{how to normalise, either "subtract" or "divide"}
 

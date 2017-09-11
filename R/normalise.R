@@ -11,6 +11,7 @@
 #' @param ... extras arguments passed to average
 #'
 #' @import dplyr
+#' @importFrom stats median
 #' @export
 normalise <- function(data, compound_col,
                       neg_control = "DMSO", method = "subtract",
