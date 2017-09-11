@@ -1,4 +1,4 @@
-#' Aggregate a grouped dataframe to an average
+#' Aggregate/collapse a grouped dataframe to an average
 #'
 #' description
 #'
@@ -9,18 +9,18 @@
 #'
 #' @import dplyr
 #' @export
-aggregate <- function(grouped_data, average=median,
+collapse <- function(grouped_data, average=median,
                       metadata_prefix="Metadata_", ...) {
 
-    if (!is_grouped_data(grouped_data)) {
-        stop("ERROR: `aggregate` expects a grouped dataframe.")
+    if (!is_grouped_df(grouped_data)) {
+        stop("`aggregate` expects a grouped dataframe.", call. = FALSE)
     }
 
-    feature_cols = get_feature_cols(data, metadata_prefix)
-    metadata_cols = get_metadata_cols(data, metadata_prefix)
+    feature_cols = get_feature_cols(grouped_data, metadata_prefix)
+    metadata_cols = get_metadata_cols(grouped_data, metadata_prefix)
 
-    # check if groups have homogenous metadata
-    grouped_data %>% select(metadata_cols) %>% is_homogenous()
+    # TODO: check if groups have homogenous metadata, error if not
+    #grouped_data %>% select(metadata_cols) %>% is_homogenous()
 
     agg_feature_data = grouped_data %>%
         summarise_at(
@@ -33,9 +33,10 @@ aggregate <- function(grouped_data, average=median,
         filter(row_number() == 1) %>%
         ungroup()
 
-    merged_data = inner_join(agg_feature_data, agg_metadata)
+    merged_data = inner_join(agg_feature_data, agg_metadata,
+                             by=group_vars(grouped_data))
     # make as many rows as original groups
-    assert(n_groups(grouped_data) == nrow(merged_data))
+    stopifnot(n_groups(grouped_data) == nrow(merged_data))
     # make sure the columns are in the original order
     merged_data[colnames(grouped_data)]
 }
@@ -47,6 +48,7 @@ aggregate <- function(grouped_data, average=median,
 is_homogenous <- function(data) {
     ans = all(apply(data, 2, function(x) {length(unique(x)) == 1}))
     if (ans != TRUE) {
-        stop("Metadata columns are not homogenous within groups", call. = FALSE)
+        stop("Metadata columns are not homogenous within groups",
+             call. = FALSE)
     }
 }

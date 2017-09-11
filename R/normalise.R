@@ -4,7 +4,7 @@
 #'
 #' @param data dataframe, can be a grouped dataframe
 #' @param compound_col name of column containing compound information
-#' @param neg_compound name of the negative control compound in `compound_col`
+#' @param neg_control name of the negative control compound in `compound_col`
 #' @param method how to normalise, either "subtract" or "divide"
 #' @param average average function
 #' @param metadata_prefix string, prefix of metadata columns
@@ -13,7 +13,7 @@
 #' @import dplyr
 #' @export
 normalise <- function(data, compound_col,
-                      neg_compound = "DMSO", method = "subtract",
+                      neg_control = "DMSO", method = "subtract",
                       average = median, metadata_prefix="Metadata_", ...) {
 
     `%op%` = set_operator(method)
@@ -23,7 +23,7 @@ normalise <- function(data, compound_col,
     data %>%
         mutate_at(
             vars(feature_cols),
-            funs(. %op% average(.[(!!!compound_col_) == neg_compound], ...)))
+            funs(. %op% average(.[(!!!compound_col_) == neg_control], ...)))
 }
 
 

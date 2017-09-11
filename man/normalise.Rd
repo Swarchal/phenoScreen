@@ -5,7 +5,7 @@
 \title{normalise against negative control}
 \usage{
 normalise(data, compound_col, neg_compound = "DMSO", method = "subtract",
-  average = mean, metadata_prefix = "Metadata_", ...)
+  average = median, metadata_prefix = "Metadata_", ...)
 }
 \arguments{
 \item{data}{dataframe, can be a grouped dataframe}
