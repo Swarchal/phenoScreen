@@ -26,6 +26,7 @@ normalise <- function(data, compound_col,
             funs(. %op% average(.[(!!!compound_col_) == neg_compound], ...)))
 }
 
+
 # alias for American spelling
 normalize = normalise
 
@@ -38,7 +39,8 @@ set_operator <- function(method) {
     } else if (method == "subtract") {
         operator = `-`
     } else {
-        stop("Invalid method. Options: divide, subtract.", call. = FALSE)
+        stop("Invalid method. Options: divide, subtract.",
+             call. = FALSE)
     }
     return(operator)
 }
