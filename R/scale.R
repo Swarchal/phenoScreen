@@ -2,8 +2,8 @@
 #'
 #' scale each feature column by z-score
 #'
-#' @param data
-#' @param metadata_prefix
+#' @param data dataframe
+#' @param metadata_prefix string, prefix of metadata columns
 #' @param ... additional arguments to `z_score`
 #' 
 #' @export
@@ -26,7 +26,6 @@ scale_features <- function(data, metadata_prefix = "Metadata_", ...) {
 #' @param x numeric vector
 #' @param ... additional arguments to mean and sd, e.g na.rm = TRUE
 #'
-#' @importFrom stats mean
 #' @importFrom stats sd
 #' @export
 z_score <- function(x, ...) {
