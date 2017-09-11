@@ -3,13 +3,31 @@
 [![build_status](https://travis-ci.org/Swarchal/phenoScreen.svg?branch=master)](https://travis-ci.org/Swarchal/phenoScreen/)
 [![Codecov](https://img.shields.io/codecov/c/github/Swarchal/phenoScreen.svg)](https://codecov.io/github/Swarchal/phenoScreen?branch=master)
 
-An R package for analysing and plotting multivariate screening data in 96 and 384-well plates.
+Functions for analysing phenotypic screening data, designed to fit in dplyr workflows.
 
-**Pretty broken as dplyr is unstable and keeps breaking things** :thumbsdown:
+### Examples:
 
-**Note:** Functions related specifically to multi-well plates have been moved to the [`platetools`](https://www.github.com/swarchal/platetools) package which is now on CRAN :tada:
+Normalising feature data against negative control values within plates, then scaling features via a z-score.
+```r
+data %>%
+    group_by(Metadata_plate_name) %>%
+    normalise(Metadata_compound, neg_control = "DMSO") %>%
+    ungroup() %>%
+    scale_features()
+```
 
-To install with the devtools package:
+-----------
+
+Collapsing single cell data down to an image mean
+```r
+data %>%
+    group_by(Metadata_image_id) %>%
+    collapse(mean)
+
+```
+------------
+
+To install from github:
 
 ```r
 if (!require(devtools)) install.packages("devtools")
