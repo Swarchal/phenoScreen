@@ -1,7 +1,7 @@
 Package: phenoScreen
 Type: Package
 Title: Useful Functions For Multivariate Chemical Screening Assays
-Version: 0.3
+Version: 0.4
 Date: 2015-11-22
 Author: Scott Warchal [aut, cre]
 Maintainer: Scott Warchal <S.Warchal@sms.ed.ac.uk>
@@ -10,7 +10,7 @@ Description: Collection of functions found useful in analysing phenotypic
 Depends: R (>= 3.1.0)
 License: MIT + file LICENSE
 Imports:
-    dplyr,
+    dplyr (>= 0.7),
     platetools
-RoxygenNote: 6.0.1
 Suggests: testthat
+RoxygenNote: 6.0.1
