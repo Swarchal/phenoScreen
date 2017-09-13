@@ -43,7 +43,7 @@ pca <- function(data, metadata_prefix = "Metadata_", n_components = NULL, ...) {
         stop("n_components > number of feature columns", call. = FALSE)
     }
 
-    pc_comps = prcomp(data[, feature_cols], ...)$x[, 1:n_components]
+    pc_comps = as_tibble(prcomp(data[, feature_cols], ...)$x[, 1:n_components])
 
     # create column names for the principal component dataframe
     colnames(pc_comps) = sprintf("PC%d", 1:n_components)
