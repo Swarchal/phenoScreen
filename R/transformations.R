@@ -20,15 +20,18 @@ glog <- function(x, lambda = 0) {
 #'
 #' @param data dataframe
 #' @param metadata_prefix string, prefix of metadata columns
-#' @param n_components integer, number of principal components to return
-#'      if left blank then will return all principal components which is
-#'      equal to the number of feature columns
-#' @param ...
+#' @param n_components numeric, If an integer greater than or equal to 1, then 
+#'      this many principal components will be returned.
+#'      If a floating point number between 0 and 1, then the number of principal
+#'      components will be how many needed to account for that proportion of
+#'      variance in the data.
+#'      If left blank then will return all principal components which is
+#'      equal to the number of feature columns.
+#' @param ... additional arguments to \code{prcomp}
 #'
 #' @importFrom stats prcomp
 #' @export
 pca <- function(data, metadata_prefix = "Metadata_", n_components = NULL, ...) {
-
 
     feature_cols = get_feature_cols(data, metadata_prefix)
     metadata_cols = get_metadata_cols(data, metadata_prefix)
@@ -43,7 +46,23 @@ pca <- function(data, metadata_prefix = "Metadata_", n_components = NULL, ...) {
         stop("n_components > number of feature columns", call. = FALSE)
     }
 
-    pc_comps = as_tibble(prcomp(data[, feature_cols], ...)$x[, 1:n_components])
+    # if n_components is an integer >=1 then select that many principal components
+    if (is_integer(n_components) && n_components >= 1) {
+        pc_comps = prcomp(data[, feature_cols], ...)$x[, 1:n_components]
+        pc_comps = as_tibble(pc_comps)
+
+    # if n_components is a float < 1, then get as many principal components
+    # as needed to account for that proportion of variance in the data
+    } else if (n_components < 1 && n_components > 0) {
+        pca_out = prcomp(data[, feature_cols, ...])
+        pc_variance = pca_out$sdev^2
+        cumulative_proportion_variance = cumsum(pc_variance) / sum(pc_variance)
+        n_components = min(which(cumulative_proportion_variance >= n_components))
+        pc_comps = as_tibble(pca_out$x[, 1:n_components])
+
+    } else {
+        stop("n_components need to be an integer >= 1, or a float between 0 and 1")
+    }
 
     # create column names for the principal component dataframe
     colnames(pc_comps) = sprintf("PC%d", 1:n_components)

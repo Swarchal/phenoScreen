@@ -50,3 +50,9 @@ check_feature_data <- function(data, feature_cols) {
 
     }
 }
+
+
+# because R is stupid and is.integer doesn't do what you think it does
+is_integer <- function(x) {
+    as.integer(x) == x
+}

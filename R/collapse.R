@@ -19,9 +19,6 @@ collapse <- function(grouped_data, average = median,
     feature_cols = get_feature_cols(grouped_data, metadata_prefix)
     metadata_cols = get_metadata_cols(grouped_data, metadata_prefix)
 
-    # TODO: check if groups have homogenous metadata, error if not
-    #grouped_data %>% select(metadata_cols) %>% is_homogenous()
-
     agg_feature_data = grouped_data %>%
         summarise_at(
             vars(feature_cols),
@@ -42,7 +39,7 @@ collapse <- function(grouped_data, average = median,
 }
 
 
-# check if all columns are homogenous within `data`
+# TODO: check if all columns are homogenous within `data`
 # i.e need the metadata *within* each group to be the same
 # for the aggregation
 is_homogenous <- function(data) {

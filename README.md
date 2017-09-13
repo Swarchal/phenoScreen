@@ -5,9 +5,10 @@
 
 Functions for analysing phenotypic screening data, designed to fit in dplyr workflows.
 
-### Examples:
+## Examples
 
 Normalising feature data against negative control values within plates, then scaling features via a z-score, and replace features with 5 principal components.
+
 ```r
 data %>%
     group_by(Metadata_plate_name) %>%
@@ -20,6 +21,7 @@ data %>%
 -----------
 
 Collapsing single cell data down to an image mean
+
 ```r
 data %>%
     group_by(Metadata_image_id) %>%
@@ -27,7 +29,10 @@ data %>%
     ungroup()
 
 ```
+
 ------------
+
+## Installation
 
 To install from github:
 
