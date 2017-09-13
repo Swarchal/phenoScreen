@@ -48,7 +48,7 @@ get_metadata_cols <- function(x, ...) {
 #' @param ... arguments to \code{get_metadata_cols}
 #' @export
 get_metadata <- function(x, ...) {
-    x[, get_metadata(x, ...)]
+    x[, get_metadata_cols(x, ...)]
 }
 
 
