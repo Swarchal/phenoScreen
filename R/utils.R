@@ -36,8 +36,8 @@ get_metadata_cols <- function(x, ...) {
 
 #' check featuredata is numeric
 #'
-#' @param data
-#' @param feature_cols
+#' @param data dataframe
+#' @param feature_cols vector of string, feature column names
 #' @export
 check_feature_data <- function(data, feature_cols) {
     featuredata = data[, feature_cols]
