@@ -5,6 +5,8 @@
 
 Functions for analysing phenotypic screening data, designed to fit in dplyr workflows.
 
+Functions related to plotting and manipulating 96/384 well plates have been moved to the [platetools](www.github.com/swarchal/platetools) package.
+
 ## Examples
 
 Normalising feature data against negative control values within plates, then scaling features via a z-score, and replace features with 5 principal components.
