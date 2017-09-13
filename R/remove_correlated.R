@@ -1,4 +1,4 @@
-#' return highly correlated columns to remove
+#' returns feature names to keep, without highly correlated features
 #'
 #' @param data data.frame
 #' @param threshold correlation threshold
