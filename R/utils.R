@@ -32,3 +32,21 @@ get_metadata_index <- function(x, metadata_prefix = "Metadata") {
 get_metadata_cols <- function(x, ...) {
     colnames(x)[get_metadata_index(x, ...)]
 }
+
+
+#' check featuredata is numeric
+#'
+#' @param data
+#' @param feature_cols
+#' @export
+check_feature_data <- function(data, feature_cols) {
+    featuredata = data[, feature_cols]
+    is_numeric = unlist(Map(is.numeric, featuredata))
+    if (sum(is_numeric) < ncol(featuredata)) {
+        # find non-numeric column(s)
+        non_numeric_col = names(is_numeric[is_numeric == FALSE])
+        stop(sprintf("non numeric feature data columns found %s",
+                     non_numeric_col))
+
+    }
+}
