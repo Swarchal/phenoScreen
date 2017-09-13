@@ -5,7 +5,7 @@
 
 Functions for analysing phenotypic screening data, designed to fit in dplyr workflows.
 
-Functions related to plotting and manipulating 96/384 well plates have been moved to the [platetools](www.github.com/swarchal/platetools) package.
+Functions related to plotting and manipulating 96/384 well plates have been moved to the [platetools](https://www.github.com/swarchal/platetools) package.
 
 ## Examples
 
