@@ -16,6 +16,15 @@ get_feature_cols <- function(x, ...) {
 }
 
 
+#' return featuredata
+#' @param x data
+#' @param ... arguments to \code{get_feature_cols}
+#' @export
+get_featuredata <- function(x, ...) {
+    x[, get_feature_cols(x, ...)]
+}
+
+
 #' return featuredata column indices
 #' @param x data
 #' @param metadata_prefix string, prefix of metadata columns
@@ -31,6 +40,15 @@ get_metadata_index <- function(x, metadata_prefix = "Metadata") {
 #' @export
 get_metadata_cols <- function(x, ...) {
     colnames(x)[get_metadata_index(x, ...)]
+}
+
+
+#' return metadata
+#' @param x data
+#' @param ... arguments to \code{get_metadata_cols}
+#' @export
+get_metadata <- function(x, ...) {
+    x[, get_metadata(x, ...)]
 }
 
 
