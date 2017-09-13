@@ -10,6 +10,8 @@ remove_correlated(data, threshold = 0.95, metadata_prefix = "Metadata")
 \item{data}{data.frame}
 
 \item{threshold}{correlation threshold}
+
+\item{metadata_prefix}{string, prefix of metadata columns}
 }
 \description{
 remove one of pairs of highly correlated features

@@ -2,6 +2,7 @@
 #'
 #' @param data data.frame
 #' @param threshold correlation threshold
+#' @importFrom stats cor
 #'
 #' @export
 find_correlated <- function(data, threshold) {
@@ -15,6 +16,7 @@ find_correlated <- function(data, threshold) {
 #'
 #' @param data data.frame
 #' @param threshold correlation threshold
+#' @param metadata_prefix string, prefix of metadata columns
 #'
 #' @import dplyr
 #' @export
@@ -31,5 +33,4 @@ remove_correlated <- function(data, threshold = 0.95,
 
 
 # alias
-#' @export
 rm_correlated = remove_correlated
