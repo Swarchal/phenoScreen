@@ -51,19 +51,20 @@ test_that("pca returns a dataframe", {
 })
 
 
-#test_that("pca retains metadata", {
-#    orig_metadata_columns = #TODO:
-#    pca_metadata_columns = #TODO: 
-#    expect_equal(orig_metadata_columns, pca_metadata_columns)
-#})
+test_that("pca retains metadata", {
+    orig_metadata_columns = get_metadata_cols(df)
+    pca_metadata_columns = get_metadata_cols(out)
+    expect_equal(orig_metadata_columns, pca_metadata_columns)
+})
 
 
-#test_that("pca n_components works", {
-#    out_new = pca(df, n_components=1L)
-#    # TODO:
-#})
+test_that("pca n_components works", {
+    out_new = pca(df, n_components=1L)
+    pc_colnames = get_feature_cols(out_new)
+    expect_equal(pc_colnames, "PC1")
+})
 
 
-#test_that("pca errors if n_components > num features", {
-#    # TODO:
-#})
+test_that("pca errors if n_components > num features", {
+    expect_error(pca(df, n_components=1000))
+})
