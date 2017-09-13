@@ -7,13 +7,14 @@ Functions for analysing phenotypic screening data, designed to fit in dplyr work
 
 ### Examples:
 
-Normalising feature data against negative control values within plates, then scaling features via a z-score.
+Normalising feature data against negative control values within plates, then scaling features via a z-score, and replace features with 4 principal components.
 ```r
 data %>%
     group_by(Metadata_plate_name) %>%
     normalise(Metadata_compound, neg_control = "DMSO") %>%
     ungroup() %>%
-    scale_features()
+    scale_features() %>%
+    pca(n_components = 5)
 ```
 
 -----------
