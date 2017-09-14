@@ -11,7 +11,8 @@ get_metadata_prefix <- function(metadata_prefix) {
 #' @param x data
 #' @param metadata_prefix string, prefix of metadata columns
 #' @export
-get_feature_index <- function(x, metadata_prefix = "Metadata") {
+get_feature_index <- function(x, metadata_prefix = NULL) {
+    metadata_prefix = get_metadata_prefix(metadata_prefix)
     setdiff(1:ncol(x), get_metadata_index(x, metadata_prefix))
 }
 
@@ -38,7 +39,8 @@ get_featuredata <- function(x, ...) {
 #' @param x data
 #' @param metadata_prefix string, prefix of metadata columns
 #' @export
-get_metadata_index <- function(x, metadata_prefix = "Metadata") {
+get_metadata_index <- function(x, metadata_prefix = NULL) {
+    metadata_prefix = get_metadata_prefix(metadata_prefix)
     grep(metadata_prefix, colnames(x))
 }
 

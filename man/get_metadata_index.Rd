@@ -4,7 +4,7 @@
 \alias{get_metadata_index}
 \title{return featuredata column indices}
 \usage{
-get_metadata_index(x, metadata_prefix = "Metadata")
+get_metadata_index(x, metadata_prefix = NULL)
 }
 \arguments{
 \item{x}{data}
