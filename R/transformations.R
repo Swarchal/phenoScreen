@@ -31,8 +31,9 @@ glog <- function(x, lambda = 0) {
 #'
 #' @importFrom stats prcomp
 #' @export
-pca <- function(data, metadata_prefix = "Metadata_", n_components = NULL, ...) {
+pca <- function(data, metadata_prefix = NULL, n_components = NULL, ...) {
 
+    metadata_prefix = get_metadata_prefix(metadata_prefix)
     feature_cols = get_feature_cols(data, metadata_prefix)
     metadata_cols = get_metadata_cols(data, metadata_prefix)
     metadata = data[, metadata_cols]

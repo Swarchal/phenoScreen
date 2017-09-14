@@ -1,3 +1,12 @@
+#' get metadata_prefix from options if is null
+get_metadata_prefix <- function(metadata_prefix) {
+    if (is.null(metadata_prefix)) {
+        metadata_prefix <- getOption("metadata_prefix")
+    }
+    metadata_prefix
+}
+
+
 #' return feature column indices
 #' @param x data
 #' @param metadata_prefix string, prefix of metadata columns

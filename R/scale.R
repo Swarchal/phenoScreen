@@ -7,8 +7,9 @@
 #' @param ... additional arguments to `z_score`
 #' 
 #' @export
-scale_features <- function(data, metadata_prefix = "Metadata_", ...) {
+scale_features <- function(data, metadata_prefix = NULL, ...) {
 
+    metadata_prefix = get_metadata_prefix(metadata_prefix)
     feature_cols = get_feature_cols(data, metadata_prefix)
 
     data %>%

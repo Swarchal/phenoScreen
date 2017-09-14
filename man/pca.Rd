@@ -4,7 +4,7 @@
 \alias{pca}
 \title{principal component analysis}
 \usage{
-pca(data, metadata_prefix = "Metadata_", n_components = NULL, ...)
+pca(data, metadata_prefix = NULL, n_components = NULL, ...)
 }
 \arguments{
 \item{data}{dataframe}

@@ -15,8 +15,9 @@
 #' @export
 normalise <- function(data, compound_col,
                       neg_control = "DMSO", method = "subtract",
-                      average = median, metadata_prefix="Metadata_", ...) {
+                      average = median, metadata_prefix = NULL, ...) {
 
+    metadata_prefix = get_metadata_prefix(metadata_prefix)
     `%op%` = set_operator(method)
     feature_cols = get_feature_cols(data, metadata_prefix)
     compound_col_ = enquo(compound_col)

@@ -4,7 +4,7 @@
 \alias{scale_features}
 \title{scale feature columns}
 \usage{
-scale_features(data, metadata_prefix = "Metadata_", ...)
+scale_features(data, metadata_prefix = NULL, ...)
 }
 \arguments{
 \item{data}{dataframe}

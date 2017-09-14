@@ -35,6 +35,20 @@ data %>%
 
 ------------
 
+Workflows fit nicely for piping data into ggplot2 for plotting.
+
+```r
+data %>%
+    group_by(Metadata_plate_name) %>%
+    normalise(Metadata_compound, neg_control = "DMSO") %>%
+    ungroup() %>%
+    scale_features() %>%
+    pca(n_components = 5) %>%
+    ggplot() +
+        geom_point(aes(PC1, PC2)) +
+        theme_minimal()
+```
+
 ## Installation
 
 To install from github:

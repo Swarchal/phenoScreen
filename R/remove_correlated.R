@@ -21,8 +21,9 @@ find_correlated <- function(data, threshold) {
 #' @import dplyr
 #' @export
 remove_correlated <- function(data, threshold = 0.95,
-                              metadata_prefix = "Metadata") {
+                              metadata_prefix = NULL) {
 
+    metadata_prefix = get_metadata_prefix(metadata_prefix)
     featuredata = get_featuredata(data, metadata_prefix)
     metadata = get_metadata(data, metadata_prefix)
     cols_to_keep = find_correlated(featuredata, threshold)

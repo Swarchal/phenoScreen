@@ -10,12 +10,13 @@
 #' @import dplyr
 #' @export
 collapse <- function(grouped_data, average = median,
-                      metadata_prefix = "Metadata_", ...) {
+                      metadata_prefix = NULL, ...) {
 
     if (!is_grouped_df(grouped_data)) {
         stop("`aggregate` expects a grouped dataframe.", call. = FALSE)
     }
 
+    metadata_prefix = get_metadata_prefix(metadata_prefix)
     feature_cols = get_feature_cols(grouped_data, metadata_prefix)
     metadata_cols = get_metadata_cols(grouped_data, metadata_prefix)
 

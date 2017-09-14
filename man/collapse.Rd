@@ -4,7 +4,7 @@
 \alias{collapse}
 \title{Aggregate/collapse a grouped dataframe to an average}
 \usage{
-collapse(grouped_data, average = median, metadata_prefix = "Metadata_", ...)
+collapse(grouped_data, average = median, metadata_prefix = NULL, ...)
 }
 \arguments{
 \item{grouped_data}{grouped dataframe}

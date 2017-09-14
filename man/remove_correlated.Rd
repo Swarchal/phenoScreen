@@ -4,7 +4,7 @@
 \alias{remove_correlated}
 \title{remove one of pairs of highly correlated features}
 \usage{
-remove_correlated(data, threshold = 0.95, metadata_prefix = "Metadata")
+remove_correlated(data, threshold = 0.95, metadata_prefix = NULL)
 }
 \arguments{
 \item{data}{data.frame}
