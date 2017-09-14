@@ -55,10 +55,11 @@ pca <- function(data, metadata_prefix = NULL, n_components = NULL, ...) {
     # if n_components is a float < 1, then get as many principal components
     # as needed to account for that proportion of variance in the data
     } else if (n_components < 1 && n_components > 0) {
+        threshold = n_components
         pca_out = prcomp(data[, feature_cols, ...])
         pc_variance = pca_out$sdev^2
         cumulative_proportion_variance = cumsum(pc_variance) / sum(pc_variance)
-        n_components = min(which(cumulative_proportion_variance >= n_components))
+        n_components = min(which(cumulative_proportion_variance >= threshold))
         pc_comps = as_tibble(pca_out$x[, 1:n_components])
 
     } else {
