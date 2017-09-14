@@ -1,4 +1,4 @@
-context("collapse")
+context("squash")
 
 # create example data
 N_PLATES = 5
@@ -18,11 +18,11 @@ df = data.frame(Metadata_well = wells,
 
 df_out = df %>%
     group_by(Metadata_plate_id, Metadata_well) %>%
-    collapse()
+    squash()
 
 df_out2 = df %>%
     group_by(Metadata_well) %>%
-    collapse()
+    squash()
 
 
 test_that("correct number of rows", {

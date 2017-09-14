@@ -22,12 +22,12 @@ data %>%
 
 -----------
 
-Collapsing single cell data down to an image mean, then remove redundant feature columns.
+Average single cell data down to an image mean, then remove redundant feature columns.
 
 ```r
 data %>%
     group_by(Metadata_image_id) %>%
-    collapse(mean) %>%
+    squash(mean) %>%
     ungroup() %>%
     remove_correlated(threshold = 0.99)
 

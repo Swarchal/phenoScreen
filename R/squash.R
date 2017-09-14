@@ -9,7 +9,7 @@
 #'
 #' @import dplyr
 #' @export
-collapse <- function(grouped_data, average = median,
+squash <- function(grouped_data, average = median,
                       metadata_prefix = NULL, ...) {
 
     if (!is_grouped_df(grouped_data)) {
