@@ -62,7 +62,7 @@ devtools::install_github('Swarchal/phenoScreen')
 
 PhenoScreen assumes that metadata and featuredata columns are labelled differently, and that all metadata columns share a similar prefix.
 
-By default this is `Metadata`. Though this can be changed globally by changing the settings in `options` at top of your script after loading `phenoScreen`.
+By default this is `Metadata`. Though this can be changed globally by changing the settings in `options` at top of your script after loading `phenoScreen`.  
 e.g
 
 ```r
@@ -75,6 +75,16 @@ options("metadata_prefix") = "New_Metadata_prefix"
 # ...
 ```
 
-Or, within each function with the `metadata_prefix` argument.
+Or, within each function with the `metadata_prefix` argument.  
+e.g
 
-It is also assumed that all columns that do not have the metadata prefix are featuredata, and that they are numeric.
+```r
+data %>%
+    group_by(Metadata_image_id, metadata_prefix = "New_Metadata_prefix") %>%
+    squash(mean, metadata_prefix = "New_Metadata_prefix") %>%
+    ungroup() %>%
+    remove_correlated(threshold = 0.99, metadata_prefix = "New_Metadata_prefix")
+```
+
+
+It is also assumed that all columns that do not have the metadata prefix are featuredata, and that all featuredata is numeric.
