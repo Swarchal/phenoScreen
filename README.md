@@ -60,9 +60,7 @@ devtools::install_github('Swarchal/phenoScreen')
 
 ## Caveats
 
-PhenoScreen assumes that metadata and featuredata columns are labelled differently, and that all metadata columns share a similar prefix.
-
-By default this is `Metadata`. Though this can be changed globally by changing the settings in `options` at top of your script after loading `phenoScreen`.  
+PhenoScreen assumes that metadata and featuredata columns are labelled differently, and that all metadata columns share a common prefix. By default this is `Metadata` (following CellProfiler convention), though this can be changed globally by changing the settings in `options` at top of your script after loading `phenoScreen`.  
 e.g
 
 ```r
@@ -87,4 +85,4 @@ data %>%
 ```
 
 
-It is also assumed that all columns that do not have the metadata prefix are featuredata, and that all featuredata is numeric.
+**N.B**: It is also assumed that all columns that do not have the metadata prefix are featuredata, and that all featuredata is numeric.

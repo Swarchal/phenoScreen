@@ -4,12 +4,15 @@
 \alias{impute_missing}
 \title{impute missing values}
 \usage{
-impute_missing(data, metadata_prefix = NULL)
+impute_missing(data, metadata_prefix = NULL, method = "mean")
 }
 \arguments{
 \item{data}{dataframe}
 
 \item{metadata_prefix}{string, prefix for metadata columns}
+
+\item{method}{string, method of imputation. Either "mean", "median", or "nn"
+(nearest-neighbour).}
 }
 \description{
 impute missing values
