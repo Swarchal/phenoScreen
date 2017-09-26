@@ -1,5 +1,5 @@
 context("handle missing data")
-
+library(dplyr)
 
 # randomly replace values with NA's
 create_na <- function (x, prop = 0.1) {
@@ -98,8 +98,43 @@ test_that("impute_missing median returns correct value", {
 
 
 test_that("impute_missing works with grouped dataframe", {
-    # TODO: write test
-    expect_true(TRUE)
+    # dataframe with two groups
+    test_df =  data.frame(
+        x = c(1L, 2L, 3L, 400L, NA, 100L, 200L, 300L, 4000L, NA),
+        y = c(100L, 200L, 300L, 4000L, NA, 1000L, 2000L, 3000L, 40000L, NA),
+        Metadata_col = rep(c("A", "B"), each=5)
+    )
+
+    grouped_median = test_df %>%
+        group_by(Metadata_col) %>%
+        impute_missing(method = "median") %>%
+        ungroup()
+
+
+    grouped_mean = test_df %>%
+        group_by(Metadata_col) %>%
+        impute_missing(method = "mean") %>%
+        ungroup()
+
+    expect_equal(
+        as.numeric(grouped_median[["x"]]),
+        c(1, 2, 3, 400, 2.5, 100, 200, 300, 4000, 250)
+    )
+
+    expect_equal(
+        as.numeric(grouped_median[["y"]]),
+        c(100, 200, 300, 4000, 250, 1000, 2000, 3000, 40000, 2500)
+    )
+
+    expect_equal(
+        as.numeric(grouped_mean[["x"]]),
+        c(1, 2, 3, 400, 101.5, 100, 200, 300, 4000, 1150)
+    )
+
+    expect_equal(
+        as.numeric(grouped_mean[["y"]]),
+        c(100, 200, 300, 4000, 1150, 1000, 2000, 3000, 40000, 11500)
+    )
 })
 
 

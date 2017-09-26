@@ -1,5 +1,3 @@
-# FIXME: impute_missing is dropping metadata columns
-
 #' impute missing values
 #'
 #' @param data dataframe
@@ -8,6 +6,7 @@
 #'      (nearest-neighbour).
 #'
 #' @export
+# FIXME: doesn't work with grouped dataframes
 impute_missing <- function(data, metadata_prefix = NULL, method="mean") {
     metadata_prefix = get_metadata_prefix(metadata_prefix)
     check_impute_method(method)
@@ -35,27 +34,22 @@ check_impute_method <- function(method) {
 # impute missing values with the column mean
 impute_mean <- function(data, metadata_prefix) {
     feature_cols = get_feature_cols(data, metadata_prefix)
-
-    imp_mean <- function(x) {
-        x[is.na(x)] = mean(x, na.rm = TRUE)
-        return(x)
-    }
-
-    data[, feature_cols] = apply(data[, feature_cols], 2, imp_mean)
-    return(data)
+    data %>%
+        mutate_at(feature_cols, funs(
+            ifelse(is.na(.), mean(., na.rm = TRUE), .)
+            )
+        )
 }
 
 
 # impute missing values with the column median
 impute_median <- function(data, metadata_prefix) {
     feature_cols = get_feature_cols(data, metadata_prefix)
-    
-    imp_median <- function(x) {
-        x[is.na(x)] = median(x, na.rm = TRUE)
-        return(x)
-    }
-    data[, feature_cols] = apply(data[, feature_cols], 2, imp_median)
-    return(data)
+    data %>%
+        mutate_at(feature_cols, funs(
+            ifelse(is.na(.), median(., na.rm = TRUE), .)
+            )
+        )
 }
 
 
