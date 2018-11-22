@@ -6,5 +6,10 @@ utils::globalVariables(c("."))
     options("metadata_prefix" = "Metadata")
 }
 
+.onAttach <- function(libname, pkgname) {
+    # set metadata_prefix in options
+    options("metadata_prefix" = "Metadata")
+}
+
 #' @import platetools
 NULL
